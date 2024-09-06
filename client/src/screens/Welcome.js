@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, BackHandler, Alert} from 'react-native';
 import React, {useEffect} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Home from './Home';
@@ -8,6 +8,7 @@ import Cart from './Cart';
 import Account from './Account';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
+import { useFocusEffect } from '@react-navigation/native';
 
 const Tab = createBottomTabNavigator();
 
@@ -22,8 +23,35 @@ const Welcome = ({navigation}) => {
       .then(res => console.log('data from welcome screen', res.data))
       .catch(err => console.log('error from welcome page', err));
   }
+
+  const handleBackPress = () => {
+    Alert.alert('Exit App', 'Are You sure you want to exit?', [
+      {
+        text: 'Cancel',
+        onPress: () => null,
+        style: 'cancel',
+      },
+      {
+        text: 'Exit',
+        onPress: () => BackHandler.exitApp(),
+      },
+    ]);
+    return true;
+  };
+
+  useFocusEffect(
+    React.useCallback(()=>{
+      BackHandler.addEventListener('hardwareBackPress', handleBackPress);
+
+    return ()=>{
+      BackHandler.removeEventListener("hardwareBackPress",handleBackPress);
+    }
+    })
+  )
+
   useEffect(() => {
     getData();
+    
   }, []);
 
   return (

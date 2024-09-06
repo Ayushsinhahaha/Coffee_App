@@ -28,6 +28,7 @@ export default function Login({navigation}) {
         if (res.data.status == 'ok') {
           Alert.alert('Logged In Successfully');
           console.log("res.data.data;;;;;;;;;;",res.data.data)
+          // getting tokens
           AsyncStorage.setItem("token",res.data.data)
           navigation.navigate('Welcome');
         }
