@@ -21,7 +21,9 @@ const Wallet = () => {
         </View>
         {/* right side cart */}
         <View>
+        <TouchableOpacity>
           <IonIcons name="cart" size={30} />
+        </TouchableOpacity>
         </View>
       </View>
 
@@ -72,6 +74,7 @@ const Wallet = () => {
               width: 65,
               backgroundColor: 'lightgrey',
               marginRight: 30,
+              borderRadius:15
             }}></TouchableOpacity>
             <Text></Text>
           <TouchableOpacity
@@ -80,6 +83,7 @@ const Wallet = () => {
               width: 65,
               backgroundColor: 'lightgrey',
               marginRight: 30,
+              borderRadius:15
             }}></TouchableOpacity>
           <TouchableOpacity
             style={{
@@ -87,12 +91,14 @@ const Wallet = () => {
               width: 65,
               backgroundColor: 'lightgrey',
               marginRight: 30,
+              borderRadius:15
             }}></TouchableOpacity>
           <TouchableOpacity
             style={{
               height: 65,
               width: 65,
               backgroundColor: 'lightgrey',
+              borderRadius:15
             }}></TouchableOpacity>
         </View>
       </View>
