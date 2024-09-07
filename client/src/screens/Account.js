@@ -3,18 +3,20 @@ import React from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 
-const Account = () => {
+const Account = ({navigation}) => {
   
   return (
     <SafeAreaView style={{flex: 1}}>
       {/* Header */}
-      <View style={{flexDirection:'row'}}>
+      <View style={{flexDirection:'row',alignItems:'center',left:130,bottom:20}}>
         {/* back button */}
 
         {/* logo */}
-        <Image source={require('../assets/logo/logo1.png')} style={{width:20,height:20}}/>
-
+        <Image source={require('../assets/logo/logo1.png')} style={{width:150,height:150,}}/>
         {/* notification */}
+          <TouchableOpacity onPress={()=>navigation.navigate('Notification')} style={{left:80,bottom:10}}>
+            <IonIcons name='notifications-outline' size={35} />
+          </TouchableOpacity>
       </View>
       {/* profile Picture */}
       <View
@@ -22,8 +24,8 @@ const Account = () => {
           flex: 1,
           justifyContent: 'flex-start',
           alignItems: 'center',
-          marginTop: 20,
-          top: 50,
+          // marginTop: 20,
+          // top: 50,
         }}>
         
 

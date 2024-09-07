@@ -21,9 +21,9 @@ const Wallet = () => {
         </View>
         {/* right side cart */}
         <View>
-        <TouchableOpacity>
-          <IonIcons name="cart" size={30} />
-        </TouchableOpacity>
+          <TouchableOpacity>
+            <IonIcons name="cart" size={30} />
+          </TouchableOpacity>
         </View>
       </View>
 
@@ -31,21 +31,23 @@ const Wallet = () => {
       <View
         style={{
           flex: 1,
-          justifyContent: 'center',
+          justifyContent: 'flex-start',
           alignItems: 'center',
+          top: 50,
           // bottom: 100,
         }}>
+        <Text>Wallet Balance</Text>
         <View
           style={{
             borderWidth: 2,
             height: '30%',
             width: '95%',
-            borderRadius: 30,
+            // borderRadius: 30,
           }}>
           {/* <Text>Balance</Text> */}
           <ImageBackground
-            source={require('../assets/images/wallet.png')}
-            style={{flex: 1}}
+            source={require('../assets/images/card.png')}
+            style={{flex: 1, borderRadius: 30}}
             resizeMode="cover">
             <View
               style={{
@@ -54,7 +56,7 @@ const Wallet = () => {
                 alignItems: 'flex-start',
                 margin: 10,
               }}>
-              <Text
+              {/* <Text
                 style={{
                   textAlign: 'center',
                   color: '#fff',
@@ -63,44 +65,91 @@ const Wallet = () => {
                   opacity: 1,
                 }}>
                 Balance
-              </Text>
+              </Text> */}
             </View>
           </ImageBackground>
         </View>
         <View style={{margin: 20, padding: 20, flexDirection: 'row'}}>
           <TouchableOpacity
             style={{
-              height: 65,
-              width: 65,
-              backgroundColor: 'lightgrey',
+              height: 75,
+              width: 75,
+              // backgroundColor: 'lightgrey',
               marginRight: 30,
-              borderRadius:15
-            }}></TouchableOpacity>
-            <Text></Text>
+              borderRadius: 15,
+              borderWidth: 1,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <IonIcons name="wallet" size={30} />
+            <Text>Top Up</Text>
+          </TouchableOpacity>
           <TouchableOpacity
             style={{
-              height: 65,
-              width: 65,
-              backgroundColor: 'lightgrey',
+              height: 75,
+              width: 75,
+              // backgroundColor: 'lightgrey',
               marginRight: 30,
-              borderRadius:15
-            }}></TouchableOpacity>
+              borderRadius: 15,
+              borderWidth: 1,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <IonIcons name="card-outline" size={30} />
+            <Text style={{textAlign: 'c'}}>Manage Cards</Text>
+          </TouchableOpacity>
           <TouchableOpacity
             style={{
-              height: 65,
-              width: 65,
-              backgroundColor: 'lightgrey',
+              height: 75,
+              width: 75,
+              // backgroundColor: 'lightgrey',
               marginRight: 30,
-              borderRadius:15
-            }}></TouchableOpacity>
+              borderRadius: 15,
+              borderWidth: 1,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <IonIcons name="wallet" size={30} />
+            <Text>Top Up</Text>
+          </TouchableOpacity>
           <TouchableOpacity
             style={{
-              height: 65,
-              width: 65,
-              backgroundColor: 'lightgrey',
-              borderRadius:15
-            }}></TouchableOpacity>
+              height: 75,
+              width: 75,
+              // backgroundColor: 'lightgrey',
+              // marginRight: 30,
+              borderRadius: 15,
+              borderWidth: 1,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <IonIcons name="wallet" size={30} />
+            <Text>Top Up</Text>
+          </TouchableOpacity>
         </View>
+
+        {/* recent transactions */}
+        <Text style={{fontSize: 20, fontWeight: 800}}>Recent Transactions</Text>
+        <TouchableOpacity
+          style={{
+            height: 80,
+            width: '90%',
+            borderWidth: 1,
+            borderRadius: 20,
+            margin: 10,
+          }}>
+          <Text></Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={{
+            height: 80,
+            width: '90%',
+            borderWidth: 1,
+            borderRadius: 20,
+            margin: 10,
+          }}>
+          <Text></Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );

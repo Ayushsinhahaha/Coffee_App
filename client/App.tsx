@@ -12,6 +12,8 @@ import Home from './src/screens/Home';
 import Wallet from './src/screens/Wallet';
 import Cart from './src/screens/Cart';
 import Account from './src/screens/Account';
+import Notification from './src/screens/Notification';
+import Toast from 'react-native-toast-message';
 
 const Stack=createNativeStackNavigator();
 
@@ -33,6 +35,7 @@ const App = ({navigation}) => {
         <Stack.Screen name="Wallet" component={Wallet} options={{headerShown:false}}/>
         <Stack.Screen name="Cart" component={Cart} options={{headerShown:false}}/>
         <Stack.Screen name="Account" component={Account} options={{headerShown:false}}/>
+        <Stack.Screen name="Notification" component={Notification} options={{headerShown:false}}/>
       </Stack.Navigator>
     </NavigationContainer>
   )
