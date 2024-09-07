@@ -9,7 +9,8 @@ import {
 import React from 'react';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 
-const Wallet = () => {
+const Wallet = ({navigation}) => {
+  var balance=400
   return (
     <SafeAreaView style={{flex: 1, margin: 20}}>
       {/* header */}
@@ -17,11 +18,11 @@ const Wallet = () => {
         {/* left side text */}
         <View>
           <Text style={{fontSize: 20, fontWeight: 700}}>Wallet</Text>
-          <Text>Low Balance</Text>
+          <Text style={{fontSize:15,fontWeight:700}}>Low Balance</Text>
         </View>
         {/* right side cart */}
         <View>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={()=>navigation.navigate('Cart')} >
             <IonIcons name="cart" size={30} />
           </TouchableOpacity>
         </View>
@@ -33,21 +34,22 @@ const Wallet = () => {
           flex: 1,
           justifyContent: 'flex-start',
           alignItems: 'center',
-          top: 50,
+          top: 30,
           // bottom: 100,
         }}>
-        <Text>Wallet Balance</Text>
+        <Text style={{fontSize:25,marginBottom:20}}>Wallet Balance:{balance}</Text>
         <View
           style={{
             borderWidth: 2,
             height: '30%',
             width: '95%',
-            // borderRadius: 30,
+            // borderRadius: 60,
+            // backgroundColor:'#fff'
           }}>
           {/* <Text>Balance</Text> */}
           <ImageBackground
             source={require('../assets/images/card.png')}
-            style={{flex: 1, borderRadius: 30}}
+            style={{flex: 1, borderRadius: 50}}
             resizeMode="cover">
             <View
               style={{
@@ -96,7 +98,7 @@ const Wallet = () => {
               alignItems: 'center',
             }}>
             <IonIcons name="card-outline" size={30} />
-            <Text style={{textAlign: 'c'}}>Manage Cards</Text>
+            <Text style={{textAlign: 'center',fontWeight:800}}>Manage Cards</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={{

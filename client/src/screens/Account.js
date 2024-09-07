@@ -6,15 +6,17 @@ import IonIcons from 'react-native-vector-icons/Ionicons';
 const Account = ({navigation}) => {
   
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView style={{flex: 1,justifyContent:'center',}}>
       {/* Header */}
-      <View style={{flexDirection:'row',alignItems:'center',left:130,bottom:20}}>
+      <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between',bottom:20,margin:10}}>
         {/* back button */}
-
+        <TouchableOpacity onPress={()=>navigation.navigate('Home')} style={{bottom:10}}>
+            <IonIcons name='arrow-back' size={35} />
+          </TouchableOpacity>
         {/* logo */}
-        <Image source={require('../assets/logo/logo1.png')} style={{width:150,height:150,}}/>
+        <Image source={require('../assets/logo/logo1.png')} style={{width:150,height:150,bottom:10}}/>
         {/* notification */}
-          <TouchableOpacity onPress={()=>navigation.navigate('Notification')} style={{left:80,bottom:10}}>
+          <TouchableOpacity onPress={()=>navigation.navigate('Notification')} style={{bottom:10}}>
             <IonIcons name='notifications-outline' size={35} />
           </TouchableOpacity>
       </View>
@@ -25,7 +27,7 @@ const Account = ({navigation}) => {
           justifyContent: 'flex-start',
           alignItems: 'center',
           // marginTop: 20,
-          // top: 50,
+          bottom: 50,
         }}>
         
 
@@ -58,17 +60,20 @@ const Account = ({navigation}) => {
           }}>
           <IonIcons name="pencil" size={30} color={'white'} />
         </TouchableOpacity>
-        <Text style={{fontSize: 30,fontWeight:800,color:'grey',marginBottom:30}}>Hi <Text style={{color:'#00704A'}}>Ayush</Text></Text>
-        <TouchableOpacity style={{height:50,width:'90%',justifyContent:'center',alignItems:'center',margin:12,borderWidth:1,borderRadius:20}}>
+        <Text style={{fontSize: 30,fontWeight:800,color:'grey',marginBottom:30,bottom:25}}>Hi <Text style={{color:'#00704A'}}>Ayush</Text></Text>
+        <TouchableOpacity onPress={()=>navigation.navigate('EditProfile')} style={{height:50,width:'90%',justifyContent:'center',alignItems:'center',margin:12,borderWidth:1,borderRadius:20,bottom:30}}>
           <Text style={{fontSize:20,fontWeight:800}} >Edit Profile</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={{height:50,width:'90%',justifyContent:'center',alignItems:'center',margin:12,borderWidth:1,borderRadius:20}}>
-          <Text style={{fontSize:20,fontWeight:800}}>Your Orders</Text>
+        <TouchableOpacity onPress={()=>navigation.navigate('Orders')} style={{height:50,width:'90%',justifyContent:'center',alignItems:'center',margin:12,borderWidth:1,borderRadius:20,bottom:30}}>
+          <Text style={{fontSize:20,fontWeight:800}}>Order History</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={{height:50,width:'90%',justifyContent:'center',alignItems:'center',margin:12,borderWidth:1,borderRadius:20}}>
-          <Text style={{fontSize:20,fontWeight:800}}>Your Wallet</Text>
+        <TouchableOpacity style={{height:50,width:'90%',justifyContent:'center',alignItems:'center',margin:12,borderWidth:1,borderRadius:20,bottom:30}}>
+          <Text style={{fontSize:20,fontWeight:800}}>Call Us</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={{height:50,width:'90%',justifyContent:'center',alignItems:'center',margin:12,borderWidth:1,borderRadius:20}}>
+        <TouchableOpacity style={{height:50,width:'90%',justifyContent:'center',alignItems:'center',margin:12,borderWidth:1,borderRadius:20,bottom:30}}>
+          <Text style={{fontSize:20,fontWeight:800}}>Terms of Services</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={{height:50,width:'90%',justifyContent:'center',alignItems:'center',margin:12,borderWidth:1,borderRadius:20,bottom:30,backgroundColor:'#00704A'}}>
           <Text style={{fontSize:20,fontWeight:800}}>Log Out</Text>
         </TouchableOpacity>
       </View>

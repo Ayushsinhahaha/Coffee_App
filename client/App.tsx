@@ -14,6 +14,9 @@ import Cart from './src/screens/Cart';
 import Account from './src/screens/Account';
 import Notification from './src/screens/Notification';
 import Toast from 'react-native-toast-message';
+import EditProfile from './src/screens/EditProfile';
+import PaymentCards from './src/screens/PaymentCards';
+import Orders from './src/screens/Orders';
 
 const Stack=createNativeStackNavigator();
 
@@ -36,6 +39,9 @@ const App = ({navigation}) => {
         <Stack.Screen name="Cart" component={Cart} options={{headerShown:false}}/>
         <Stack.Screen name="Account" component={Account} options={{headerShown:false}}/>
         <Stack.Screen name="Notification" component={Notification} options={{headerShown:false}}/>
+        <Stack.Screen name="EditProfile" component={EditProfile} options={{headerShown:false}}/>
+        <Stack.Screen name="PaymentCards" component={PaymentCards} options={{headerShown:false}}/>
+        <Stack.Screen name="Orders" component={Orders} options={{headerShown:false}}/>
       </Stack.Navigator>
     </NavigationContainer>
   )
