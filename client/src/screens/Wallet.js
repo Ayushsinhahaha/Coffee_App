@@ -18,12 +18,12 @@ const Wallet = ({navigation}) => {
         {/* left side text */}
         <View>
           <Text style={{fontSize: 20, fontWeight: 700}}>Wallet</Text>
-          <Text style={{fontSize:15,fontWeight:700}}>Low Balance</Text>
+          {/* <Text style={{fontSize:15,fontWeight:700}}>Low Balance</Text> */}
         </View>
         {/* right side cart */}
         <View>
           <TouchableOpacity onPress={()=>navigation.navigate('Cart')} >
-            <IonIcons name="cart" size={30} />
+            <IonIcons name="cart" size={30} color={'#00704A'} />
           </TouchableOpacity>
         </View>
       </View>
@@ -83,8 +83,8 @@ const Wallet = ({navigation}) => {
               justifyContent: 'center',
               alignItems: 'center',
             }}>
-            <IonIcons name="wallet" size={30} />
-            <Text>Top Up</Text>
+            <IonIcons name="wallet" size={30} color={'#00704A'} />
+            <Text style={{textAlign: 'center',fontWeight:800}}>Top Up</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={{
@@ -97,10 +97,10 @@ const Wallet = ({navigation}) => {
               justifyContent: 'center',
               alignItems: 'center',
             }}>
-            <IonIcons name="card-outline" size={30} />
+            <IonIcons name="card-outline" size={30} color={'#00704A'}/>
             <Text style={{textAlign: 'center',fontWeight:800}}>Manage Cards</Text>
           </TouchableOpacity>
-          <TouchableOpacity
+          {/* <TouchableOpacity
             style={{
               height: 75,
               width: 75,
@@ -113,7 +113,7 @@ const Wallet = ({navigation}) => {
             }}>
             <IonIcons name="wallet" size={30} />
             <Text>Top Up</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
           <TouchableOpacity
             style={{
               height: 75,
@@ -125,8 +125,8 @@ const Wallet = ({navigation}) => {
               justifyContent: 'center',
               alignItems: 'center',
             }}>
-            <IonIcons name="wallet" size={30} />
-            <Text>Top Up</Text>
+            <IonIcons name="document" size={30} color={'#00704A'} />
+            <Text style={{textAlign: 'center',fontWeight:800}} >Help and FAQs</Text>
           </TouchableOpacity>
         </View>
 

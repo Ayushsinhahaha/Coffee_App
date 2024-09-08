@@ -1,0 +1,67 @@
+[
+    {
+        "title":"Cappuccino",
+        "category":"Hot Drinks",
+        "Quantity":"S/M/L",
+        "Rating":"4.6",
+        "Description":"Cappuccino is a coffee drink made with Equal parts espresso, steamed milk, and milk foam, and is known for its balanced flavors and textures",
+        "Image": "require(/client/src/assets/images/cappuccino.jpg)",
+        "Price":"99/149/199"
+    },
+    {
+        "title":"Americano",
+        "category":"Hot Drinks",
+        "Quantity":"S/M/L",
+        "Rating":"4.2",
+        "Description":"Americano is a simple coffee drink made by diluting a shot of espresso with hot water. This results in a smoother, less intense flavor compared to straight espresso, resembling the strength of drip coffee while retaining the espresso's rich taste.",
+        "Image": "require(/client/src/assets/images/americano.jpg)",
+        "Price":"99/169/219"
+    },
+    {
+        "title":"Espresso",
+        "category":"Hot Drinks",
+        "Quantity":"S/M/L",
+        "Rating":"4.3",
+        "Description":"Espresso is a strong, concentrated coffee brewed by forcing hot water through finely-ground coffee beans.",
+        "Image": "require(/client/src/assets/images/espresso.jpg)",
+        "Price":"99/149/199"
+    },
+    {
+        "title":"Latte",
+        "category":"Hot Drinks",
+        "Quantity":"S/M/L",
+        "Rating":"4.1",
+        "Description":"Latte is a a milk coffee drink made with espresso, steamed milk, and a thin layer of foam on top",
+        "Image": "require(/client/src/assets/images/latte.jpg)",
+        "Price":"99/149/199"
+    },
+    {
+        "title":"Hot Macchiato",
+        "category":"Drinks",
+        "Quantity":"S/M/L",
+        "Rating":"3.9",
+        "Description":"Macchiato is a coffee drink made with espresso with a small amount of milk foam",
+        "Image": "require(/client/src/assets/images/macchiato.jpg)",
+        "Price":"99/149/199"
+    },
+    {
+        "title":"Cold Coffee",
+        "category":"Iced Drinks",
+        "Quantity":"S/M/L",
+        "Rating":"4.9",
+        "Description":"Cold Coffee is a popular, creamy, and chilled beverage that's made with coffee, sugar, and milk or water",
+        "Image": "require(/client/src/assets/images/coldcoffee.png)",
+        "Price":"99/149/199"
+    },
+    {
+        "title":"Cookies",
+        "category":"Food Item",
+        "Quantity":"1",
+        "Rating":"4.3",
+        "Description":"Cookie is aa small, flat, sweet, baked snack or dessert that's usually made from flour, sugar, eggs, and some kind of fat or oil",
+        "Image": "require(/client/src/assets/images/cookies.png)",
+        "Price":"99/149/199"
+    }
+
+    
+]

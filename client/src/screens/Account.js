@@ -35,7 +35,7 @@ const Account = ({navigation}) => {
           style={{
             width: 200,
             height: 200,
-            backgroundColor: '#00704A',
+            // backgroundColor: '#00704A',
             borderRadius: 126,
           }}>
           {/* <View style={{width:180,height:180,backgroundColor:'lightgrey',borderRadius:110,margin:10,alignItems:'center',justifyContent:'center'}}> */}
@@ -51,8 +51,8 @@ const Account = ({navigation}) => {
           style={{
             height: 60,
             width: 60,
-            backgroundColor: 'dodgerblue',
-            bottom: 50,
+            backgroundColor: '#00704A',
+            bottom: 65,
             left: 65,
             borderRadius: 35,
             justifyContent: 'center',
@@ -68,13 +68,13 @@ const Account = ({navigation}) => {
           <Text style={{fontSize:20,fontWeight:800}}>Order History</Text>
         </TouchableOpacity>
         <TouchableOpacity style={{height:50,width:'90%',justifyContent:'center',alignItems:'center',margin:12,borderWidth:1,borderRadius:20,bottom:30}}>
-          <Text style={{fontSize:20,fontWeight:800}}>Call Us</Text>
+          <Text style={{fontSize:20,fontWeight:800}}>Contact Us</Text>
         </TouchableOpacity>
         <TouchableOpacity style={{height:50,width:'90%',justifyContent:'center',alignItems:'center',margin:12,borderWidth:1,borderRadius:20,bottom:30}}>
           <Text style={{fontSize:20,fontWeight:800}}>Terms of Services</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={{height:50,width:'90%',justifyContent:'center',alignItems:'center',margin:12,borderWidth:1,borderRadius:20,bottom:30,backgroundColor:'#00704A'}}>
-          <Text style={{fontSize:20,fontWeight:800}}>Log Out</Text>
+        <TouchableOpacity style={{height:50,width:'90%',justifyContent:'center',alignItems:'center',margin:12,borderWidth:1,borderRadius:20,bottom:30,backgroundColor:'#6D1F37'}}>
+          <Text style={{fontSize:20,fontWeight:800,color:'#fff'}}>Log Out</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

@@ -38,7 +38,7 @@ const HomePage = ({navigation}) => {
       {/* Image */}
 
       <Image
-        source={require('../assets/images/icedcoffee.png')}
+        source={require('../assets/images/coldcoffee.png')}
         style={{width: 400, height: 400}}
       />
 
