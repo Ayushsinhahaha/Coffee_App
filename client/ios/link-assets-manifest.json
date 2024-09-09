@@ -1,0 +1,57 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/images/americano.jpg",
+      "sha1": "e1361a9b554414993de1454debd447a45569b4e6"
+    },
+    {
+      "path": "src/assets/images/cappuccino.jpg",
+      "sha1": "8600b56b588eb469e1cecd93f5ca0c32ef93f8f5"
+    },
+    {
+      "path": "src/assets/images/card.png",
+      "sha1": "9ab90dabf4cbaa4bfc0a96491cb244db8818d79e"
+    },
+    {
+      "path": "src/assets/images/coldcoffee.png",
+      "sha1": "5ae5ad1f2da7a3bfa8c11ea07e616e88c73ee629"
+    },
+    {
+      "path": "src/assets/images/cookies.png",
+      "sha1": "46482f83504a9ab51bfff8b2fff8a85f4850f59c"
+    },
+    {
+      "path": "src/assets/images/espresso.jpg",
+      "sha1": "4cd2cf22af864d97bda301e8d46290ba6aa03d1d"
+    },
+    {
+      "path": "src/assets/images/latte.jpg",
+      "sha1": "f6d0b7447870d73646aefc13af2c78873c00ec64"
+    },
+    {
+      "path": "src/assets/images/macchiato.jpg",
+      "sha1": "7c241b1bb84511e137ef9ebd305b166e7874e81b"
+    },
+    {
+      "path": "src/assets/images/wallet.png",
+      "sha1": "a29e62d023ede216bf4013df3b35d700520274b3"
+    },
+    {
+      "path": "src/assets/images/walletcard.png",
+      "sha1": "70e4bc7e1c417e947fe130737478529f858e8c7d"
+    },
+    {
+      "path": "src/assets/logo/logo1.png",
+      "sha1": "cba6c904eb021564f3b0a15028f18e0ba2b2bd65"
+    },
+    {
+      "path": "src/assets/logo/logo2.png",
+      "sha1": "478b72d896cc6a9ec2568abce4255fb322eb4c9d"
+    },
+    {
+      "path": "src/assets/logo/logo3.jpg",
+      "sha1": "1a8cf0d22e93737c404d59e339d64e8d6e3779f9"
+    }
+  ]
+}

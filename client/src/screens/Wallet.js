@@ -10,7 +10,7 @@ import React from 'react';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 
 const Wallet = ({navigation}) => {
-  var balance=400
+  var balance = 400;
   return (
     <SafeAreaView style={{flex: 1, margin: 20}}>
       {/* header */}
@@ -22,7 +22,7 @@ const Wallet = ({navigation}) => {
         </View>
         {/* right side cart */}
         <View>
-          <TouchableOpacity onPress={()=>navigation.navigate('Cart')} >
+          <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
             <IonIcons name="cart" size={30} color={'#00704A'} />
           </TouchableOpacity>
         </View>
@@ -37,19 +37,21 @@ const Wallet = ({navigation}) => {
           top: 30,
           // bottom: 100,
         }}>
-        <Text style={{fontSize:25,marginBottom:20}}>Wallet Balance:{balance}</Text>
+        <Text style={{fontSize: 25, marginBottom: 20}}>
+          Wallet Balance:{balance}
+        </Text>
         <View
           style={{
-            borderWidth: 2,
+            borderWidth: 1,
             height: '30%',
             width: '95%',
             // borderRadius: 60,
-            // backgroundColor:'#fff'
+            borderColor:'#fff'
           }}>
           {/* <Text>Balance</Text> */}
           <ImageBackground
             source={require('../assets/images/card.png')}
-            style={{flex: 1, borderRadius: 50}}
+            style={{flex: 1, borderRadius: 70,}}
             resizeMode="cover">
             <View
               style={{
@@ -57,18 +59,7 @@ const Wallet = ({navigation}) => {
                 flex: 1,
                 alignItems: 'flex-start',
                 margin: 10,
-              }}>
-              {/* <Text
-                style={{
-                  textAlign: 'center',
-                  color: '#fff',
-                  fontWeight: 700,
-                  fontSize: 40,
-                  opacity: 1,
-                }}>
-                Balance
-              </Text> */}
-            </View>
+              }}></View>
           </ImageBackground>
         </View>
         <View style={{margin: 20, padding: 20, flexDirection: 'row'}}>
@@ -84,7 +75,7 @@ const Wallet = ({navigation}) => {
               alignItems: 'center',
             }}>
             <IonIcons name="wallet" size={30} color={'#00704A'} />
-            <Text style={{textAlign: 'center',fontWeight:800}}>Top Up</Text>
+            <Text style={{textAlign: 'center', fontWeight: 800}}>Top Up</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={{
@@ -97,8 +88,10 @@ const Wallet = ({navigation}) => {
               justifyContent: 'center',
               alignItems: 'center',
             }}>
-            <IonIcons name="card-outline" size={30} color={'#00704A'}/>
-            <Text style={{textAlign: 'center',fontWeight:800}}>Manage Cards</Text>
+            <IonIcons name="card-outline" size={30} color={'#00704A'} />
+            <Text style={{textAlign: 'center', fontWeight: 800}}>
+              Manage Cards
+            </Text>
           </TouchableOpacity>
           {/* <TouchableOpacity
             style={{
@@ -126,7 +119,9 @@ const Wallet = ({navigation}) => {
               alignItems: 'center',
             }}>
             <IonIcons name="document" size={30} color={'#00704A'} />
-            <Text style={{textAlign: 'center',fontWeight:800}} >Help and FAQs</Text>
+            <Text style={{textAlign: 'center', fontWeight: 800}}>
+              Help and FAQs
+            </Text>
           </TouchableOpacity>
         </View>
 
