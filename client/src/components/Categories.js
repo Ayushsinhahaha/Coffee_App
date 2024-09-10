@@ -3,11 +3,12 @@ import React, {useState} from 'react';
 
 import categories from '../config/categories';
 
-const Categories = () => {
+const Categories = ({onChange}) => {
   const [activeCategoryId, setActiveCategoryId] = useState(null);
 
   const handlePress = id => {
     setActiveCategoryId(id);
+    onChange(id);
   };
   return (
     <FlatList
@@ -22,7 +23,7 @@ const Categories = () => {
           style={{margin: 5, marginRight: 20, alignItems: 'center'}}>
           <Text
             style={[
-              {fontSize: 20, fontWeight: 800,color:'grey'},
+              {fontSize: 20, fontWeight: 800, color: 'grey'},
               activeCategoryId === item.id && {color: '#00704a'},
             ]}>
             {item.name}

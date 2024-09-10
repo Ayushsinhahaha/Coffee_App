@@ -60,7 +60,7 @@ const Account = ({navigation}) => {
           }}>
           <IonIcons name="pencil" size={30} color={'white'} />
         </TouchableOpacity>
-        <Text style={{fontSize: 30,fontWeight:800,color:'grey',marginBottom:30,bottom:35}}>Hi <Text style={{color:'#00704A'}}>Ayush</Text></Text>
+        <Text style={{fontSize: 30,color:'grey',marginBottom:30,bottom:35}}>Hi <Text style={{color:'#00704A',fontWeight:800}}>Ayush</Text></Text>
         <TouchableOpacity onPress={()=>navigation.navigate('EditProfile')} style={{height:50,width:'90%',justifyContent:'center',alignItems:'center',margin:12,borderWidth:1,borderRadius:20,bottom:45}}>
           <Text style={{fontSize:20,fontWeight:800,color:'grey'}} >Edit Profile</Text>
         </TouchableOpacity>

@@ -9,6 +9,7 @@ export default [
     image: require('../assets/images/cappuccino.jpg'),
     price:149,
     index: 0,
+    categoryId:1
   },
   {
     id: 'C2',
@@ -20,6 +21,7 @@ export default [
     image: require('../assets/images/americano.jpg'),
     price:139,
     index: 1,
+    categoryId:2
   },
   {
     id: 'C3',
@@ -31,6 +33,7 @@ export default [
     image: require('../assets/images/espresso.jpg'),
     price:139,
     index: 2,
+    categoryId:3
   },
   {
     id: 'C4',
@@ -42,6 +45,7 @@ export default [
     image: require('../assets/images/latte.jpg'),
     price:189,
     index: 3,
+    categoryId:4
   },
   {
     id: 'C5',
@@ -53,6 +57,7 @@ export default [
     image: require('../assets/images/macchiato.jpg'),
     price:149,
     index: 4,
+    categoryId:5
   },
   {
     id: 'C6',
@@ -64,6 +69,7 @@ export default [
     image: require('../assets/images/coldcoffee.jpg'),
     price:139,
     index: 5,
+    categoryId:6
   },
   {
     id: 'C7',
@@ -76,6 +82,7 @@ export default [
     image: require('../assets/images/cookies.png'),
     price: 99,
     index: 6,
+    categoryId:7
   },
   {
     id: 'C8',
@@ -87,5 +94,6 @@ export default [
     image: require('../assets/images/cappuccino.jpg'),
     price:399,
     index: 7,
+    categoryId:8
   },
 ];
