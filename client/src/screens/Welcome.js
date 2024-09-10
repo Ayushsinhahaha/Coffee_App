@@ -15,14 +15,14 @@ const Tab = createBottomTabNavigator();
 const Welcome = ({navigation}) => {
   //useeffect to get the data after getting logged in
 
-  async function getData() {
-    const token = await AsyncStorage.getItem('token');
-    console.log('token from welcome page->>>>>', token);
-    axios
-      .post('http://10.0.2.2:5000/userdata', {token: token})
-      .then(res => console.log('data from welcome screen', res.data))
-      .catch(err => console.log('error from welcome page', err));
-  }
+  // async function getData() {
+  //   const token = await AsyncStorage.getItem('token');
+  //   console.log('token from welcome page->>>>>', token);
+  //   axios
+  //     .post('http://10.0.2.2:5000/userdata', {token: token})
+  //     .then(res => console.log('data from welcome screen', res.data))
+  //     .catch(err => console.log('error from welcome page', err));
+  // }
 
   const handleBackPress = () => {
     Alert.alert('Exit App', 'Are You sure you want to exit?', [
@@ -49,10 +49,10 @@ const Welcome = ({navigation}) => {
     })
   )
 
-  useEffect(() => {
-    getData();
+  // useEffect(() => {
+  //   getData();
     
-  }, []);
+  // }, []);
 
   return (
     <Tab.Navigator

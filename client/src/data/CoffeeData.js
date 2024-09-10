@@ -7,11 +7,7 @@ const CoffeeData = [
     description:
       'Cappuccino is a coffee drink made with Equal parts espresso, steamed milk, and milk foam, and is known for its balanced flavors and textures',
     image: 'require(/client/src/assets/images/cappuccino.jpg)',
-    prices: [
-      {size: 'S', price: '99'},
-      {size: 'M', price: '149'},
-      {size: 'L', price: '199'},
-    ],
+    prices: 149,
     index: 0,
   },
   {
@@ -22,11 +18,7 @@ const CoffeeData = [
     description:
       "Americano is a simple coffee drink made by diluting a shot of espresso with hot water. This results in a smoother, less intense flavor compared to straight espresso, resembling the strength of drip coffee while retaining the espresso's rich taste.",
     image: 'require(/client/src/assets/images/americano.jpg)',
-    prices: [
-      {size: 'S', price: '99'},
-      {size: 'M', price: '149'},
-      {size: 'L', price: '199'},
-    ],
+    prices: 139,
     index: 1,
   },
   {
@@ -37,11 +29,7 @@ const CoffeeData = [
     description:
       'Espresso is a strong, concentrated coffee brewed by forcing hot water through finely-ground coffee beans.',
     image: 'require(/client/src/assets/images/espresso.jpg)',
-    prices: [
-      {size: 'S', price: '99'},
-      {size: 'M', price: '149'},
-      {size: 'L', price: '199'},
-    ],
+    prices: 139,
     index: 2,
   },
   {
@@ -52,11 +40,7 @@ const CoffeeData = [
     description:
       'Latte is a a milk coffee drink made with espresso, steamed milk, and a thin layer of foam on top',
     image: 'require(/client/src/assets/images/latte.jpg)',
-    prices: [
-      {size: 'S', price: '99'},
-      {size: 'M', price: '149'},
-      {size: 'L', price: '199'},
-    ],
+    prices: 189,
     index: 3,
   },
   {
@@ -67,11 +51,7 @@ const CoffeeData = [
     description:
       'Macchiato is a coffee drink made with espresso with a small amount of milk foam',
     image: 'require(/client/src/assets/images/macchiato.jpg)',
-    prices: [
-      {size: 'S', price: '99'},
-      {size: 'M', price: '149'},
-      {size: 'L', price: '199'},
-    ],
+    prices: 149,
     index: 4,
   },
   {
@@ -82,11 +62,7 @@ const CoffeeData = [
     description:
       "Cold Coffee is a popular, creamy, and chilled beverage that's made with coffee, sugar, and milk or water",
     image: 'require(/client/src/assets/images/coldcoffee.png)',
-    prices: [
-      {size: 'S', price: '99'},
-      {size: 'M', price: '149'},
-      {size: 'L', price: '199'},
-    ],
+    prices: 139,
     index: 5,
   },
   {
@@ -98,7 +74,7 @@ const CoffeeData = [
     description:
       "Cookie is aa small, flat, sweet, baked snack or dessert that's usually made from flour, sugar, eggs, and some kind of fat or oil",
     image: 'require(/client/src/assets/images/cookies.png)',
-    prices: '199',
+    prices: '99',
     index: 6,
   },
   {
@@ -109,11 +85,7 @@ const CoffeeData = [
     description:
       "Cookie is aa small, flat, sweet, baked snack or dessert that's usually made from flour, sugar, eggs, and some kind of fat or oil",
     image: 'require(/client/src/assets/images/cookies.png)',
-    prices: [
-      {size: 'S', price: '99'},
-      {size: 'M', price: '149'},
-      {size: 'L', price: '199'},
-    ],
+    prices: 399,
     index: 7,
   },
 ];

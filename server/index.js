@@ -70,7 +70,7 @@ app.post("/userdata", async (req, res) => {
   const { token } = req.body;
   try {
     const user = jwt.verify(token, JWT_TOKEN);
-    const useremail = user.email; 
+    const useremail = user.email;
     //now get data from email
     User.findOne({ email: useremail }).then((data) => {
       return res.send({ status: "ok", data: data });

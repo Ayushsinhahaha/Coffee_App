@@ -17,7 +17,7 @@ const Wallet = ({navigation}) => {
       <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
         {/* left side text */}
         <View>
-          <Text style={{fontSize: 20, fontWeight: 700}}>Wallet</Text>
+          <Text style={{fontSize: 20, fontWeight: 700,color:'grey'}}>Wallet</Text>
           {/* <Text style={{fontSize:15,fontWeight:700}}>Low Balance</Text> */}
         </View>
         {/* right side cart */}
@@ -37,7 +37,7 @@ const Wallet = ({navigation}) => {
           top: 30,
           // bottom: 100,
         }}>
-        <Text style={{fontSize: 25, marginBottom: 20}}>
+        <Text style={{fontSize: 25, marginBottom: 20,color:'#00a36c',fontWeight:500}}>
           Wallet Balance:{balance}
         </Text>
         <View
@@ -75,7 +75,7 @@ const Wallet = ({navigation}) => {
               alignItems: 'center',
             }}>
             <IonIcons name="wallet" size={30} color={'#00704A'} />
-            <Text style={{textAlign: 'center', fontWeight: 800}}>Top Up</Text>
+            <Text style={{textAlign: 'center', fontWeight: 800,color:'grey'}}>Top Up</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={{
@@ -89,7 +89,7 @@ const Wallet = ({navigation}) => {
               alignItems: 'center',
             }}>
             <IonIcons name="card-outline" size={30} color={'#00704A'} />
-            <Text style={{textAlign: 'center', fontWeight: 800}}>
+            <Text style={{textAlign: 'center', fontWeight: 800,color:'grey'}}>
               Manage Cards
             </Text>
           </TouchableOpacity>
@@ -119,14 +119,14 @@ const Wallet = ({navigation}) => {
               alignItems: 'center',
             }}>
             <IonIcons name="document" size={30} color={'#00704A'} />
-            <Text style={{textAlign: 'center', fontWeight: 800}}>
+            <Text style={{textAlign: 'center', fontWeight: 800,color:'grey'}}>
               Help and FAQs
             </Text>
           </TouchableOpacity>
         </View>
 
         {/* recent transactions */}
-        <Text style={{fontSize: 20, fontWeight: 800}}>Recent Transactions</Text>
+        <Text style={{fontSize: 20, fontWeight: 800,color:'#00a36c'}}>Recent Transactions</Text>
         <TouchableOpacity
           style={{
             height: 80,

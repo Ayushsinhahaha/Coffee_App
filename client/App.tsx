@@ -25,12 +25,16 @@ const App = ({navigation}) => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        {/* 
         <Stack.Screen name="Splash" component={Splash} options={{headerShown:false}}/>
         <Stack.Screen name="Homepage" component={HomePage} options={{headerShown:false}}/>
         <Stack.Screen name="GetStarted" component={Getstarted} options={{headerShown:false}}/>
+         */}
         {/* Login and signup */}
+        {/* 
         <Stack.Screen name="Login" component={Login} options={{headerShown:false}}/>
         <Stack.Screen name="Signup" component={Signup} options={{headerShown:false}}/>
+         */}
         {/* After login screen, the pages which will come */}
         <Stack.Screen name="Welcome" component={Welcome} options={{headerShown:false}}/>
         {/* bottom tab pages */}
@@ -50,3 +54,4 @@ const App = ({navigation}) => {
 export default App
 
 const styles = StyleSheet.create({})
+

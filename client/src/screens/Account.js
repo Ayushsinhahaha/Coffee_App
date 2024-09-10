@@ -11,13 +11,13 @@ const Account = ({navigation}) => {
       <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between',bottom:20,margin:10}}>
         {/* back button */}
         <TouchableOpacity onPress={()=>navigation.navigate('Home')} style={{bottom:10}}>
-            <IonIcons name='arrow-back' size={35} />
+            <IonIcons name='arrow-back' size={35} color={'#00704a'} />
           </TouchableOpacity>
         {/* logo */}
         <Image source={require('../assets/logo/logo1.png')} style={{width:150,height:150,bottom:10}}/>
         {/* notification */}
           <TouchableOpacity onPress={()=>navigation.navigate('Notification')} style={{bottom:10}}>
-            <IonIcons name='notifications-outline' size={35} />
+            <IonIcons name='notifications-outline' size={35} color={'#00704a'} />
           </TouchableOpacity>
       </View>
       {/* profile Picture */}
@@ -43,7 +43,7 @@ const Account = ({navigation}) => {
             name="person-circle"
             size={220}
             color="grey"
-            style={{bottom: 12, right: 10}}
+            style={{bottom: 25, right: 10}}
           />
           {/* </View> */}
         </TouchableOpacity>
@@ -52,7 +52,7 @@ const Account = ({navigation}) => {
             height: 60,
             width: 60,
             backgroundColor: '#00704A',
-            bottom: 65,
+            bottom: 75,
             left: 65,
             borderRadius: 35,
             justifyContent: 'center',
@@ -60,20 +60,20 @@ const Account = ({navigation}) => {
           }}>
           <IonIcons name="pencil" size={30} color={'white'} />
         </TouchableOpacity>
-        <Text style={{fontSize: 30,fontWeight:800,color:'grey',marginBottom:30,bottom:25}}>Hi <Text style={{color:'#00704A'}}>Ayush</Text></Text>
-        <TouchableOpacity onPress={()=>navigation.navigate('EditProfile')} style={{height:50,width:'90%',justifyContent:'center',alignItems:'center',margin:12,borderWidth:1,borderRadius:20,bottom:30}}>
-          <Text style={{fontSize:20,fontWeight:800}} >Edit Profile</Text>
+        <Text style={{fontSize: 30,fontWeight:800,color:'grey',marginBottom:30,bottom:35}}>Hi <Text style={{color:'#00704A'}}>Ayush</Text></Text>
+        <TouchableOpacity onPress={()=>navigation.navigate('EditProfile')} style={{height:50,width:'90%',justifyContent:'center',alignItems:'center',margin:12,borderWidth:1,borderRadius:20,bottom:45}}>
+          <Text style={{fontSize:20,fontWeight:800,color:'grey'}} >Edit Profile</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={()=>navigation.navigate('Orders')} style={{height:50,width:'90%',justifyContent:'center',alignItems:'center',margin:12,borderWidth:1,borderRadius:20,bottom:30}}>
-          <Text style={{fontSize:20,fontWeight:800}}>Order History</Text>
+        <TouchableOpacity onPress={()=>navigation.navigate('Orders')} style={{height:50,width:'90%',justifyContent:'center',alignItems:'center',margin:12,borderWidth:1,borderRadius:20,bottom:45}}>
+          <Text style={{fontSize:20,fontWeight:800,color:'grey'}}>Order History</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={{height:50,width:'90%',justifyContent:'center',alignItems:'center',margin:12,borderWidth:1,borderRadius:20,bottom:30}}>
-          <Text style={{fontSize:20,fontWeight:800}}>Contact Us</Text>
+        <TouchableOpacity style={{height:50,width:'90%',justifyContent:'center',alignItems:'center',margin:12,borderWidth:1,borderRadius:20,bottom:45}}>
+          <Text style={{fontSize:20,fontWeight:800,color:'grey'}}>Contact Us</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={{height:50,width:'90%',justifyContent:'center',alignItems:'center',margin:12,borderWidth:1,borderRadius:20,bottom:30}}>
-          <Text style={{fontSize:20,fontWeight:800}}>Terms of Services</Text>
+        <TouchableOpacity style={{height:50,width:'90%',justifyContent:'center',alignItems:'center',margin:12,borderWidth:1,borderRadius:20,bottom:45}}>
+          <Text style={{fontSize:20,fontWeight:800,color:'grey'}}>Terms of Services</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={{height:50,width:'90%',justifyContent:'center',alignItems:'center',margin:12,borderWidth:1,borderRadius:20,bottom:30,backgroundColor:'#6D1F37'}}>
+        <TouchableOpacity style={{height:50,width:'90%',justifyContent:'center',alignItems:'center',margin:12,borderWidth:1,borderRadius:20,bottom:45,backgroundColor:'#6D1F37'}}>
           <Text style={{fontSize:20,fontWeight:800,color:'#fff'}}>Log Out</Text>
         </TouchableOpacity>
       </View>

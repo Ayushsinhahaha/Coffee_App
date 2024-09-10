@@ -3,18 +3,22 @@
   "data": [
     {
       "path": "src/assets/images/americano.jpg",
-      "sha1": "e1361a9b554414993de1454debd447a45569b4e6"
+      "sha1": "e9f22e8c6a2798f8cf73713b3ac0375519716958"
     },
     {
       "path": "src/assets/images/cappuccino.jpg",
-      "sha1": "8600b56b588eb469e1cecd93f5ca0c32ef93f8f5"
+      "sha1": "01e7320452240653261e38c610af7bdf0efca5c1"
     },
     {
       "path": "src/assets/images/card.png",
       "sha1": "9ab90dabf4cbaa4bfc0a96491cb244db8818d79e"
     },
     {
-      "path": "src/assets/images/coldcoffee.png",
+      "path": "src/assets/images/coldcoffee.jpg",
+      "sha1": "6466b47a73f9546a8a5d29161cf083fff8973eec"
+    },
+    {
+      "path": "src/assets/images/coldcoffees.png",
       "sha1": "5ae5ad1f2da7a3bfa8c11ea07e616e88c73ee629"
     },
     {
@@ -23,15 +27,19 @@
     },
     {
       "path": "src/assets/images/espresso.jpg",
-      "sha1": "4cd2cf22af864d97bda301e8d46290ba6aa03d1d"
+      "sha1": "2c442c41bcf1598598c57b748792366b63fb676a"
     },
     {
       "path": "src/assets/images/latte.jpg",
-      "sha1": "f6d0b7447870d73646aefc13af2c78873c00ec64"
+      "sha1": "a67feec8b634acdcbd34f808175128e66fcccbdb"
     },
     {
       "path": "src/assets/images/macchiato.jpg",
-      "sha1": "7c241b1bb84511e137ef9ebd305b166e7874e81b"
+      "sha1": "99cab4cd1a2b8967ac989ba0f486bef23696fb4f"
+    },
+    {
+      "path": "src/assets/images/mocha.jpg",
+      "sha1": "0cadf2f785939158e7663346b860862e560a764d"
     },
     {
       "path": "src/assets/images/wallet.png",

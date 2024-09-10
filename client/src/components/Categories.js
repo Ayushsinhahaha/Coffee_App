@@ -12,6 +12,7 @@ const Categories = () => {
   return (
     <FlatList
       horizontal
+      showsHorizontalScrollIndicator={false}
       data={categories}
       keyExtractor={item => item.id}
       contentContainerStyle={{marginVertical: 20}}
@@ -21,7 +22,7 @@ const Categories = () => {
           style={{margin: 5, marginRight: 20, alignItems: 'center'}}>
           <Text
             style={[
-              {fontSize: 20, fontWeight: 800},
+              {fontSize: 20, fontWeight: 800,color:'grey'},
               activeCategoryId === item.id && {color: '#00704a'},
             ]}>
             {item.name}

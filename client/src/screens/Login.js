@@ -28,9 +28,9 @@ export default function Login({navigation}) {
         console.log(res.data);
         if (res.data.status == 'ok') {
           Alert.alert('Logged In Successfully');
-          console.log("res.data.data;;;;;;;;;;",res.data.data)
+          console.log('res.data.data;;;;;;;;;;', res.data.data);
           // getting tokens
-          AsyncStorage.setItem("token",res.data.data)
+          AsyncStorage.setItem('token', res.data.data);
           navigation.navigate('Welcome');
         }
       })
@@ -48,6 +48,7 @@ export default function Login({navigation}) {
       <TextInput
         style={styles.input}
         placeholder="Email"
+        placeholderTextColor={'#000'}
         keyboardType="email-address"
         autoCapitalize="none"
         value={email}
@@ -56,6 +57,7 @@ export default function Login({navigation}) {
       <TextInput
         style={styles.input}
         placeholder="Password"
+        placeholderTextColor={'#000'}
         secureTextEntry={true}
         value={password}
         onChangeText={text => setPassword(text)}
@@ -101,6 +103,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginBottom: 10,
     bottom: 10,
+    color: 'grey',
   },
   forgotPassword: {
     alignSelf: 'flex-end',

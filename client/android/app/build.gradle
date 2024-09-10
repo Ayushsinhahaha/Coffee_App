@@ -1,3 +1,8 @@
+buildscript {
+    ext {
+        agp_version = '4.2.2'
+    }
+}
 apply plugin: "com.android.application"
 apply plugin: "org.jetbrains.kotlin.android"
 apply plugin: "com.facebook.react"
@@ -117,4 +122,8 @@ dependencies {
     } else {
         implementation jscFlavor
     }
+}
+
+task prepareKotlinBuildScriptModel {
+
 }

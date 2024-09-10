@@ -25,7 +25,7 @@ const categories = [
   },
   {
     id: 7,
-    name: 'Cold Coffee',
+    name: 'Cookie',
   },
 ];
 

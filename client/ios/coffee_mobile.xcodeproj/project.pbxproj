@@ -14,19 +14,21 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-coffee_mobile-coffee_mobileTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-coffee_mobile-coffee_mobileTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		7743CCE9127B4CD8B7A699AD /* americano.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ECD697A95B5847AABEFCE7B1 /* americano.jpg */; };
-		E825D9D25ECD4B7B8B1C34BA /* cappuccino.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FCA76B09BF743D1A9FA2DD1 /* cappuccino.jpg */; };
 		50BBEA6954BA4FBBB0FBECE8 /* card.png in Resources */ = {isa = PBXBuildFile; fileRef = C6DA131479374BD8A634616C /* card.png */; };
-		2196111BC06C44969978BA09 /* coldcoffee.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C8BA0235A34436596A636C4 /* coldcoffee.png */; };
 		8D570562E23B4F8186EF256C /* cookies.png in Resources */ = {isa = PBXBuildFile; fileRef = 6225414B1BEA45DA84AE25E2 /* cookies.png */; };
-		53027CA6EF414017B89C0F35 /* espresso.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7E77887129D041548B0E0B6E /* espresso.jpg */; };
-		91C8BC5BF7FD4036A6CC835B /* latte.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 26FFC1B251B34E299A92CFCB /* latte.jpg */; };
-		5939451A174E431B839D5F99 /* macchiato.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C66079626664C71B3549E62 /* macchiato.jpg */; };
 		B6FC66D691A343E7A10A31A5 /* wallet.png in Resources */ = {isa = PBXBuildFile; fileRef = 76FAC96A6AF8490EAB71525E /* wallet.png */; };
 		D449B193EA77425D97E4FB4D /* walletcard.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F44740A97314D5EBC0DE704 /* walletcard.png */; };
 		1B8269123AA04B71B64C0B25 /* logo1.png in Resources */ = {isa = PBXBuildFile; fileRef = D1FB995E1FDC4C398861EC4C /* logo1.png */; };
 		3ED09AA322C64BA595E79258 /* logo2.png in Resources */ = {isa = PBXBuildFile; fileRef = F73C8C4F09D44128A9BBEF05 /* logo2.png */; };
 		AD5E2F3542D94AEE97434647 /* logo3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 884E6A7485784543B3526419 /* logo3.jpg */; };
+		F6E2A07294B7421990344BB3 /* americano.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 20B14D4672064B85ACDB638E /* americano.jpg */; };
+		4188676B8CE94F3496CC915D /* cappuccino.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5A7181A9CD7F484CA790CBFA /* cappuccino.jpg */; };
+		B7EDEB9A830F40A18E976D2C /* coldcoffee.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DF6A3741777544D3BF0E8FC0 /* coldcoffee.jpg */; };
+		BB22C7E49CCC4E058022D4BA /* espresso.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 25C74A680A15475BB3EC3327 /* espresso.jpg */; };
+		34811C1D6D774245967D3467 /* latte.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 980B75CB9BB84323BEEC6806 /* latte.jpg */; };
+		99F0A79A728F4CD6A981CA26 /* macchiato.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F5C7FC72A63A40DF9C07100E /* macchiato.jpg */; };
+		35927C075EB04936888D9D09 /* mocha.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 67BD0D52AEC345BEBC39F88B /* mocha.jpg */; };
+		044B7734C5AB46AC8CBAFA65 /* coldcoffees.png in Resources */ = {isa = PBXBuildFile; fileRef = F80BFAE1BEA14CD19FC4F78C /* coldcoffees.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,19 +60,21 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = coffee_mobile/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-coffee_mobile-coffee_mobileTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-coffee_mobile-coffee_mobileTests.release.xcconfig"; path = "Target Support Files/Pods-coffee_mobile-coffee_mobileTests/Pods-coffee_mobile-coffee_mobileTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		ECD697A95B5847AABEFCE7B1 /* americano.jpg */ = {isa = PBXFileReference; name = "americano.jpg"; path = "../src/assets/images/americano.jpg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		6FCA76B09BF743D1A9FA2DD1 /* cappuccino.jpg */ = {isa = PBXFileReference; name = "cappuccino.jpg"; path = "../src/assets/images/cappuccino.jpg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		C6DA131479374BD8A634616C /* card.png */ = {isa = PBXFileReference; name = "card.png"; path = "../src/assets/images/card.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		1C8BA0235A34436596A636C4 /* coldcoffee.png */ = {isa = PBXFileReference; name = "coldcoffee.png"; path = "../src/assets/images/coldcoffee.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		6225414B1BEA45DA84AE25E2 /* cookies.png */ = {isa = PBXFileReference; name = "cookies.png"; path = "../src/assets/images/cookies.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		7E77887129D041548B0E0B6E /* espresso.jpg */ = {isa = PBXFileReference; name = "espresso.jpg"; path = "../src/assets/images/espresso.jpg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		26FFC1B251B34E299A92CFCB /* latte.jpg */ = {isa = PBXFileReference; name = "latte.jpg"; path = "../src/assets/images/latte.jpg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		5C66079626664C71B3549E62 /* macchiato.jpg */ = {isa = PBXFileReference; name = "macchiato.jpg"; path = "../src/assets/images/macchiato.jpg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		76FAC96A6AF8490EAB71525E /* wallet.png */ = {isa = PBXFileReference; name = "wallet.png"; path = "../src/assets/images/wallet.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		3F44740A97314D5EBC0DE704 /* walletcard.png */ = {isa = PBXFileReference; name = "walletcard.png"; path = "../src/assets/images/walletcard.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		D1FB995E1FDC4C398861EC4C /* logo1.png */ = {isa = PBXFileReference; name = "logo1.png"; path = "../src/assets/logo/logo1.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		F73C8C4F09D44128A9BBEF05 /* logo2.png */ = {isa = PBXFileReference; name = "logo2.png"; path = "../src/assets/logo/logo2.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		884E6A7485784543B3526419 /* logo3.jpg */ = {isa = PBXFileReference; name = "logo3.jpg"; path = "../src/assets/logo/logo3.jpg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		20B14D4672064B85ACDB638E /* americano.jpg */ = {isa = PBXFileReference; name = "americano.jpg"; path = "../src/assets/images/americano.jpg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		5A7181A9CD7F484CA790CBFA /* cappuccino.jpg */ = {isa = PBXFileReference; name = "cappuccino.jpg"; path = "../src/assets/images/cappuccino.jpg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		DF6A3741777544D3BF0E8FC0 /* coldcoffee.jpg */ = {isa = PBXFileReference; name = "coldcoffee.jpg"; path = "../src/assets/images/coldcoffee.jpg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		25C74A680A15475BB3EC3327 /* espresso.jpg */ = {isa = PBXFileReference; name = "espresso.jpg"; path = "../src/assets/images/espresso.jpg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		980B75CB9BB84323BEEC6806 /* latte.jpg */ = {isa = PBXFileReference; name = "latte.jpg"; path = "../src/assets/images/latte.jpg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F5C7FC72A63A40DF9C07100E /* macchiato.jpg */ = {isa = PBXFileReference; name = "macchiato.jpg"; path = "../src/assets/images/macchiato.jpg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		67BD0D52AEC345BEBC39F88B /* mocha.jpg */ = {isa = PBXFileReference; name = "mocha.jpg"; path = "../src/assets/images/mocha.jpg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F80BFAE1BEA14CD19FC4F78C /* coldcoffees.png */ = {isa = PBXFileReference; name = "coldcoffees.png"; path = "../src/assets/images/coldcoffees.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,19 +184,21 @@
 		592067A1257F4234BB9F8832 /* Resources */ = {
 			isa = "PBXGroup";
 			children = (
-				ECD697A95B5847AABEFCE7B1 /* americano.jpg */,
-				6FCA76B09BF743D1A9FA2DD1 /* cappuccino.jpg */,
 				C6DA131479374BD8A634616C /* card.png */,
-				1C8BA0235A34436596A636C4 /* coldcoffee.png */,
 				6225414B1BEA45DA84AE25E2 /* cookies.png */,
-				7E77887129D041548B0E0B6E /* espresso.jpg */,
-				26FFC1B251B34E299A92CFCB /* latte.jpg */,
-				5C66079626664C71B3549E62 /* macchiato.jpg */,
 				76FAC96A6AF8490EAB71525E /* wallet.png */,
 				3F44740A97314D5EBC0DE704 /* walletcard.png */,
 				D1FB995E1FDC4C398861EC4C /* logo1.png */,
 				F73C8C4F09D44128A9BBEF05 /* logo2.png */,
 				884E6A7485784543B3526419 /* logo3.jpg */,
+				20B14D4672064B85ACDB638E /* americano.jpg */,
+				5A7181A9CD7F484CA790CBFA /* cappuccino.jpg */,
+				DF6A3741777544D3BF0E8FC0 /* coldcoffee.jpg */,
+				25C74A680A15475BB3EC3327 /* espresso.jpg */,
+				980B75CB9BB84323BEEC6806 /* latte.jpg */,
+				F5C7FC72A63A40DF9C07100E /* macchiato.jpg */,
+				67BD0D52AEC345BEBC39F88B /* mocha.jpg */,
+				F80BFAE1BEA14CD19FC4F78C /* coldcoffees.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -293,19 +299,21 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				7743CCE9127B4CD8B7A699AD /* americano.jpg in Resources */,
-				E825D9D25ECD4B7B8B1C34BA /* cappuccino.jpg in Resources */,
 				50BBEA6954BA4FBBB0FBECE8 /* card.png in Resources */,
-				2196111BC06C44969978BA09 /* coldcoffee.png in Resources */,
 				8D570562E23B4F8186EF256C /* cookies.png in Resources */,
-				53027CA6EF414017B89C0F35 /* espresso.jpg in Resources */,
-				91C8BC5BF7FD4036A6CC835B /* latte.jpg in Resources */,
-				5939451A174E431B839D5F99 /* macchiato.jpg in Resources */,
 				B6FC66D691A343E7A10A31A5 /* wallet.png in Resources */,
 				D449B193EA77425D97E4FB4D /* walletcard.png in Resources */,
 				1B8269123AA04B71B64C0B25 /* logo1.png in Resources */,
 				3ED09AA322C64BA595E79258 /* logo2.png in Resources */,
 				AD5E2F3542D94AEE97434647 /* logo3.jpg in Resources */,
+				F6E2A07294B7421990344BB3 /* americano.jpg in Resources */,
+				4188676B8CE94F3496CC915D /* cappuccino.jpg in Resources */,
+				B7EDEB9A830F40A18E976D2C /* coldcoffee.jpg in Resources */,
+				BB22C7E49CCC4E058022D4BA /* espresso.jpg in Resources */,
+				34811C1D6D774245967D3467 /* latte.jpg in Resources */,
+				99F0A79A728F4CD6A981CA26 /* macchiato.jpg in Resources */,
+				35927C075EB04936888D9D09 /* mocha.jpg in Resources */,
+				044B7734C5AB46AC8CBAFA65 /* coldcoffees.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
