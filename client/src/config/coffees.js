@@ -53,7 +53,7 @@ export default [
     categories: 'Drinks',
     rating: '3.9',
     description:
-      'Macchiato is a coffee drink made with espresso with a small amount of milk foam',
+      'Macchiato is a coffee drink made with espresso with a small amount of milk foam.Macchiato is a coffee drink made with espresso with a small amount of milk foam.Macchiato is a coffee drink made with espresso with a small amount of milk foam.Macchiato is a coffee drink made with espresso with a small amount of milk foam.Macchiato is a coffee drink made with espresso with a small amount of milk foam.',
     image: require('../assets/images/macchiato.jpg'),
     price:149,
     index: 4,

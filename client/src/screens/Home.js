@@ -76,7 +76,9 @@ const Home = ({navigation}) => {
                     bottom: 10,
                   }}>
                   {/* onPress={()=>navigation.navigate('CoffeeDetails')} */}
-                  <TouchableOpacity style={{width: '100%', height: 150}}>
+                  <TouchableOpacity
+                  onPress={()=>navigation.navigate('CoffeeDetails',{coffee:coffees[4]})}
+                   style={{width: '100%', height: 150}}>
                     <Image
                       source={coffee.image}
                       style={{height: '100%', width: '100%', borderRadius: 10}}
