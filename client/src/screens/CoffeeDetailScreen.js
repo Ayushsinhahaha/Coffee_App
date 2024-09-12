@@ -10,7 +10,7 @@ import {
 import React from 'react';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 import coffees from '../config/coffees';
-// console.log('coffeeimage::::', coffee);
+// console.log('coffeeimage::::', coffees.id);
 
 const {width, height} = Dimensions.get('window');
 
@@ -19,7 +19,7 @@ const CoffeeDetailScreen = ({coffee, navigation}) => {
     <SafeAreaView style={{flex: 1}}>
       <View style={{flex: 1}}>
         <ImageBackground
-          source={coffees[5].image}
+          source={coffees[1].image}
           style={{
             height: height / 2 + 50,
             width: width,
@@ -62,7 +62,7 @@ const CoffeeDetailScreen = ({coffee, navigation}) => {
           </View>
         </ImageBackground>
         {/* Title,Description */}
-        <View style={{flex: 1, top: 100,margin:10}}>
+        <View style={{flex: 1, top: 100, margin: 10}}>
           {/* Title and rating */}
           <View
             style={{

@@ -23,7 +23,7 @@ const Home = ({navigation}) => {
   const [searchText, setSearchText] = useState('');
   const [quantity, setQuantity] = useState(0);
   const [activeCategoryId, setActiveCategoryId] = useState(null);
-  // console.log('coffeePrice:::::', coffees.price);
+  console.log('coffeePrice:::::', coffees[4].price);
 
   return (
     <SafeAreaView style={{flex: 1, margin: 8}}>
@@ -77,7 +77,7 @@ const Home = ({navigation}) => {
                   }}>
                   {/* onPress={()=>navigation.navigate('CoffeeDetails')} */}
                   <TouchableOpacity
-                  onPress={()=>navigation.navigate('CoffeeDetails',{coffee:coffees[4]})}
+                  onPress={()=>navigation.navigate('CoffeeDetails',{coffees:coffees.id})}
                    style={{width: '100%', height: 150}}>
                     <Image
                       source={coffee.image}

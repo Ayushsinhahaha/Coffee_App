@@ -73,7 +73,7 @@ const Account = ({navigation}) => {
         <TouchableOpacity style={{height:50,width:'90%',justifyContent:'center',alignItems:'center',margin:12,borderWidth:1,borderRadius:20,bottom:45}}>
           <Text style={{fontSize:20,fontWeight:800,color:'grey'}}>Terms of Services</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={{height:50,width:'90%',justifyContent:'center',alignItems:'center',margin:12,borderWidth:1,borderRadius:20,bottom:45,backgroundColor:'#6D1F37'}}>
+        <TouchableOpacity style={{height:50,width:'90%',justifyContent:'center',alignItems:'center',margin:12,borderWidth:1,borderRadius:20,bottom:45,backgroundColor:'#2f4858'}}>
           <Text style={{fontSize:20,fontWeight:800,color:'#fff'}}>Log Out</Text>
         </TouchableOpacity>
       </View>

@@ -3,8 +3,8 @@ import React from 'react'
 
 const Cart = () => {
   return (
-    <View>
-      <Text>Cart</Text>
+    <View style={{alignItems:'center',justifyContent:'center',flex:1}}>
+      <Text style={{fontSize:25,fontWeight:800,color:'grey'}}>Cart</Text>
     </View>
   )
 }
