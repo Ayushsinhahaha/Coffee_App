@@ -9,17 +9,18 @@ import {
 } from 'react-native';
 import React from 'react';
 import IonIcons from 'react-native-vector-icons/Ionicons';
-import coffees from '../config/coffees';
+import {useRoute} from '@react-navigation/native';
 // console.log('coffeeimage::::', coffees.id);
 
 const {width, height} = Dimensions.get('window');
 
 const CoffeeDetailScreen = ({coffee, navigation}) => {
+  const route = useRoute();
   return (
     <SafeAreaView style={{flex: 1}}>
       <View style={{flex: 1}}>
         <ImageBackground
-          source={coffees[1].image}
+          source={route.params.data.image}
           style={{
             height: height / 2 + 50,
             width: width,
@@ -71,7 +72,7 @@ const CoffeeDetailScreen = ({coffee, navigation}) => {
               margin: 8,
             }}>
             <Text style={{color: '#00a36c', fontSize: 24, fontWeight: 800}}>
-              {coffees[5].name}
+              {route.params.data.name}
             </Text>
             {/* Coffee Rating */}
             <View
@@ -85,7 +86,7 @@ const CoffeeDetailScreen = ({coffee, navigation}) => {
                 width: 60,
               }}>
               <IonIcons name="star" size={20} color={'#00c36a'} style={{}} />
-              <Text style={{left: 5}}>{coffees[5].rating}</Text>
+              <Text style={{left: 5}}>{route.params.data.rating}</Text>
             </View>
           </View>
           <View style={{flex: 1, top: 15}}>
@@ -105,7 +106,7 @@ const CoffeeDetailScreen = ({coffee, navigation}) => {
                 margin: 5,
                 textAlign: 'center',
               }}>
-              {coffees[4].description}
+              {route.params.data.description}
             </Text>
             {/* bottom buttons :total price and add to cart */}
           </View>
@@ -134,7 +135,7 @@ const CoffeeDetailScreen = ({coffee, navigation}) => {
               }}>
               <Text style={{fontSize: 16}}>Price:</Text>
               <Text style={{fontSize: 26, fontWeight: 900}}>
-                ₹ {coffees[4].price}.00
+                ₹ {route.params.data.price}.00
               </Text>
             </View>
             <TouchableOpacity

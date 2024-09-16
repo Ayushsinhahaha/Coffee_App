@@ -1,7 +1,7 @@
-module.exports={
-    project:{
-        ios:{},
-        android:{}
-    },
-    assets:['./src/assets']
-}
+module.exports = {
+  project: {
+    ios: {},
+    android: {},
+  },
+  assets: ['./src/assets'],
+};

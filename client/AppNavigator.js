@@ -1,5 +1,5 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import {View, Text} from 'react-native';
+import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationContainer} from '@react-navigation/native';
 import HomePage from './src/screens/Homepage';
@@ -105,9 +105,14 @@ const AppNavigator = ({navigation}) => {
           component={CoffeeDetailScreen}
           options={{headerShown: false}}
         />
+        {/* <Stack.Screen
+          name="Test"
+          component={Test}
+          options={{headerShown: false}}
+        /> */}
       </Stack.Navigator>
     </NavigationContainer>
-  )
-}
+  );
+};
 
-export default AppNavigator
+export default AppNavigator;

@@ -8,22 +8,11 @@ import Cart from './Cart';
 import Account from './Account';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
-import { useFocusEffect } from '@react-navigation/native';
+import {useFocusEffect} from '@react-navigation/native';
 
 const Tab = createBottomTabNavigator();
 
 const Welcome = ({navigation}) => {
-  //useeffect to get the data after getting logged in
-
-  // async function getData() {
-  //   const token = await AsyncStorage.getItem('token');
-  //   console.log('token from welcome page->>>>>', token);
-  //   axios
-  //     .post('http://10.0.2.2:5000/userdata', {token: token})
-  //     .then(res => console.log('data from welcome screen', res.data))
-  //     .catch(err => console.log('error from welcome page', err));
-  // }
-
   const handleBackPress = () => {
     Alert.alert('Exit App', 'Are You sure you want to exit?', [
       {
@@ -40,18 +29,18 @@ const Welcome = ({navigation}) => {
   };
 
   useFocusEffect(
-    React.useCallback(()=>{
+    React.useCallback(() => {
       BackHandler.addEventListener('hardwareBackPress', handleBackPress);
 
-    return ()=>{
-      BackHandler.removeEventListener("hardwareBackPress",handleBackPress);
-    }
-    })
-  )
+      return () => {
+        BackHandler.removeEventListener('hardwareBackPress', handleBackPress);
+      };
+    }),
+  );
 
   // useEffect(() => {
   //   getData();
-    
+
   // }, []);
 
   return (
@@ -78,6 +67,15 @@ const Welcome = ({navigation}) => {
           },
         }}
       />
+      {/* <Tab.Screen
+        name="Home"
+        component={Home}
+        options={{
+          tabBarIcon: ({color, size}) => {
+            return <IonIcons name="home" size={28} color={'#fff'} />;
+          },
+        }}
+      /> */}
       <Tab.Screen
         name="Wallet"
         component={Wallet}
