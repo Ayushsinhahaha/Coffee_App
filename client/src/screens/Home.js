@@ -17,19 +17,30 @@ const Home = ({navigation}) => {
   const [searchText, setSearchText] = useState('');
   const [quantity, setQuantity] = useState(0);
   const [activeCategoryId, setActiveCategoryId] = useState(null);
+  
+  var currTime=''
+  var curHr = new Date().getHours();
+  if (curHr < 12) 
+    currTime='Good Morning'
+  else if(curHr<17)
+    currTime='Good AfterNoon'
+  else
+    currTime='Good Evening'
+
   return (
-    <SafeAreaView style={{margin: 8, height: '100%'}}>
-      <ScrollView style={{flex: 1}}>
+    <SafeAreaView style={{height: '100%'}}>
+      <ScrollView style={{margin: 5, flex: 1, marginBottom: 60}}>
         <View style={{top: 10, marginLeft: 10}}>
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <Text style={{fontSize: 18, fontWeight: 800, color: 'grey'}}>
-              Good Morning!
+              {currTime}
             </Text>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Notification')}>
               <IonIcons
-                name="notifications-outline"
+                name="notifications"
                 color={'#00704a'}
-                size={30}
+                size={35}
               />
             </TouchableOpacity>
           </View>
@@ -46,19 +57,24 @@ const Home = ({navigation}) => {
             margin: 5,
             bottom: 10,
           }}>
-          {coffees.map(coffee => (
-            <View key={coffee.id}>
-              <CoffeeCard
-                onPress={() =>
-                  navigation.navigate('CoffeeDetails', {data: coffee})
-                }
-                image={coffee.image}
-                rating={coffee.rating}
-                coffeeName={coffee.name}
-                price={coffee.price}
-              />
-            </View>
-          ))}
+          {coffees
+            .filter(coffee => {
+              if (activeCategoryId === null) return true;
+              return coffee.categoryId === activeCategoryId;
+            })
+            .map(coffee => (
+              <View key={coffee.id}>
+                <CoffeeCard
+                  onPress={() =>
+                    navigation.navigate('CoffeeDetails', {data: coffee})
+                  }
+                  image={coffee.image}
+                  rating={coffee.rating}
+                  coffeeName={coffee.name}
+                  price={coffee.price}
+                />
+              </View>
+            ))}
         </View>
       </ScrollView>
     </SafeAreaView>

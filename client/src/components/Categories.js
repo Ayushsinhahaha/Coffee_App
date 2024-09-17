@@ -2,6 +2,7 @@ import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React, {useState} from 'react';
 
 import categories from '../config/categories';
+import coffees from '../config/coffees';
 
 const Categories = ({onChange}) => {
   const [activeCategoryId, setActiveCategoryId] = useState(null);
@@ -14,17 +15,17 @@ const Categories = ({onChange}) => {
     <FlatList
       horizontal
       showsHorizontalScrollIndicator={false}
-      data={categories}
-      keyExtractor={item => item.id}
+      data={coffees}
+      keyExtractor={item => item.categoryId}
       contentContainerStyle={{marginVertical: 20}}
       renderItem={({item}) => (
         <TouchableOpacity
-          onPress={() => handlePress(item.id)}
+          onPress={() => handlePress(item.categoryId)}
           style={{margin: 5, marginRight: 20, alignItems: 'center'}}>
           <Text
             style={[
               {fontSize: 20, fontWeight: 800, color: 'grey'},
-              activeCategoryId === item.id && {color: '#00704a'},
+              activeCategoryId === item.categoryId && {color: '#00704a'},
             ]}>
             {item.name}
           </Text>

@@ -1,6 +1,7 @@
 import {View, Text, Dimensions, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
 import IonIcons from 'react-native-vector-icons/Ionicons';
+import PlusButton from './PlusButton';
 
 const {width} = Dimensions.get('window');
 
@@ -13,7 +14,7 @@ const CoffeeCard = ({onPress, image, rating, coffeeName, price}) => {
           backgroundColor: 'lightgrey',
           borderRadius: 20,
           bottom: 10,flex:1,
-          top:20
+          top:20,
         }}>
         <TouchableOpacity
           onPress={onPress}
@@ -64,7 +65,7 @@ const CoffeeCard = ({onPress, image, rating, coffeeName, price}) => {
             }}>
             ₹ {price}
           </Text>
-          <TouchableOpacity
+          {/* <TouchableOpacity
             style={{
               height: 30,
               width: 30,
@@ -74,7 +75,8 @@ const CoffeeCard = ({onPress, image, rating, coffeeName, price}) => {
               borderRadius: 8,
             }}>
             <IonIcons name="add" size={24} />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
+          <PlusButton/>
         </View>
       </View>
     </View>

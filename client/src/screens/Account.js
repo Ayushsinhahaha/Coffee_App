@@ -2,31 +2,21 @@ import {StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import IonIcons from 'react-native-vector-icons/Ionicons';
+import Header from '../components/Header';
 
 const Account = ({navigation}) => {
   
   return (
     <SafeAreaView style={{flex: 1,justifyContent:'center',}}>
       {/* Header */}
-      <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between',bottom:20,margin:10}}>
-        {/* back button */}
-        <TouchableOpacity onPress={()=>navigation.navigate('Home')} style={{bottom:10}}>
-            <IonIcons name='arrow-back' size={35} color={'#00704a'} />
-          </TouchableOpacity>
-        {/* logo */}
-        <Image source={require('../assets/logo/logo1.png')} style={{width:150,height:150,bottom:10}}/>
-        {/* notification */}
-          <TouchableOpacity onPress={()=>navigation.navigate('Notification')} style={{bottom:10}}>
-            <IonIcons name='notifications-outline' size={35} color={'#00704a'} />
-          </TouchableOpacity>
-      </View>
+      <Header image={require('../assets/logo/logo1.png')} onPressLeft={()=>navigation.goBack()} onPressRight={()=>navigation.navigate('Notification')}  backIcon={'arrow-back'} cartIcon={'notifications'} />
       {/* profile Picture */}
       <View
         style={{
           flex: 1,
           justifyContent: 'flex-start',
           alignItems: 'center',
-          // marginTop: 20,
+          marginTop: 100,
           bottom: 50,
         }}>
         

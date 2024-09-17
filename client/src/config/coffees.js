@@ -21,7 +21,7 @@ export default [
     image: require('../assets/images/americano.jpg'),
     price:139,
     index: 1,
-    categoryId:2
+    categoryId:4
   },
   {
     id: 'C3',
@@ -33,7 +33,7 @@ export default [
     image: require('../assets/images/espresso.jpg'),
     price:139,
     index: 2,
-    categoryId:3
+    categoryId:2
   },
   {
     id: 'C4',
@@ -45,7 +45,7 @@ export default [
     image: require('../assets/images/latte.jpg'),
     price:189,
     index: 3,
-    categoryId:4
+    categoryId:3
   },
   {
     id: 'C5',

@@ -10,6 +10,7 @@ import {
 import React from 'react';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 import {useRoute} from '@react-navigation/native';
+import Header from '../components/Header';
 // console.log('coffeeimage::::', coffees.id);
 
 const {width, height} = Dimensions.get('window');
@@ -19,6 +20,7 @@ const CoffeeDetailScreen = ({coffee, navigation}) => {
   return (
     <SafeAreaView style={{flex: 1}}>
       <View style={{flex: 1}}>
+        <Header backIcon={'arrow-back'} title={route.params.data.name} cartIcon={'cart'} onPressLeft={()=>navigation.goBack()} onPressRight={()=>navigation.navigate('Cart')}  />
         <ImageBackground
           source={route.params.data.image}
           style={{
@@ -28,42 +30,9 @@ const CoffeeDetailScreen = ({coffee, navigation}) => {
             justifyContent: 'space-between',
             flex: 1,
           }}>
-          <View
-            style={{
-              margin: 8,
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}>
-            <TouchableOpacity
-              onPress={() => navigation.goBack()}
-              style={{
-                margin: 10,
-                backgroundColor: '#00a36c',
-                height: 40,
-                width: 40,
-                borderRadius: 10,
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
-              <IonIcons name="arrow-back" size={28} />
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={{
-                margin: 10,
-                borderRadius: 10,
-                justifyContent: 'center',
-                alignItems: 'center',
-                backgroundColor: 'lightgrey',
-                height: 40,
-                width: 40,
-              }}>
-              <IonIcons name="cart" size={28} color={'#00a36c'} />
-            </TouchableOpacity>
-          </View>
         </ImageBackground>
         {/* Title,Description */}
-        <View style={{flex: 1, top: 100, margin: 10}}>
+        <View style={{flex: 1, top: 135, margin: 10}}>
           {/* Title and rating */}
           <View
             style={{
@@ -89,7 +58,7 @@ const CoffeeDetailScreen = ({coffee, navigation}) => {
               <Text style={{left: 5}}>{route.params.data.rating}</Text>
             </View>
           </View>
-          <View style={{flex: 1, top: 15}}>
+          <View style={{flex: 1, }}>
             <Text
               style={{
                 color: '#00704a',
