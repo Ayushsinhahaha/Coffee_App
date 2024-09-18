@@ -2,10 +2,10 @@ import { View, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
 import IonIcons from 'react-native-vector-icons/Ionicons';
 
-const PlusButton = () => {
+const PlusButton = ({onPress}) => {
   return (
     <View>
-      <TouchableOpacity
+      <TouchableOpacity onPress={onPress}
             style={{ 
               height: 30,
               width: 30,

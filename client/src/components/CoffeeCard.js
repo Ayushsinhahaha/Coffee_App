@@ -6,6 +6,7 @@ import PlusButton from './PlusButton';
 const {width} = Dimensions.get('window');
 
 const CoffeeCard = ({onPress, image, rating, coffeeName, price}) => {
+  
   return (
     <View style={{width: width / 2 - 17, padding: 5, left: 5,bottom:20 ,}}>
       <View

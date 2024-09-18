@@ -11,16 +11,32 @@ import React from 'react';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 import {useRoute} from '@react-navigation/native';
 import Header from '../components/Header';
+import {useDispatch, useSelector} from 'react-redux';
+import {addCartItem} from '../reduxtoolkit/CartSlice';
 // console.log('coffeeimage::::', coffees.id);
 
 const {width, height} = Dimensions.get('window');
 
 const CoffeeDetailScreen = ({coffee, navigation}) => {
+  const dispatch = useDispatch();
+  const addedItems = useSelector(state => state);
+  console.log('Added Items:::::::::::::::::', addedItems);
+  const addItem = item => {
+    dispatch(addCartItem(item));
+  };
   const route = useRoute();
+  const item = route.params.data;
+  // console.log('item:::::::::', item);
   return (
     <SafeAreaView style={{flex: 1}}>
       <View style={{flex: 1}}>
-        <Header backIcon={'arrow-back'} title={route.params.data.name} cartIcon={'cart'} onPressLeft={()=>navigation.goBack()} onPressRight={()=>navigation.navigate('Cart')}  />
+        <Header
+          backIcon={'arrow-back'}
+          title={route.params.data.name}
+          cartIcon={'cart'}
+          onPressLeft={() => navigation.goBack()}
+          onPressRight={() => navigation.navigate('Cart')}
+        />
         <ImageBackground
           source={route.params.data.image}
           style={{
@@ -29,8 +45,7 @@ const CoffeeDetailScreen = ({coffee, navigation}) => {
             borderRadius: 40,
             justifyContent: 'space-between',
             flex: 1,
-          }}>
-        </ImageBackground>
+          }}></ImageBackground>
         {/* Title,Description */}
         <View style={{flex: 1, top: 135, margin: 10}}>
           {/* Title and rating */}
@@ -58,7 +73,7 @@ const CoffeeDetailScreen = ({coffee, navigation}) => {
               <Text style={{left: 5}}>{route.params.data.rating}</Text>
             </View>
           </View>
-          <View style={{flex: 1, }}>
+          <View style={{flex: 1}}>
             <Text
               style={{
                 color: '#00704a',
@@ -108,16 +123,19 @@ const CoffeeDetailScreen = ({coffee, navigation}) => {
               </Text>
             </View>
             <TouchableOpacity
+              onPress={() => addItem(item)}
               style={{
                 flexDirection: 'row',
                 padding: 10,
                 margin: 10,
                 alignItems: 'center',
                 justifyContent: 'space-around',
-                backgroundColor: 'grey',
+                backgroundColor: '#00704a',
                 width: '42%',
                 height: 60,
                 borderRadius: 20,
+                borderColor: 'grey',
+                borderWidth: 2,
               }}>
               <IonIcons name="bag-outline" size={20} />
               <Text
