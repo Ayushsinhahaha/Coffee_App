@@ -5,12 +5,14 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 import SearchField from '../components/SearchField';
 import Categories from '../components/Categories';
 import coffees from '../config/coffees';
 import CoffeeCard from '../components/CoffeeCard';
+import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Home = ({navigation}) => {
   const [name, setName] = useState('Ayush Sinha');
@@ -18,14 +20,22 @@ const Home = ({navigation}) => {
   const [quantity, setQuantity] = useState(0);
   const [activeCategoryId, setActiveCategoryId] = useState(null);
   
-  var currTime=''
-  var curHr = new Date().getHours();
-  if (curHr < 12) 
-    currTime='Good Morning'
-  else if(curHr<17)
-    currTime='Good AfterNoon'
-  else
-    currTime='Good Evening'
+  //redux toolkit
+  const dispatch=useDispatch();
+  const myProduct=useSelector(state=>state.product)
+
+  
+  //wishing related
+  const getTime = () => {
+    var currTime = '';
+    var curHr = new Date().getHours();
+    if (curHr < 12) currTime = 'Good Morning';
+    else if (curHr < 17) currTime = 'Good Afternoon';
+    else currTime = 'Good Evening';
+    return currTime;
+  };
+
+  // state from redux
 
   return (
     <SafeAreaView style={{height: '100%'}}>
@@ -33,15 +43,12 @@ const Home = ({navigation}) => {
         <View style={{top: 10, marginLeft: 10}}>
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <Text style={{fontSize: 18, fontWeight: 800, color: 'grey'}}>
-              {currTime}
+              {getTime()}
             </Text>
             <TouchableOpacity
+              style={{right: 10}}
               onPress={() => navigation.navigate('Notification')}>
-              <IonIcons
-                name="notifications"
-                color={'#00704a'}
-                size={35}
-              />
+              <IonIcons name="notifications" color={'#00704a'} size={35} />
             </TouchableOpacity>
           </View>
           <Text style={{fontSize: 26, fontWeight: 800, color: '#00704a'}}>
@@ -57,7 +64,7 @@ const Home = ({navigation}) => {
             margin: 5,
             bottom: 10,
           }}>
-          {coffees
+          {myProduct
             .filter(coffee => {
               if (activeCategoryId === null) return true;
               return coffee.categoryId === activeCategoryId;
@@ -65,6 +72,7 @@ const Home = ({navigation}) => {
             .map(coffee => (
               <View key={coffee.id}>
                 <CoffeeCard
+                  data={coffee}
                   onPress={() =>
                     navigation.navigate('CoffeeDetails', {data: coffee})
                   }

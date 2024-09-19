@@ -7,9 +7,10 @@ export default [
     description:
       'Cappuccino is a coffee drink made with Equal parts espresso, steamed milk, and milk foam, and is known for its balanced flavors and textures',
     image: require('../assets/images/cappuccino.jpg'),
-    price:149,
+    price: 149,
     index: 0,
-    categoryId:1
+    categoryId: 1,
+    quantity: 0,
   },
   {
     id: 'C2',
@@ -19,9 +20,10 @@ export default [
     description:
       "Americano is a simple coffee drink made by diluting a shot of espresso with hot water. This results in a smoother, less intense flavor compared to straight espresso, resembling the strength of drip coffee while retaining the espresso's rich taste.",
     image: require('../assets/images/americano.jpg'),
-    price:139,
+    price: 139,
     index: 1,
-    categoryId:4
+    categoryId: 4,
+    quantity: 0,
   },
   {
     id: 'C3',
@@ -31,9 +33,10 @@ export default [
     description:
       'Espresso is a strong, concentrated coffee brewed by forcing hot water through finely-ground coffee beans.',
     image: require('../assets/images/espresso.jpg'),
-    price:139,
+    price: 139,
     index: 2,
-    categoryId:2
+    categoryId: 2,
+    quantity: 0,
   },
   {
     id: 'C4',
@@ -43,9 +46,10 @@ export default [
     description:
       'Latte is a a milk coffee drink made with espresso, steamed milk, and a thin layer of foam on top',
     image: require('../assets/images/latte.jpg'),
-    price:189,
+    price: 189,
     index: 3,
-    categoryId:3
+    categoryId: 3,
+    quantity: 0,
   },
   {
     id: 'C5',
@@ -55,9 +59,10 @@ export default [
     description:
       'Macchiato is a coffee drink made with espresso with a small amount of milk foam.Macchiato is a coffee drink made with espresso with a small amount of milk foam.Macchiato is a coffee drink made with espresso with a small amount of milk foam.Macchiato is a coffee drink made with espresso with a small amount of milk foam.Macchiato is a coffee drink made with espresso with a small amount of milk foam.',
     image: require('../assets/images/macchiato.jpg'),
-    price:149,
+    price: 149,
     index: 4,
-    categoryId:5
+    categoryId: 5,
+    quantity: 0,
   },
   {
     id: 'C6',
@@ -67,9 +72,10 @@ export default [
     description:
       "Cold Coffee is a popular, creamy, and chilled beverage that's made with coffee, sugar, and milk or water",
     image: require('../assets/images/coldcoffee.jpg'),
-    price:139,
+    price: 139,
     index: 5,
-    categoryId:6
+    categoryId: 6,
+    quantity: 0,
   },
   {
     id: 'C7',
@@ -82,18 +88,19 @@ export default [
     image: require('../assets/images/cookies.png'),
     price: 99,
     index: 6,
-    categoryId:7
+    categoryId: 7,
+    quantity: 0,
   },
   {
     id: 'C8',
     name: 'Coffee Beans',
     categories: 'Packaged Coffee Beans',
     rating: '4.3',
-    description:
-      "Cookie is aa small, flat, sweet, baked snack or dessert that's usually made from flour, sugar, eggs, and some kind of fat or oil",
-    image: require('../assets/images/cappuccino.jpg'),
-    price:399,
+    description: 'Coffee bean',
+    image: require('../assets/images/coffeebean.jpg'),
+    price: 399,
     index: 7,
-    categoryId:8
+    categoryId: 8,
+    quantity: 0,
   },
 ];

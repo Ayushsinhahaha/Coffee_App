@@ -2,7 +2,8 @@ import { View, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
 import IonIcons from 'react-native-vector-icons/Ionicons';
 
-const PlusButton = ({onPress}) => {
+const AddToCartButton = ({onPress}) => {
+  
   return (
     <View>
       <TouchableOpacity onPress={onPress}
@@ -20,4 +21,4 @@ const PlusButton = ({onPress}) => {
   )
 }
 
-export default PlusButton
+export default AddToCartButton

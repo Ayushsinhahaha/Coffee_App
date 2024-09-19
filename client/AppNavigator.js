@@ -1,5 +1,5 @@
 import {View, Text} from 'react-native';
-import React from 'react';
+import React, { useEffect } from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationContainer} from '@react-navigation/native';
 import HomePage from './src/screens/Homepage';
@@ -18,10 +18,19 @@ import EditProfile from './src/screens/EditProfile';
 import PaymentCards from './src/screens/PaymentCards';
 import Orders from './src/screens/Orders';
 import CoffeeDetailScreen from './src/screens/CoffeeDetailScreen';
+import { useDispatch } from 'react-redux';
+import coffees from './src/config/coffees';
+import { addMyProducts } from './src/reduxtoolkit/ProductSlice';
 
 const Stack = createNativeStackNavigator();
 
 const AppNavigator = ({navigation}) => {
+  const dispatch=useDispatch();
+  useEffect(()=>{
+    coffees.map(item=>{
+      dispatch(addMyProducts(item));
+    })
+  },[])
   return (
     <NavigationContainer>
       <Stack.Navigator>
