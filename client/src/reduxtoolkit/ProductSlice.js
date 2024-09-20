@@ -19,8 +19,20 @@ const ProductSlice=createSlice({
               state[myindex].quantity=state[myindex].quantity+1;
             }
           },
+        decreaseQuantity(state, action) {
+            let index = -1;
+            state.map((item, index) => {
+              if (item.id === action.payload) {
+                myindex = index;
+              }
+            });
+            if (myindex === -1) {
+            } else {
+              state[myindex].quantity=state[myindex].quantity-1;
+            }
+          },
     }
 })
 
-export const {addMyProducts,increaseQuantity}=ProductSlice.actions;
+export const {addMyProducts,increaseQuantity,decreaseQuantity}=ProductSlice.actions;
 export default ProductSlice.reducer;

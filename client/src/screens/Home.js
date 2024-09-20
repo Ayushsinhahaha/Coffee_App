@@ -15,8 +15,8 @@ import coffees from '../config/coffees';
 import CoffeeCard from '../components/CoffeeCard';
 import axios from 'axios';
 import {useDispatch, useSelector} from 'react-redux';
-import {addProductToCart} from '../reduxtoolkit/CartSlice';
-import {increaseQuantity} from '../reduxtoolkit/ProductSlice';
+import {addProductToCart, removeProductFromCart} from '../reduxtoolkit/CartSlice';
+import {decreaseQuantity, increaseQuantity} from '../reduxtoolkit/ProductSlice';
 
 const {width} = Dimensions.get('window');
 
@@ -55,12 +55,15 @@ const Home = ({navigation}) => {
               {getTime()}
             </Text>
             <TouchableOpacity
-              style={{right: 10}}
-              onPress={() => navigation.navigate('Notification')}>
-              <IonIcons name="notifications" color={'#00704a'} size={35} />
+              style={{flexDirection:'row',left:10}}
+              onPress={() => navigation.navigate('Cart')}>
+              <IonIcons name="cart" color={'#00704a'} size={45} />
+              <View style={{height:25,width:25,backgroundColor:'#00a36c',borderRadius:20,right:20,bottom:3,borderWidth:1,borderColor:'#00704a'}}>
+                <Text style={{textAlign:'center',fontSize:16}}>{cartProduct.length}</Text>
+              </View>
             </TouchableOpacity>
           </View>
-          <Text style={{fontSize: 26, fontWeight: 800, color: '#00704a'}}>
+          <Text style={{fontSize: 26, fontWeight: 800, color: '#00704a',bottom:10}}>
             {name}
           </Text>
         </View>
@@ -79,6 +82,7 @@ const Home = ({navigation}) => {
               return coffee.categoryId === activeCategoryId;
             })
             .map(coffee => (
+              
               <View key={coffee.id}>
                 <View
                   style={{
@@ -95,6 +99,8 @@ const Home = ({navigation}) => {
                       bottom: 10,
                       flex: 1,
                       top: 20,
+                      borderWidth: 2,
+                      borderColor: '#00704a',
                     }}>
                     <TouchableOpacity
                       onPress={() =>
@@ -120,6 +126,7 @@ const Home = ({navigation}) => {
                         width: 50,
                         margin: 8,
                         borderBottomLeftRadius: 10,
+                        alignItems:'center'
                       }}>
                       <IonIcons
                         name="star"
@@ -127,7 +134,7 @@ const Home = ({navigation}) => {
                         color={'#00704a'}
                         style={{left: 3}}
                       />
-                      <Text style={{fontSize: 16, fontWeight: 600, left: 6}}>
+                      <Text style={{fontSize: 16, fontWeight: 600, left: 6,color:'#000',fontWeight:700}}>
                         {coffee.rating}
                       </Text>
                     </View>
@@ -135,7 +142,7 @@ const Home = ({navigation}) => {
                       style={{
                         color: '#fff',
                         fontWeight: 600,
-                        fontSize: 22,
+                        fontSize: 20,
                         left: 6,
                         // marginBottom: 10,
                         // bottom: 30,
@@ -173,15 +180,18 @@ const Home = ({navigation}) => {
                             justifyContent: 'center',
                             borderRadius: 8,
                             borderColor: '#00704a',
-                            borderWidth:1
+                            borderWidth: 1,
                           }}>
-                          <Text style={{fontWeight:500}}>Add To Cart</Text>
+                          <Text style={{fontWeight: 500}}>Add To Cart</Text>
                         </TouchableOpacity>
                       ) : null}
                       {/* Other */}
-                      <View style={{flexDirection: 'row',right:8}}>
+                      <View style={{flexDirection: 'row', right: 8}}>
                         {coffee.quantity == 0 ? null : (
-                          <TouchableOpacity
+                          <TouchableOpacity onPress={()=>{
+                            dispatch(removeProductFromCart(coffee))
+                            dispatch(decreaseQuantity(coffee.id))
+                          }}
                             style={{
                               width: 30,
                               borderColor: '#00704a',

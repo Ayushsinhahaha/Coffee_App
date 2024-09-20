@@ -4,7 +4,7 @@ import IonIcons from 'react-native-vector-icons/Ionicons';
 
 const SearchField = () => {
   return (
-    <View style={{flexDirection:'row',top:25,marginLeft:5,borderWidth:1,marginBottom:15,marginTop:5,borderRadius:20}}>
+    <View style={{flexDirection:'row',top:20,marginLeft:5,borderWidth:1,marginBottom:15,borderRadius:20}}>
     <View style={{alignItems:'center',justifyContent:'center',}}>
         <IonIcons name='search' color={'#00704a'}  size={24} style={{marginLeft:20}} />
     </View>
