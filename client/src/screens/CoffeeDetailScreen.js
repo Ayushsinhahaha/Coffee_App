@@ -12,18 +12,21 @@ import IonIcons from 'react-native-vector-icons/Ionicons';
 import {useRoute} from '@react-navigation/native';
 import Header from '../components/Header';
 import {useDispatch, useSelector} from 'react-redux';
+import { addProductToCart } from '../reduxtoolkit/CartSlice';
+import { increaseQuantity } from '../reduxtoolkit/ProductSlice';
 // console.log('coffeeimage::::', coffees.id);
 
 const {width, height} = Dimensions.get('window');
 
 const CoffeeDetailScreen = ({coffee, navigation}) => {
   const dispatch = useDispatch();
-  const addedItems = useSelector(state => state);
-  console.log('Added Items:::::::::::::::::', addedItems);
+  const addedItems = useSelector(state => state.product);
+  const cartItems=useSelector(state=>state.cart);
+  // console.log('Added Items:::::::::::::::::', addedItems);
+  console.log('CoffeeDetail:::',cartItems.length);
   
   const route = useRoute();
   const item = route.params.data;
-  console.log('item:::::::::', item.quantity);
   return (
     <SafeAreaView style={{flex: 1}}>
       <View style={{flex: 1}}>
@@ -120,24 +123,31 @@ const CoffeeDetailScreen = ({coffee, navigation}) => {
               </Text>
             </View>
             {/* //add to cart button */}
+            <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
+
               {item.quantity==0?(<TouchableOpacity
-              onPress={() => addItem(item)}
+              onPress={() =>{
+                dispatch(addProductToCart(item)) 
+                dispatch(increaseQuantity(item.id))
+              } 
+              }
               style={{
                 flexDirection: 'row',
-                padding: 10,
+                // padding: 10,
                 margin: 10,
                 alignItems: 'center',
                 justifyContent: 'space-around',
                 backgroundColor: '#00704a',
-                width: '42%',
+                width: '68%',
                 height: 60,
                 borderRadius: 20,
                 borderColor: 'grey',
-                borderWidth: 2,
+                borderWidth: 2,left:20
+                
               }}>
               <IonIcons name="bag-outline" size={20} />
               <Text
-                style={{textAlign: 'center', fontSize: 18, fontWeight: 900}}>
+                style={{textAlign: 'center', fontSize: 18, fontWeight: 900,padding:5}}>
                 Add To Cart
               </Text>
             </TouchableOpacity>):null}
@@ -146,19 +156,18 @@ const CoffeeDetailScreen = ({coffee, navigation}) => {
               <TouchableOpacity
               onPress={() => addItem(item)}
               style={{
-                flexDirection: 'row',
-                padding: 10,
-                margin: 10,
+                // flexDirection: 'row',
+                // padding: 10,
+                // margin: 10,
                 alignItems: 'center',
                 justifyContent: 'space-around',
                 backgroundColor: '#00704a',
-                width: '42%',
+                width: 50,
                 height: 60,
                 borderRadius: 20,
                 borderColor: 'grey',
                 borderWidth: 2,
               }}>
-              <IonIcons name="bag-outline" size={20} />
               <Text
                 style={{textAlign: 'center', fontSize: 18, fontWeight: 900}}>
                 -
@@ -166,33 +175,32 @@ const CoffeeDetailScreen = ({coffee, navigation}) => {
             </TouchableOpacity>
                 )}
                 {item.quantity==0?null:(
-
+                  
                   <Text>{'0'}</Text>
                 )}
                 {item.quantity==0?null:(
-
+                  
                   <TouchableOpacity
                   onPress={() => addItem(item)}
                   style={{
-                    flexDirection: 'row',
-                    padding: 10,
-                    margin: 10,
+                    // padding: 10,
+                    // margin: 10,
                     alignItems: 'center',
                     justifyContent: 'space-around',
                     backgroundColor: '#00704a',
-                    width: '42%',
+                    width: 50,
                     height: 60,
                     borderRadius: 20,
                     borderColor: 'grey',
                     borderWidth: 2,
                   }}>
-              <IonIcons name="bag-outline" size={20} />
               <Text
                 style={{textAlign: 'center', fontSize: 18, fontWeight: 900}}>
                 +
               </Text>
             </TouchableOpacity>
                 )}
+                </View>
           </View>
         </View>
       </View>

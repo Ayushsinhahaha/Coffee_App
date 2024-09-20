@@ -3,14 +3,27 @@ import React from 'react';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 import AddToCartButton from './AddToCartButton';
 import {useRoute} from '@react-navigation/native';
-import { useSelector } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import { addProductToCart } from '../reduxtoolkit/CartSlice';
+import { increaseQuantity } from '../reduxtoolkit/ProductSlice';
 
 const {width} = Dimensions.get('window');
 
-const CoffeeCard = ({onPress, image, rating, coffeeName, price, data}) => {
+const CoffeeCard = ({
+  onPress,
+  image,
+  rating,
+  coffeeName,
+  price,
+  data,
+  name,
+}) => {
   const route = useRoute();
-  const myProduct=useSelector(state=>state.prodcut);
-
+  // const myProduct=useSelector(state=>state.prodcut);
+  const cartProduct = useSelector(state => state.cart);
+  console.log('CartProduct length', cartProduct.length);
+  console.log('CartProduct quantity', cartProduct);
+  console.log('data::::::',data)
 
   return (
     <View style={{width: width / 2 - 17, padding: 5, left: 5, bottom: 20}}>
@@ -72,7 +85,57 @@ const CoffeeCard = ({onPress, image, rating, coffeeName, price, data}) => {
             }}>
             ₹ {price}
           </Text>
-          <AddToCartButton/>
+          {/* //first */}
+          {cartProduct.quantity !== 0 ? (
+            <TouchableOpacity
+              onPress={()=>{
+                // useDispatch(addProductToCart(data));
+                // useDispatch(increaseQuantity(item.id))
+              }}
+              style={{
+                height: 30,
+                width: 30,
+                backgroundColor: '#00a36c',
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderRadius: 8,
+              }}>
+              <IonIcons name={'add'} size={24} />
+            </TouchableOpacity>
+          ) : null}
+
+          <View style={{flexDirection: 'row'}}>
+            {/* Second Buttons */}
+            {/* {cartProduct.quantity == 0 ? null : (
+              <TouchableOpacity 
+                style={{
+                  height: 30,
+                  width: 30,
+                  backgroundColor: '#00a36c',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  borderRadius: 8,
+                }}>
+                <Text style={{textAlign: 'center', color: 'black'}}>-</Text>
+              </TouchableOpacity>
+            )} */}
+            {/* {cartProduct.quantity == 0 ? null : (
+              <Text style={{padding:5}}>{cartProduct.length}</Text>
+            )} */}
+            {/* {cartProduct.quantity == 0 ? null : (
+              <TouchableOpacity
+                style={{
+                  height: 30,
+                  width: 30,
+                  backgroundColor: '#00a36c',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  borderRadius: 8,
+                }}>
+                <Text style={{textAlign: 'center', color: 'black'}}>+</Text>
+              </TouchableOpacity>
+            )} */}
+          </View>
         </View>
       </View>
     </View>

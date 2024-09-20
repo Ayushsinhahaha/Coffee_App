@@ -27,8 +27,8 @@ const Stack = createNativeStackNavigator();
 const AppNavigator = ({navigation}) => {
   const dispatch=useDispatch();
   useEffect(()=>{
-    coffees.map(item=>{
-      dispatch(addMyProducts(item));
+    coffees.map(coffee=>{
+      dispatch(addMyProducts(coffee));
     })
   },[])
   return (

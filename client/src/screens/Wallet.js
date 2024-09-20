@@ -8,25 +8,14 @@ import {
 } from 'react-native';
 import React from 'react';
 import IonIcons from 'react-native-vector-icons/Ionicons';
+import Header from '../components/Header';
 
 const Wallet = ({navigation}) => {
   var balance = 400;
   return (
-    <SafeAreaView style={{flex: 1, margin: 20}}>
+    <SafeAreaView style={{flex: 1}}>
       {/* header */}
-      <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        {/* left side text */}
-        <View>
-          <Text style={{fontSize: 20, fontWeight: 700,color:'grey'}}>Wallet</Text>
-          {/* <Text style={{fontSize:15,fontWeight:700}}>Low Balance</Text> */}
-        </View>
-        {/* right side cart */}
-        <View>
-          <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
-            <IonIcons name="cart" size={30} color={'#00704A'} />
-          </TouchableOpacity>
-        </View>
-      </View>
+      <Header title={'Wallet'}  backIcon={'arrow-back'} onPressLeft={()=>navigation.goBack()} cartIcon={'cart'} onPressRight={()=>navigation.navigate('Cart')}  />
 
       {/* card image */}
       <View

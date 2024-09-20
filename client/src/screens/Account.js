@@ -9,7 +9,7 @@ const Account = ({navigation}) => {
   return (
     <SafeAreaView style={{flex: 1,justifyContent:'center',}}>
       {/* Header */}
-      <Header image={require('../assets/logo/logo1.png')} onPressLeft={()=>navigation.goBack()} onPressRight={()=>navigation.navigate('Notification')}  backIcon={'arrow-back'} cartIcon={'notifications'} />
+      <Header image={require('../assets/logo/logo1.png')} title={'Account'}  onPressLeft={()=>navigation.goBack()} onPressRight={()=>navigation.navigate('Notification')}  backIcon={'arrow-back'} cartIcon={'notifications'} />
       {/* profile Picture */}
       <View
         style={{
