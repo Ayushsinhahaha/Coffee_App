@@ -1,4 +1,5 @@
 import {
+  Alert,
   FlatList,
   Image,
   SafeAreaView,
@@ -16,20 +17,23 @@ import {
   deleteCartItem,
   removeProductFromCart,
 } from '../reduxtoolkit/CartSlice';
-import {increaseQuantity} from '../reduxtoolkit/ProductSlice';
+import {decreaseQuantity, increaseQuantity} from '../reduxtoolkit/ProductSlice';
+import IonIcons from 'react-native-vector-icons/Ionicons';
 
 const Cart = ({navigation}) => {
   const cartItems = useSelector(state => state.cart);
-  console.log('items quantity', cartItems);
+  console.log('items quantity', cartItems.length);
   const dispatch = useDispatch();
 
-  const getTotal=()=>{
-    let total=0;
-    {cartItems.map(coffee=>{
-      total=total+coffee.quantity*coffee.price;
-    })}
-    return total
-  }
+  const getTotal = () => {
+    let total = 0;
+    {
+      cartItems.map(coffee => {
+        total = total + coffee.quantity * coffee.price;
+      });
+    }
+    return total;
+  };
 
   return (
     <SafeAreaView style={{flex: 1}}>
@@ -47,35 +51,87 @@ const Cart = ({navigation}) => {
           </Text>
         </View>
       ) : (
-        <ScrollView
-          contentContainerStyle={{
+        <View
+          style={{
             justifyContent: 'center',
             flex: 1,
-            marginBottom: 40,
-            height:'200%'
+            // marginBottom: 60,
+            height: '200%',
           }}>
+          <View
+            style={{
+              alignItems: 'center',
+              height: 120,
+              justifyContent: 'center',
+            }}>
+            {cartItems.length == 0 ? (
+              <View></View>
+            ) : (
+              <View
+                style={{
+                  height: 100,
+                  borderColor: '#00704a',
+                  borderWidth: 3,
+                  alignItems: 'center',
+                  // justifyContent: 'center',
+                  width: '95%',
+                  borderRadius: 10,
+                  backgroundColor: 'lightgrey',
+                }}>
+                <Text style={{color: 'grey', fontSize: 16, fontWeight: 700,top:4}}>
+                  Grand Total: {getTotal() + '.00 '}{' '}
+                </Text>
+
+                {/* <View>
+                  <Text style={{color: '#000'}}>{getTotal()}</Text>
+                </View> */}
+
+                <View
+                  style={{
+                    width: '90%',
+                    justifyContent: 'flex-end',
+                    flex: 1,
+                    bottom: 10,
+                  }}>
+                  <TouchableOpacity
+                    style={{
+                      backgroundColor: '#00704a',
+                      borderRadius: 10,
+                      height: 50,
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}>
+                    <Text style={{fontSize: 26, textAlign: 'center'}}>
+                      PAY NOW
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            )}
+          </View>
           <FlatList
             data={cartItems}
-            keyExtractor = {cartItems.id}
+            keyExtractor={cartItems.id}
             renderItem={({item, index}) => {
               return (
                 <View
                   style={{
                     borderWidth: 2,
                     borderColor: 'black',
-                    height: 130,
-                    width: '90%',
+                    height: 120,
+                    width: '95%',
                     margin: 10,
                     justifyContent: 'center',
-                    left: 10,
+                    // left: 5,
                     borderRadius: 10,
+                    // bottom:10
                   }}>
                   <View
                     style={{
                       flexDirection: 'row',
                       justifyContent: 'space-between',
                       margin: 10,
-                      marginBottom: 20,
+                      // marginBottom: 20,
                     }}>
                     {/* //image on left Side */}
                     <Image
@@ -93,16 +149,25 @@ const Cart = ({navigation}) => {
                         }}>
                         {item.name}
                       </Text>
-                      <Text style={{color: '#00704a'}}>{ item.quantity + ' X ₹'+ item.price+ ' = ₹' + item.quantity*item.price}</Text>
+                      <Text style={{color: '#00704a'}}>
+                        {item.quantity +
+                          ' X ₹' +
+                          item.price +
+                          ' = ₹' +
+                          item.quantity * item.price}
+                      </Text>
                     </View>
                     <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                      {/* plus minus buttons */}
                       {item.quantity == 0 ? null : (
                         <TouchableOpacity
                           onPress={() => {
                             if (item.quantity > 1) {
                               dispatch(removeProductFromCart(item));
+                              dispatch(decreaseQuantity(item.id));
                             } else {
                               dispatch(deleteCartItem(item.id));
+                              dispatch(decreaseQuantity(item.id));
                             }
                           }}
                           style={{
@@ -155,31 +220,34 @@ const Cart = ({navigation}) => {
                         </TouchableOpacity>
                       )}
                     </View>
+                    <TouchableOpacity
+                      onPress={() =>
+                        Alert.alert(
+                          'Confirm',
+                          'Do You want to delete this item?',
+                          [
+                            {
+                              text: 'No',
+                            },
+                            {
+                              text: 'Yes',
+                              onPress: () => {
+                                dispatch(deleteCartItem(item.id));
+                                dispatch(decreaseQuantity(item.id));
+                              },
+                            },
+                          ],
+                        )
+                      }
+                      style={{alignItems: 'center', justifyContent: 'center'}}>
+                      <IonIcons name="trash" color="red" size={26} />
+                    </TouchableOpacity>
                   </View>
                 </View>
               );
             }}
           />
-          <View style={{height:130,borderColor:'#00704a',borderWidth:3,alignItems:'center'}}>
-            <View style={{flexDirection:'row',}}>
-              <View>
-            <Text style={{color:'#000'}}>Delivery Charges:</Text>
-              </View>
-              <View>
-            <Text style={{color:'#000'}}>{getTotal()}</Text>
-              </View>
-            </View>
-          </View>
-          {/* <View
-            style={{ bottom: 15, width: '100%', flex: 1,marginTop:20}}>
-            <View
-              style={{height: 100,  backgroundColor: 'lightgrey',borderWidth:2,borderColor:'#00704a',borderTopLeftRadius:30,borderTopRightRadius:30}}>
-              <Text style={{color: '#000'}}>
-                {'Total Items:' + cartItems.length}
-              </Text>
-            </View>
-          </View> */}
-        </ScrollView>
+        </View>
       )}
     </SafeAreaView>
   );

@@ -15,7 +15,7 @@ import coffees from '../config/coffees';
 import CoffeeCard from '../components/CoffeeCard';
 import axios from 'axios';
 import {useDispatch, useSelector} from 'react-redux';
-import {addProductToCart, removeProductFromCart} from '../reduxtoolkit/CartSlice';
+import {addProductToCart, deleteCartItem, removeProductFromCart} from '../reduxtoolkit/CartSlice';
 import {decreaseQuantity, increaseQuantity} from '../reduxtoolkit/ProductSlice';
 
 const {width} = Dimensions.get('window');
@@ -68,13 +68,14 @@ const Home = ({navigation}) => {
           </Text>
         </View>
         <SearchField />
-        <Categories onChange={id => setActiveCategoryId(id)} />
+        {/* <Categories onChange={id => setActiveCategoryId(id)} /> */}
         <View
           style={{
             flexDirection: 'row',
             flexWrap: 'wrap',
             margin: 5,
-            bottom: 10,
+            top:5
+            // bottom: 10,
           }}>
           {myProduct
             .filter(coffee => {
@@ -166,7 +167,7 @@ const Home = ({navigation}) => {
                         ₹ {coffee.price}
                       </Text>
                       {/* //first */}
-                      {coffee.quantity === 0 ? (
+                      {coffee.quantity == 0 ? (
                         <TouchableOpacity
                           onPress={() => {
                             dispatch(addProductToCart(coffee));
@@ -189,8 +190,15 @@ const Home = ({navigation}) => {
                       <View style={{flexDirection: 'row', right: 8}}>
                         {coffee.quantity == 0 ? null : (
                           <TouchableOpacity onPress={()=>{
-                            dispatch(removeProductFromCart(coffee))
-                            dispatch(decreaseQuantity(coffee.id))
+                            // dispatch(removeProductFromCart(coffee))
+                            // dispatch(decreaseQuantity(coffee.id))
+                            if (coffee.quantity > 1) {
+                              dispatch(removeProductFromCart(coffee));
+                              dispatch(decreaseQuantity(coffee.id));
+                            } else {
+                              dispatch(deleteCartItem(coffee.id));
+                              dispatch(decreaseQuantity(coffee.id));
+                            }
                           }}
                             style={{
                               width: 30,
@@ -223,7 +231,10 @@ const Home = ({navigation}) => {
                           </Text>
                         )}
                         {coffee.quantity == 0 ? null : (
-                          <TouchableOpacity
+                          <TouchableOpacity onPress={()=>{
+                            dispatch(addProductToCart(coffee))
+                            dispatch(increaseQuantity(coffee.id))
+                          }}
                             style={{
                               width: 30,
                               borderColor: '#00704a',

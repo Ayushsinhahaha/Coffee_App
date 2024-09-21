@@ -19,7 +19,6 @@ const CoffeeCard = ({
   name,
 }) => {
   const route = useRoute();
-  // const myProduct=useSelector(state=>state.prodcut);
   const cartProduct = useSelector(state => state.cart);
   console.log('CartProduct length', cartProduct.length);
   console.log('CartProduct quantity', cartProduct);

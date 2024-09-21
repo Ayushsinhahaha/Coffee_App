@@ -20,10 +20,8 @@ const {width, height} = Dimensions.get('window');
 
 const CoffeeDetailScreen = ({coffee, navigation}) => {
   const dispatch = useDispatch();
-  const addedItems = useSelector(state => state.product);
   const cartItems = useSelector(state => state.cart);
-  // console.log('Added Items:::::::::::::::::', addedItems);
-  console.log('Cart Item in CoffeeDetail Page:::', cartItems.length);
+  console.log('Cart Item in Coffee Details Page:::', cartItems.length);
 
   const route = useRoute();
   const item = route.params.data;
