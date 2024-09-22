@@ -22,9 +22,9 @@ import IonIcons from 'react-native-vector-icons/Ionicons';
 
 const Cart = ({navigation}) => {
   const cartItems = useSelector(state => state.cart);
-  console.log('items quantity', cartItems.length);
+  console.log('category quantity', cartItems.length);
   const dispatch = useDispatch();
-
+  
   const getTotal = () => {
     let total = 0;
     {
@@ -34,6 +34,19 @@ const Cart = ({navigation}) => {
     }
     return total;
   };
+
+  const noOfItems = () =>{
+    let total = 0;
+    {
+      cartItems.map(coffee => {
+        total = total + coffee.quantity 
+      });
+    }
+    return total;
+    
+  }
+
+  console.log('Total Number of Items:',noOfItems());
 
   return (
     <SafeAreaView style={{flex: 1}}>
@@ -151,9 +164,9 @@ const Cart = ({navigation}) => {
                       </Text>
                       <Text style={{color: '#00704a'}}>
                         {item.quantity +
-                          ' X ₹' +
+                          ' X ₹ ' +
                           item.price +
-                          ' = ₹' +
+                          ' = ₹ ' +
                           item.quantity * item.price}
                       </Text>
                     </View>

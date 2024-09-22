@@ -12,10 +12,13 @@ import IonIcons from 'react-native-vector-icons/Ionicons';
 import SearchField from '../components/SearchField';
 import Categories from '../components/Categories';
 import coffees from '../config/coffees';
-import CoffeeCard from '../components/CoffeeCard';
 import axios from 'axios';
 import {useDispatch, useSelector} from 'react-redux';
-import {addProductToCart, deleteCartItem, removeProductFromCart} from '../reduxtoolkit/CartSlice';
+import {
+  addProductToCart,
+  deleteCartItem,
+  removeProductFromCart,
+} from '../reduxtoolkit/CartSlice';
 import {decreaseQuantity, increaseQuantity} from '../reduxtoolkit/ProductSlice';
 
 const {width} = Dimensions.get('window');
@@ -30,9 +33,19 @@ const Home = ({navigation}) => {
   const dispatch = useDispatch();
   const myProduct = useSelector(state => state.product);
   const cartProduct = useSelector(state => state.cart);
-  console.log('No of Items in Menu----', myProduct.length);
-  console.log('Items in cart----', cartProduct);
-  console.log('No of Items in cart----', cartProduct.length);
+  console.log('Products in HomePage----', myProduct);
+  console.log('Items in cart in Homepage----', cartProduct);
+  console.log('No of Items in cart(HOMEPAGE)----', cartProduct.length);
+
+  const totalItems = () => {
+    let itemsInCart = 0;
+    cartProduct.map(coffee => {
+      itemsInCart = itemsInCart + coffee.quantity;
+    });
+    return itemsInCart;
+  };
+
+  console.log('ItemINCART:::', totalItems());
 
   //wishing related
   const getTime = () => {
@@ -55,15 +68,33 @@ const Home = ({navigation}) => {
               {getTime()}
             </Text>
             <TouchableOpacity
-              style={{flexDirection:'row',left:10}}
+              style={{flexDirection: 'row', left: 10}}
               onPress={() => navigation.navigate('Cart')}>
               <IonIcons name="cart" color={'#00704a'} size={45} />
-              <View style={{height:25,width:25,backgroundColor:'#00a36c',borderRadius:20,right:20,bottom:3,borderWidth:1,borderColor:'#00704a'}}>
-                <Text style={{textAlign:'center',fontSize:16}}>{cartProduct.length}</Text>
+              <View
+                style={{
+                  height: 25,
+                  width: 25,
+                  backgroundColor: '#00a36c',
+                  borderRadius: 20,
+                  right: 20,
+                  bottom: 3,
+                  borderWidth: 1,
+                  borderColor: '#00704a',
+                }}>
+                <Text style={{textAlign: 'center', fontSize: 16}}>
+                  {totalItems()}
+                </Text>
               </View>
             </TouchableOpacity>
           </View>
-          <Text style={{fontSize: 26, fontWeight: 800, color: '#00704a',bottom:10}}>
+          <Text
+            style={{
+              fontSize: 26,
+              fontWeight: 800,
+              color: '#00704a',
+              bottom: 10,
+            }}>
             {name}
           </Text>
         </View>
@@ -74,122 +105,124 @@ const Home = ({navigation}) => {
             flexDirection: 'row',
             flexWrap: 'wrap',
             margin: 5,
-            top:5
+            top: 5,
             // bottom: 10,
           }}>
-          {myProduct
-            .filter(coffee => {
-              if (activeCategoryId === null) return true;
-              return coffee.categoryId === activeCategoryId;
-            })
-            .map(coffee => (
-              
-              <View key={coffee.id}>
+          {myProduct.map(coffee => (
+            <View key={coffee.id}>
+              <View
+                style={{
+                  width: width / 2 - 17,
+                  padding: 5,
+                  left: 5,
+                  bottom: 20,
+                }}>
                 <View
                   style={{
-                    width: width / 2 - 17,
-                    padding: 5,
-                    left: 5,
-                    bottom: 20,
+                    padding: 8,
+                    backgroundColor: 'lightgrey',
+                    borderRadius: 20,
+                    bottom: 10,
+                    flex: 1,
+                    top: 20,
+                    borderWidth: 2,
+                    borderColor: '#00704a',
                   }}>
+                  <TouchableOpacity
+                    onPress={() =>
+                      navigation.navigate('CoffeeDetails', {data: coffee})
+                    }
+                    style={{width: '100%', height: 150}}>
+                    <Image
+                      source={coffee.image}
+                      style={{
+                        height: '100%',
+                        width: '100%',
+                        borderRadius: 10,
+                      }}
+                    />
+                  </TouchableOpacity>
                   <View
                     style={{
-                      padding: 8,
+                      position: 'absolute',
+                      right: 0,
+                      flexDirection: 'row',
                       backgroundColor: 'lightgrey',
-                      borderRadius: 20,
-                      bottom: 10,
-                      flex: 1,
-                      top: 20,
-                      borderWidth: 2,
-                      borderColor: '#00704a',
+                      height: 30,
+                      width: 50,
+                      margin: 8,
+                      borderBottomLeftRadius: 10,
+                      alignItems: 'center',
                     }}>
-                    <TouchableOpacity
-                      onPress={() =>
-                        navigation.navigate('CoffeeDetails', {data: coffee})
-                      }
-                      style={{width: '100%', height: 150}}>
-                      <Image
-                        source={coffee.image}
-                        style={{
-                          height: '100%',
-                          width: '100%',
-                          borderRadius: 10,
-                        }}
-                      />
-                    </TouchableOpacity>
-                    <View
-                      style={{
-                        position: 'absolute',
-                        right: 0,
-                        flexDirection: 'row',
-                        backgroundColor: 'lightgrey',
-                        height: 30,
-                        width: 50,
-                        margin: 8,
-                        borderBottomLeftRadius: 10,
-                        alignItems:'center'
-                      }}>
-                      <IonIcons
-                        name="star"
-                        size={20}
-                        color={'#00704a'}
-                        style={{left: 3}}
-                      />
-                      <Text style={{fontSize: 16, fontWeight: 600, left: 6,color:'#000',fontWeight:700}}>
-                        {coffee.rating}
-                      </Text>
-                    </View>
+                    <IonIcons
+                      name="star"
+                      size={20}
+                      color={'#00704a'}
+                      style={{left: 3}}
+                    />
                     <Text
                       style={{
-                        color: '#fff',
+                        fontSize: 16,
                         fontWeight: 600,
-                        fontSize: 20,
                         left: 6,
-                        // marginBottom: 10,
-                        // bottom: 30,
+                        color: '#000',
+                        fontWeight: 700,
                       }}>
-                      {coffee.name}
+                      {coffee.rating}
                     </Text>
-                    <View
+                  </View>
+                  <Text
+                    style={{
+                      color: '#fff',
+                      fontWeight: 600,
+                      fontSize: 20,
+                      left: 6,
+                      // marginBottom: 10,
+                      // bottom: 30,
+                    }}>
+                    {coffee.name}
+                  </Text>
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      marginBottom: 5,
+                    }}>
+                    <Text
                       style={{
-                        flexDirection: 'row',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                        marginBottom: 5,
+                        fontSize: 18,
+                        marginLeft: 3,
+                        color: 'grey',
+                        fontWeight: 600,
                       }}>
-                      <Text
+                      ₹ {coffee.price}
+                    </Text>
+                    {/* //first */}
+                    {coffee.quantity == 0 ? (
+                      <TouchableOpacity
+                        onPress={() => {
+                          dispatch(addProductToCart(coffee));
+                          dispatch(increaseQuantity(coffee.id));
+                        }}
                         style={{
-                          fontSize: 18,
-                          marginLeft: 3,
-                          color: 'grey',
-                          fontWeight: 600,
+                          height: 30,
+                          width: 95,
+                          backgroundColor: '#00a36c',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          borderRadius: 8,
+                          borderColor: '#00704a',
+                          borderWidth: 1,
                         }}>
-                        ₹ {coffee.price}
-                      </Text>
-                      {/* //first */}
-                      {coffee.quantity == 0 ? (
+                        <Text style={{fontWeight: 500}}>Add To Cart</Text>
+                      </TouchableOpacity>
+                    ) : null}
+                    {/* Other */}
+                    <View style={{flexDirection: 'row', right: 8}}>
+                      {coffee.quantity == 0 ? null : (
                         <TouchableOpacity
                           onPress={() => {
-                            dispatch(addProductToCart(coffee));
-                            dispatch(increaseQuantity(coffee.id));
-                          }}
-                          style={{
-                            height: 30,
-                            width: 95,
-                            backgroundColor: '#00a36c',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            borderRadius: 8,
-                            borderColor: '#00704a',
-                            borderWidth: 1,
-                          }}>
-                          <Text style={{fontWeight: 500}}>Add To Cart</Text>
-                        </TouchableOpacity>
-                      ) : null}
-                      {/* Other */}
-                      <View style={{flexDirection: 'row', right: 8}}>
-                        {coffee.quantity == 0 ? null : (
-                          <TouchableOpacity onPress={()=>{
                             // dispatch(removeProductFromCart(coffee))
                             // dispatch(decreaseQuantity(coffee.id))
                             if (coffee.quantity > 1) {
@@ -200,66 +233,67 @@ const Home = ({navigation}) => {
                               dispatch(decreaseQuantity(coffee.id));
                             }
                           }}
-                            style={{
-                              width: 30,
-                              borderColor: '#00704a',
-                              borderWidth: 1,
-                              backgroundColor: '#00a36c',
-                              height: 30,
-                              justifyContent: 'center',
-                              borderRadius: 10,
-                            }}>
-                            <Text
-                              style={{
-                                textAlign: 'center',
-                                color: '#fff',
-                                fontSize: 18,
-                              }}>
-                              -
-                            </Text>
-                          </TouchableOpacity>
-                        )}
-                        {coffee.quantity == 0 ? null : (
+                          style={{
+                            width: 30,
+                            borderColor: '#00704a',
+                            borderWidth: 1,
+                            backgroundColor: '#00a36c',
+                            height: 30,
+                            justifyContent: 'center',
+                            borderRadius: 10,
+                          }}>
                           <Text
                             style={{
-                              padding: 5,
-                              color: '#000',
-                              fontSize: 15,
-                              fontWeight: 500,
+                              textAlign: 'center',
+                              color: '#fff',
+                              fontSize: 18,
                             }}>
-                            {coffee.quantity}
+                            -
                           </Text>
-                        )}
-                        {coffee.quantity == 0 ? null : (
-                          <TouchableOpacity onPress={()=>{
-                            dispatch(addProductToCart(coffee))
-                            dispatch(increaseQuantity(coffee.id))
+                        </TouchableOpacity>
+                      )}
+                      {coffee.quantity == 0 ? null : (
+                        <Text
+                          style={{
+                            padding: 5,
+                            color: '#000',
+                            fontSize: 15,
+                            fontWeight: 500,
+                          }}>
+                          {coffee.quantity}
+                        </Text>
+                      )}
+                      {coffee.quantity == 0 ? null : (
+                        <TouchableOpacity
+                          onPress={() => {
+                            dispatch(addProductToCart(coffee));
+                            dispatch(increaseQuantity(coffee.id));
                           }}
+                          style={{
+                            width: 30,
+                            borderColor: '#00704a',
+                            borderWidth: 1,
+                            height: 30,
+                            justifyContent: 'center',
+                            borderRadius: 10,
+                            backgroundColor: '#00a36c',
+                          }}>
+                          <Text
                             style={{
-                              width: 30,
-                              borderColor: '#00704a',
-                              borderWidth: 1,
-                              height: 30,
-                              justifyContent: 'center',
-                              borderRadius: 10,
-                              backgroundColor: '#00a36c',
+                              textAlign: 'center',
+                              color: '#fff',
+                              fontSize: 18,
                             }}>
-                            <Text
-                              style={{
-                                textAlign: 'center',
-                                color: '#fff',
-                                fontSize: 18,
-                              }}>
-                              +
-                            </Text>
-                          </TouchableOpacity>
-                        )}
-                      </View>
+                            +
+                          </Text>
+                        </TouchableOpacity>
+                      )}
                     </View>
                   </View>
                 </View>
               </View>
-            ))}
+            </View>
+          ))}
         </View>
       </ScrollView>
     </SafeAreaView>

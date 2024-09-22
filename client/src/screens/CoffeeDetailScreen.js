@@ -1,4 +1,5 @@
 import {
+  Button,
   Dimensions,
   ImageBackground,
   SafeAreaView,
@@ -7,7 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 import {useRoute} from '@react-navigation/native';
 import Header from '../components/Header';
@@ -18,25 +19,29 @@ import {increaseQuantity} from '../reduxtoolkit/ProductSlice';
 
 const {width, height} = Dimensions.get('window');
 
-const CoffeeDetailScreen = ({coffee, navigation}) => {
+const CoffeeDetailScreen = ({navigation}) => {
   const dispatch = useDispatch();
-  const cartItems = useSelector(state => state.cart);
-  console.log('Cart Item in Coffee Details Page:::', cartItems.length);
+  const cartProduct = useSelector(state => state.cart);
+  console.log('Cart Item in Coffee Details Page:::', cartProduct.length);
+  console.log('CARTITEM OBJECT:+', cartProduct);
 
   const route = useRoute();
   const item = route.params.data;
+  console.log('Coffee quantity added in cart:::++', item.quantity);
+  console.log('Item::', item);
+
   return (
     <SafeAreaView style={{flex: 1}}>
       <View style={{flex: 1}}>
         <Header
           backIcon={'arrow-back'}
-          title={route.params.data.name}
+          title={item.name}
           cartIcon={'cart'}
           onPressLeft={() => navigation.goBack()}
           onPressRight={() => navigation.navigate('Cart')}
         />
         <ImageBackground
-          source={route.params.data.image}
+          source={item.image}
           style={{
             height: height / 2 + 50,
             width: width,
@@ -54,7 +59,7 @@ const CoffeeDetailScreen = ({coffee, navigation}) => {
               margin: 8,
             }}>
             <Text style={{color: '#00a36c', fontSize: 24, fontWeight: 800}}>
-              {route.params.data.name}
+              {item.name}
             </Text>
             {/* Coffee Rating */}
             <View
@@ -68,7 +73,7 @@ const CoffeeDetailScreen = ({coffee, navigation}) => {
                 width: 60,
               }}>
               <IonIcons name="star" size={20} color={'#00c36a'} style={{}} />
-              <Text style={{left: 5}}>{route.params.data.rating}</Text>
+              <Text style={{left: 5}}>{item.rating}</Text>
             </View>
           </View>
           <View style={{flex: 1}}>
@@ -88,7 +93,7 @@ const CoffeeDetailScreen = ({coffee, navigation}) => {
                 margin: 5,
                 textAlign: 'center',
               }}>
-              {route.params.data.description}
+              {item.description}
             </Text>
             {/* bottom buttons :total price and add to cart */}
           </View>
@@ -106,19 +111,19 @@ const CoffeeDetailScreen = ({coffee, navigation}) => {
           <View
             style={{
               flexDirection: 'row',
-              justifyContent: 'space-between',
               margin: 8,
+              justifyContent: 'space-between',
             }}>
             <View
               style={{
                 alignItems: 'center',
                 justifyContent: 'center',
                 left: 30,
-                top:10
+                // top: 10,
               }}>
               <Text style={{fontSize: 16}}>Price:</Text>
               <Text style={{fontSize: 26, fontWeight: 900}}>
-                ₹ {route.params.data.price}.00
+                ₹ {item.price}.00
               </Text>
             </View>
             {/* //add to cart button */}
@@ -128,25 +133,25 @@ const CoffeeDetailScreen = ({coffee, navigation}) => {
                 justifyContent: 'center',
                 alignItems: 'center',
               }}>
-              {item.quantity == 0 ? (
+              {item.quantity === 0 ? (
                 <TouchableOpacity
                   onPress={() => {
-                    dispatch(addProductToCart(item));
+                    dispatch(addProductToCart(item.id));
                     dispatch(increaseQuantity(item.id));
                   }}
                   style={{
                     flexDirection: 'row',
-                    // padding: 10,
                     margin: 10,
                     alignItems: 'center',
                     justifyContent: 'space-around',
                     backgroundColor: '#00704a',
-                    width: '68%',
+                    width: 170,
                     height: 60,
                     borderRadius: 20,
                     borderColor: 'grey',
                     borderWidth: 2,
-                    left: 20,
+                    padding: 10,
+                    // left: 20,
                   }}>
                   <IonIcons name="bag-outline" size={20} />
                   <Text
@@ -156,17 +161,17 @@ const CoffeeDetailScreen = ({coffee, navigation}) => {
                       fontWeight: 900,
                       padding: 5,
                     }}>
-                    Add To Cart
+                    {item.quantity === 0 ? 'Add To Cart' : 'View Cart'}
                   </Text>
                 </TouchableOpacity>
               ) : null}
+
               {item.quantity == 0 ? null : (
                 <TouchableOpacity
-                  onPress={() => addItem(item)}
+                  onPress={() => {
+                    navigation.navigate('Cart');
+                  }}
                   style={{
-                    // flexDirection: 'row',
-                    // padding: 10,
-                    // margin: 10,
                     alignItems: 'center',
                     justifyContent: 'space-around',
                     backgroundColor: '#00704a',
@@ -175,7 +180,8 @@ const CoffeeDetailScreen = ({coffee, navigation}) => {
                     borderRadius: 20,
                     borderColor: 'grey',
                     borderWidth: 2,
-                    right:10,top:10
+                    right: 15,
+                    top: 10,
                   }}>
                   <Text
                     style={{
@@ -187,6 +193,21 @@ const CoffeeDetailScreen = ({coffee, navigation}) => {
                   </Text>
                 </TouchableOpacity>
               )}
+
+              {/* <View>
+                  {item.quantity===0?(
+                    <TouchableOpacity onPress={()=>{
+                      dispatch(addProductToCart(item));
+                      dispatch(increaseQuantity(item.id));
+                    }}>
+                      {item.quantity>0?(<Text>View Cart</Text>):(<Text>Add To Cart</Text>)}
+                    </TouchableOpacity>
+                  ):(
+                    <TouchableOpacity>
+                      <Text>View Cart</Text>
+                    </TouchableOpacity>
+                  )}
+                </View> */}
             </View>
           </View>
         </View>
