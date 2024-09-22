@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 import {useRoute} from '@react-navigation/native';
 import Header from '../components/Header';
@@ -19,16 +19,24 @@ import {increaseQuantity} from '../reduxtoolkit/ProductSlice';
 
 const {width, height} = Dimensions.get('window');
 
-const CoffeeDetailScreen = ({navigation}) => {
+const CoffeeDetailScreen = ({coffee, navigation}) => {
   const dispatch = useDispatch();
   const cartProduct = useSelector(state => state.cart);
-  console.log('Cart Item in Coffee Details Page:::', cartProduct.length);
-  console.log('CARTITEM OBJECT:+', cartProduct);
+  const myProduct = useSelector(state => state.product);
+  console.log('No of Item in Coffee Details Page Cart:::', cartProduct.length);
+  console.log('CARProduct OBJECT:+', cartProduct);
 
   const route = useRoute();
   const item = route.params.data;
-  console.log('Coffee quantity added in cart:::++', item.quantity);
   console.log('Item::', item);
+
+  
+
+  const findObjectById = id => {
+    return cartProduct.find(item => item.id === id);
+  };
+  const itemNotPresent = !findObjectById(item.id);
+  console.log('Item not present:::+++', itemNotPresent);
 
   return (
     <SafeAreaView style={{flex: 1}}>
@@ -133,11 +141,13 @@ const CoffeeDetailScreen = ({navigation}) => {
                 justifyContent: 'center',
                 alignItems: 'center',
               }}>
-              {item.quantity === 0 ? (
+              {itemNotPresent ? (
                 <TouchableOpacity
                   onPress={() => {
-                    dispatch(addProductToCart(item.id));
-                    dispatch(increaseQuantity(item.id));
+                    if (itemNotPresent) {
+                      dispatch(addProductToCart(item));
+                      dispatch(increaseQuantity(item.id));
+                    }
                   }}
                   style={{
                     flexDirection: 'row',
@@ -161,12 +171,12 @@ const CoffeeDetailScreen = ({navigation}) => {
                       fontWeight: 900,
                       padding: 5,
                     }}>
-                    {item.quantity === 0 ? 'Add To Cart' : 'View Cart'}
+                    Add To Cart
                   </Text>
                 </TouchableOpacity>
               ) : null}
 
-              {item.quantity == 0 ? null : (
+              {itemNotPresent ? null : (
                 <TouchableOpacity
                   onPress={() => {
                     navigation.navigate('Cart');
