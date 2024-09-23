@@ -21,6 +21,7 @@ import CoffeeDetailScreen from './src/screens/CoffeeDetailScreen';
 import { useDispatch } from 'react-redux';
 import coffees from './src/config/coffees';
 import { addMyProducts } from './src/reduxtoolkit/ProductSlice';
+import Payment from './src/screens/Payment';
 
 const Stack = createNativeStackNavigator();
 
@@ -114,11 +115,11 @@ const AppNavigator = ({navigation}) => {
           component={CoffeeDetailScreen}
           options={{headerShown: false}}
         />
-        {/* <Stack.Screen
-          name="Test"
-          component={Test}
+        <Stack.Screen
+          name="Payment"
+          component={Payment}
           options={{headerShown: false}}
-        /> */}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

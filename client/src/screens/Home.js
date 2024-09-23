@@ -112,9 +112,8 @@ const Home = ({navigation}) => {
             <View key={coffee.id}>
               <View
                 style={{
-                  width: width / 2 - 17,
+                  width: width / 2 - 10,
                   padding: 5,
-                  left: 5,
                   bottom: 20,
                 }}>
                 <View
@@ -171,24 +170,26 @@ const Home = ({navigation}) => {
                       {coffee.rating}
                     </Text>
                   </View>
-                  <Text
-                    style={{
-                      color: '#fff',
-                      fontWeight: 600,
-                      fontSize: 20,
-                      left: 6,
-                      // marginBottom: 10,
-                      // bottom: 30,
-                    }}>
-                    {coffee.name}
-                  </Text>
+                  {/* //name and price */}
                   <View
                     style={{
                       flexDirection: 'row',
                       justifyContent: 'space-between',
                       alignItems: 'center',
                       marginBottom: 5,
+                      // padding:3
                     }}>
+                    <Text
+                      style={{
+                        color: '#fff',
+                        fontWeight: 800,
+                        fontSize: 17,
+                        // left: 6,
+                        // marginBottom: 10,
+                        // bottom: 30,
+                      }}>
+                      {coffee.name}
+                    </Text>
                     <Text
                       style={{
                         fontSize: 18,
@@ -196,99 +197,104 @@ const Home = ({navigation}) => {
                         color: 'grey',
                         fontWeight: 600,
                       }}>
-                      ₹ {coffee.price}
+                      ₹{coffee.price}
                     </Text>
-                    {/* //first */}
-                    {coffee.quantity == 0 ? (
+                  </View>
+                  {/* //first */}
+                  {coffee.quantity == 0 ? (
+                    <View style={{alignItems:'center'}}>
+                    <TouchableOpacity
+                      onPress={() => {
+                        dispatch(addProductToCart(coffee));
+                        dispatch(increaseQuantity(coffee.id));
+                      }}
+                      style={{
+                        height: 30,
+                        width: 95,
+                        backgroundColor: '#00a36c',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        borderRadius: 8,
+                        borderColor: '#00704a',
+                        borderWidth: 1,
+                      }}>
+                      <Text style={{fontWeight: 500}}>Add To Cart</Text>
+                    </TouchableOpacity>
+                        </View>
+                  ) : null}
+                  {/* Other */}
+                  <View style={{alignItems:'center'}}>
+
+                  
+                  <View style={{flexDirection: 'row', }}>
+                    {coffee.quantity == 0 ? null : (
+                      <TouchableOpacity
+                        onPress={() => {
+                          // dispatch(removeProductFromCart(coffee))
+                          // dispatch(decreaseQuantity(coffee.id))
+                          if (coffee.quantity > 1) {
+                            dispatch(removeProductFromCart(coffee));
+                            dispatch(decreaseQuantity(coffee.id));
+                          } else {
+                            dispatch(deleteCartItem(coffee.id));
+                            dispatch(decreaseQuantity(coffee.id));
+                          }
+                        }}
+                        style={{
+                          width: 30,
+                          borderColor: '#00704a',
+                          borderWidth: 1,
+                          backgroundColor: '#00a36c',
+                          height: 30,
+                          justifyContent: 'center',
+                          borderRadius: 10,
+                        }}>
+                        <Text
+                          style={{
+                            textAlign: 'center',
+                            color: '#fff',
+                            fontSize: 18,
+                          }}>
+                          -
+                        </Text>
+                      </TouchableOpacity>
+                    )}
+                    {coffee.quantity == 0 ? null : (
+                      <Text
+                        style={{
+                          padding: 5,
+                          color: '#000',
+                          fontSize: 15,
+                          fontWeight: 500,
+                        }}>
+                        {coffee.quantity}
+                      </Text>
+                    )}
+                    {coffee.quantity == 0 ? null : (
                       <TouchableOpacity
                         onPress={() => {
                           dispatch(addProductToCart(coffee));
                           dispatch(increaseQuantity(coffee.id));
                         }}
                         style={{
-                          height: 30,
-                          width: 95,
-                          backgroundColor: '#00a36c',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          borderRadius: 8,
+                          width: 30,
                           borderColor: '#00704a',
                           borderWidth: 1,
+                          height: 30,
+                          justifyContent: 'center',
+                          borderRadius: 10,
+                          backgroundColor: '#00a36c',
                         }}>
-                        <Text style={{fontWeight: 500}}>Add To Cart</Text>
-                      </TouchableOpacity>
-                    ) : null}
-                    {/* Other */}
-                    <View style={{flexDirection: 'row', right: 8}}>
-                      {coffee.quantity == 0 ? null : (
-                        <TouchableOpacity
-                          onPress={() => {
-                            // dispatch(removeProductFromCart(coffee))
-                            // dispatch(decreaseQuantity(coffee.id))
-                            if (coffee.quantity > 1) {
-                              dispatch(removeProductFromCart(coffee));
-                              dispatch(decreaseQuantity(coffee.id));
-                            } else {
-                              dispatch(deleteCartItem(coffee.id));
-                              dispatch(decreaseQuantity(coffee.id));
-                            }
-                          }}
-                          style={{
-                            width: 30,
-                            borderColor: '#00704a',
-                            borderWidth: 1,
-                            backgroundColor: '#00a36c',
-                            height: 30,
-                            justifyContent: 'center',
-                            borderRadius: 10,
-                          }}>
-                          <Text
-                            style={{
-                              textAlign: 'center',
-                              color: '#fff',
-                              fontSize: 18,
-                            }}>
-                            -
-                          </Text>
-                        </TouchableOpacity>
-                      )}
-                      {coffee.quantity == 0 ? null : (
                         <Text
                           style={{
-                            padding: 5,
-                            color: '#000',
-                            fontSize: 15,
-                            fontWeight: 500,
+                            textAlign: 'center',
+                            color: '#fff',
+                            fontSize: 18,
                           }}>
-                          {coffee.quantity}
+                          +
                         </Text>
-                      )}
-                      {coffee.quantity == 0 ? null : (
-                        <TouchableOpacity
-                          onPress={() => {
-                            dispatch(addProductToCart(coffee));
-                            dispatch(increaseQuantity(coffee.id));
-                          }}
-                          style={{
-                            width: 30,
-                            borderColor: '#00704a',
-                            borderWidth: 1,
-                            height: 30,
-                            justifyContent: 'center',
-                            borderRadius: 10,
-                            backgroundColor: '#00a36c',
-                          }}>
-                          <Text
-                            style={{
-                              textAlign: 'center',
-                              color: '#fff',
-                              fontSize: 18,
-                            }}>
-                            +
-                          </Text>
-                        </TouchableOpacity>
-                      )}
-                    </View>
+                      </TouchableOpacity>
+                    )}</View>
                   </View>
                 </View>
               </View>

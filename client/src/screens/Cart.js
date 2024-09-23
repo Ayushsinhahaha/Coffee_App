@@ -22,7 +22,7 @@ import IonIcons from 'react-native-vector-icons/Ionicons';
 
 const Cart = ({navigation}) => {
   const cartItems = useSelector(state => state.cart);
-  console.log('category quantity', cartItems.length);
+  console.log('items quantity', cartItems.length);
   const dispatch = useDispatch();
   
   const getTotal = () => {
@@ -106,7 +106,7 @@ const Cart = ({navigation}) => {
                     flex: 1,
                     bottom: 10,
                   }}>
-                  <TouchableOpacity
+                  <TouchableOpacity onPress={()=>navigation.navigate('Payment')}
                     style={{
                       backgroundColor: '#00704a',
                       borderRadius: 10,
