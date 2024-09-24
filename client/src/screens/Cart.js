@@ -2,6 +2,7 @@ import {
   Alert,
   FlatList,
   Image,
+  ImageBackground,
   SafeAreaView,
   ScrollView,
   StyleSheet,
@@ -9,7 +10,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import Header from '../components/Header';
 import {useDispatch, useSelector} from 'react-redux';
 import {
@@ -17,14 +18,19 @@ import {
   deleteCartItem,
   removeProductFromCart,
 } from '../reduxtoolkit/CartSlice';
-import {decreaseQuantity, increaseQuantity} from '../reduxtoolkit/ProductSlice';
+import {
+  decreaseQuantity,
+  increaseQuantity,
+  removeQuantity,
+} from '../reduxtoolkit/ProductSlice';
 import IonIcons from 'react-native-vector-icons/Ionicons';
+import Toast from 'react-native-toast-message';
 
 const Cart = ({navigation}) => {
   const cartItems = useSelector(state => state.cart);
   console.log('items quantity', cartItems.length);
   const dispatch = useDispatch();
-  
+
   const getTotal = () => {
     let total = 0;
     {
@@ -35,19 +41,29 @@ const Cart = ({navigation}) => {
     return total;
   };
 
-  const noOfItems = () =>{
+  var payNow = getTotal();
+  console.log('pay', payNow);
+
+  const noOfItems = () => {
     let total = 0;
     {
       cartItems.map(coffee => {
-        total = total + coffee.quantity 
+        total = total + coffee.quantity;
       });
     }
     return total;
-    
-  }
+  };
 
-  console.log('Total Number of Items:',noOfItems());
+  const showToast = () => {
+    Toast.show({
+      type: 'success',
+      text1: 'Hello',
+      text2: 'This is some something 👋',
+    });
+  };
 
+  console.log('Total Number of Items:', noOfItems());
+  const itemNumber = noOfItems();
   return (
     <SafeAreaView style={{flex: 1}}>
       <Header
@@ -59,69 +75,20 @@ const Cart = ({navigation}) => {
       />
       {cartItems.length === 0 ? (
         <View style={{justifyContent: 'center', alignItems: 'center', flex: 1}}>
+          {/* <ImageBackground source={require('../assets/logo/cart.png')} style={{height:200,}}> */}
           <Text style={{color: 'grey', fontSize: 28, fontWeight: 800}}>
             Your cart is empty
           </Text>
+          {/* </ImageBackground> */}
         </View>
       ) : (
         <View
           style={{
             justifyContent: 'center',
             flex: 1,
-            // marginBottom: 60,
+            marginBottom: 60,
             height: '200%',
           }}>
-          <View
-            style={{
-              alignItems: 'center',
-              height: 120,
-              justifyContent: 'center',
-            }}>
-            {cartItems.length == 0 ? (
-              <View></View>
-            ) : (
-              <View
-                style={{
-                  height: 100,
-                  borderColor: '#00704a',
-                  borderWidth: 3,
-                  alignItems: 'center',
-                  // justifyContent: 'center',
-                  width: '95%',
-                  borderRadius: 10,
-                  backgroundColor: 'lightgrey',
-                }}>
-                <Text style={{color: 'grey', fontSize: 16, fontWeight: 700,top:4}}>
-                  Grand Total: {getTotal() + '.00 '}{' '}
-                </Text>
-
-                {/* <View>
-                  <Text style={{color: '#000'}}>{getTotal()}</Text>
-                </View> */}
-
-                <View
-                  style={{
-                    width: '90%',
-                    justifyContent: 'flex-end',
-                    flex: 1,
-                    bottom: 10,
-                  }}>
-                  <TouchableOpacity onPress={()=>navigation.navigate('Payment')}
-                    style={{
-                      backgroundColor: '#00704a',
-                      borderRadius: 10,
-                      height: 50,
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}>
-                    <Text style={{fontSize: 26, textAlign: 'center'}}>
-                      PAY NOW
-                    </Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            )}
-          </View>
           <FlatList
             data={cartItems}
             keyExtractor={cartItems.id}
@@ -137,7 +104,7 @@ const Cart = ({navigation}) => {
                     justifyContent: 'center',
                     // left: 5,
                     borderRadius: 10,
-                    // bottom:10
+                    marginBottom: 10,
                   }}>
                   <View
                     style={{
@@ -246,7 +213,14 @@ const Cart = ({navigation}) => {
                               text: 'Yes',
                               onPress: () => {
                                 dispatch(deleteCartItem(item.id));
-                                dispatch(decreaseQuantity(item.id));
+                                dispatch(removeQuantity(item.id));
+                                setTimeout(() => {
+                                  Toast.show({
+                                    type: 'success',
+                                    text1: 'Item Deleted',
+                                    text2: 'You deleted one item',
+                                  });
+                                }, 5);
                               },
                             },
                           ],
@@ -260,6 +234,89 @@ const Cart = ({navigation}) => {
               );
             }}
           />
+          <View
+            style={{
+              alignItems: 'center',
+              height: 120,
+              justifyContent: 'center',
+            }}>
+            {cartItems.length == 0 ? (
+              <View></View>
+            ) : (
+              <View
+                style={{
+                  height: 150,
+                  borderColor: '#00704a',
+                  borderWidth: 3,
+                  alignItems: 'center',
+                  // justifyContent: 'center',
+                  width: '95%',
+                  borderRadius: 10,
+                  backgroundColor: 'lightgrey',
+                }}>
+                {itemNumber > 2 ? (
+                  <Text
+                    style={{
+                      color: 'grey',
+                      fontSize: 16,
+                      fontWeight: 700,
+                      top: 15,
+                    }}>
+                    Grand Total: ₹ {getTotal() + '.00 '}{' '}
+                  </Text>
+                ) : (
+                  <View>
+                    <Text
+                      style={{
+                        color: 'grey',
+                        fontSize: 16,
+                        fontWeight: 700,
+                        top: 6,
+                      }}>
+                      Delivery Charges: ₹ {itemNumber * 15}
+                    </Text>
+                    <Text
+                      style={{
+                        color: 'grey',
+                        fontSize: 16,
+                        fontWeight: 700,
+                        marginTop: 8,
+                      }}>
+                      Grand Total: ₹ {getTotal() + itemNumber * 15 + '.00 '}{' '}
+                    </Text>
+                  </View>
+                )}
+
+                <View
+                  style={{
+                    width: '90%',
+                    justifyContent: 'flex-end',
+                    flex: 1,
+                    bottom: 20,
+                  }}>
+                  <TouchableOpacity
+                    onPress={() => navigation.navigate('Payment')}
+                    style={{
+                      backgroundColor: '#00704a',
+                      borderRadius: 10,
+                      height: 50,
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}>
+                    {itemNumber > 2 ? (
+                      <Text style={{fontSize: 26, textAlign: 'center'}}>
+                        PAY NOW ₹ {payNow}
+                      </Text>
+                    ) : (
+                      <Text style={{fontSize: 26, textAlign: 'center'}}>
+                        PAY NOW ₹ {getTotal() + itemNumber * 15 + '.00 '}
+                      </Text>
+                    )}
+                  </TouchableOpacity>
+                </View>
+              </View>
+            )}
+          </View>
         </View>
       )}
     </SafeAreaView>
