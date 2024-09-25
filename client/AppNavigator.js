@@ -22,6 +22,7 @@ import { useDispatch } from 'react-redux';
 import coffees from './src/config/coffees';
 import { addMyProducts } from './src/reduxtoolkit/ProductSlice';
 import Payment from './src/screens/Payment';
+import PaymentScreen from './src/screens/PaymentScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -118,6 +119,11 @@ const AppNavigator = ({navigation}) => {
         <Stack.Screen
           name="Payment"
           component={Payment}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="PaymentScreen"
+          component={PaymentScreen}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
