@@ -9,6 +9,7 @@ import Account from './Account';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import {useFocusEffect} from '@react-navigation/native';
+import SearchField from '../components/SearchField';
 
 const Tab = createBottomTabNavigator();
 
@@ -67,15 +68,15 @@ const Welcome = ({navigation}) => {
           },
         }}
       />
-      {/* <Tab.Screen
-        name="Home"
-        component={Home}
+      <Tab.Screen
+        name="Search"
+        component={SearchField}
         options={{
           tabBarIcon: ({color, size}) => {
-            return <IonIcons name="home" size={28} color={'#fff'} />;
+            return <IonIcons name="search" size={28} color={'#fff'} />;
           },
         }}
-      /> */}
+      />
       <Tab.Screen
         name="Wallet"
         component={Wallet}
