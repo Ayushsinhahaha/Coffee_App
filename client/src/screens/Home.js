@@ -62,7 +62,7 @@ const Home = ({navigation}) => {
   const [search, setSearch] = useState('');
   const [oldData, setOldData] = useState(
     myProduct.map(item => {
-      return (item = item);
+      return item
     }),
   );
   const [searchedList, setSearchedList] = useState([]);

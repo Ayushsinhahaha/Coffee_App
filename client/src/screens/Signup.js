@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {
   View,
   Text,
@@ -9,32 +9,43 @@ import {
   Alert,
 } from 'react-native';
 import axios from 'axios';
+import {AuthContext} from '../context/auth';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Signup({navigation}) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [state, setState] = useContext(AuthContext);
 
-  function handleSubmit() {
+  const handleSubmit = async () => {
     const userData = {
       name: name,
       email: email,
       password,
     };
 
-    axios
-      .post('http://10.0.2.2:5000/signup', userData)
-      .then(res => {
-        console.log(res.data);
-        if (res.data.status == 'ok') {
-          Alert.alert('Registered Successfully');
-          navigation.navigate('Login');
-        } else {
-          Alert.alert(JSON.stringify(res.data));
-        }
-      })
-      .catch(err => console.log(err));
-  }
+    const resp = await axios.post('http://10.0.2.2:5000/signup', userData);
+    if (resp.data.error) {
+      Alert.alert(resp.data.error);
+    } else {
+      setState(resp.data);
+      await AsyncStorage.setItem('token', JSON.stringify(res.data));
+      Alert.alert('Registered Successfully');
+      navigation.navigate('Login');
+    }
+    // await axios
+    //   .post('http://10.0.2.2:5000/signup', userData)
+    //   .then(res => {
+    //     console.log(res.data);
+    //     if (res.data.status == 'ok') {
+    //       setState(Response.data)
+    //     } else {
+    //       Alert.alert(JSON.stringify(res.data));
+    //     }
+    //   })
+    //   .catch(err => console.log(err));
+  };
 
   return (
     <View style={styles.container}>
@@ -44,6 +55,7 @@ export default function Signup({navigation}) {
         placeholder="Name"
         style={styles.input}
         value={name}
+        placeholderTextColor={'grey'}
       />
       <TextInput
         onChangeText={text => setEmail(text)}
@@ -52,6 +64,7 @@ export default function Signup({navigation}) {
         keyboardType="email-address"
         autoCapitalize="none"
         value={email}
+        placeholderTextColor={'grey'}
       />
       <TextInput
         onChangeText={text => setPassword(text)}
@@ -59,6 +72,7 @@ export default function Signup({navigation}) {
         placeholder="Password"
         secureTextEntry={true}
         value={password}
+        placeholderTextColor={'grey'}
       />
 
       {/* <TextInput
@@ -107,6 +121,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     // top:50
     bottom: 80,
+    color: '#000',
   },
   forgotPassword: {
     alignSelf: 'flex-end',

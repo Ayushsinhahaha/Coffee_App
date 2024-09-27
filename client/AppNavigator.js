@@ -1,5 +1,5 @@
 import {View, Text} from 'react-native';
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationContainer} from '@react-navigation/native';
 import HomePage from './src/screens/Homepage';
@@ -23,6 +23,7 @@ import coffees from './src/config/coffees';
 import { addMyProducts } from './src/reduxtoolkit/ProductSlice';
 import Payment from './src/screens/Payment';
 import PaymentScreen from './src/screens/PaymentScreen';
+import { AuthContext, AuthProvider } from './src/context/auth';
 
 const Stack = createNativeStackNavigator();
 
@@ -33,27 +34,34 @@ const AppNavigator = ({navigation}) => {
       dispatch(addMyProducts(coffee));
     })
   },[])
+
+  // const [state,setState]=useContext(AuthContext);
+  // const authenticated = state && state.token!="" && state.user!==null;
+
   return (
     <NavigationContainer>
+      <AuthProvider>
+
+      
       <Stack.Navigator>
-        {/* <Stack.Screen
+        <Stack.Screen
           name="Splash"
           component={Splash}
           options={{headerShown: false}}
-        /> */}
-        {/* <Stack.Screen
+        />
+        <Stack.Screen
           name="Homepage"
           component={HomePage}
           options={{headerShown: false}}
-        /> */}
-        {/* <Stack.Screen
+        />
+        <Stack.Screen
           name="GetStarted"
           component={Getstarted}
           options={{headerShown: false}}
-        /> */}
+        />
         {/* Login and signup */}
 
-        {/* <Stack.Screen
+         <Stack.Screen
           name="Login"
           component={Login}
           options={{headerShown: false}}
@@ -62,8 +70,8 @@ const AppNavigator = ({navigation}) => {
           name="Signup"
           component={Signup}
           options={{headerShown: false}}
-        /> */}
-
+        /> 
+        
         {/* After login screen, the pages which will come */}
         <Stack.Screen
           name="Welcome"
@@ -127,6 +135,7 @@ const AppNavigator = ({navigation}) => {
           options={{headerShown: false}}
         />
       </Stack.Navigator>
+      </AuthProvider>
     </NavigationContainer>
   );
 };

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {
   View,
   Text,
@@ -11,30 +11,52 @@ import {
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Toast from 'react-native-toast-message';
+import { AuthContext } from '../context/auth';
 
 export default function Login({navigation}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [state,setState]=useContext(AuthContext)
 
-  function handleSubmit() {
+  const showToast = () => {
+    Toast.show({
+      type: 'success',
+      text1: 'Log In Successful',
+      text2: "You're being redirected to Homepage ",
+      visibilityTime:2000
+    },);
+  };
+
+  const handleSubmit = async () => {
     // console.log(email, password);
     const userData = {
       email: email,
       password,
     };
-    axios
-      .post('http://10.0.2.2:5000/login', userData)
-      .then(res => {
-        console.log(res.data);
-        if (res.data.status == 'ok') {
-          Alert.alert('Logged In Successfully');
-          console.log('res.data.data;;;;;;;;;;', res.data.data);
-          // getting tokens
-          AsyncStorage.setItem('token', res.data.data);
-          navigation.navigate('Welcome');
-        }
-      })
-      .catch(err => console.log(err));
+
+    const resp=await axios.post('http://10.0.2.2:5000/login',userData)
+    if(resp.data.error){
+      Alert.alert('Error', resp.data.error)
+    }else{
+      setState(resp.data);
+      await AsyncStorage.setItem('auth-rn',JSON.stringify(resp.data));
+            Alert.alert('Logged In Successfully');
+            navigation.navigate('Welcome');
+
+    }
+
+    // axios
+    //   .post('http://10.0.2.2:5000/login', userData)
+    //   .then(res => {
+    //     console.log(res.data);
+    //     if (res.data.status == 'ok') {
+    //       // showToast();
+    //       // console.log('res.data.data;;;;;;;;;;', res.data.data);
+    //       // getting tokens
+    //       AsyncStorage.setItem('token', res.data.data);
+    //     }
+    //   })
+    //   .catch(err => console.log(err));
   }
 
   return (
