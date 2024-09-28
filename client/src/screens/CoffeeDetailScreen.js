@@ -58,7 +58,7 @@ const CoffeeDetailScreen = ({coffee, navigation}) => {
             flex: 1,
           }}></ImageBackground>
         {/* Title,Description */}
-        <View style={{flex: 1, top: 135, margin: 10}}>
+        <View style={{flex: 1, top: 145, margin: 10}}>
           {/* Title and rating */}
           <View
             style={{
@@ -84,7 +84,7 @@ const CoffeeDetailScreen = ({coffee, navigation}) => {
               <Text style={{left: 5}}>{item.rating}</Text>
             </View>
           </View>
-          <View style={{flex: 1}}>
+          <View style={{flex: 1,bottom:5}}>
             <Text
               style={{
                 color: '#00704a',
@@ -99,7 +99,8 @@ const CoffeeDetailScreen = ({coffee, navigation}) => {
                 color: 'grey',
                 fontWeight: 600,
                 margin: 5,
-                textAlign: 'center',
+                left:5
+                // textAlign: 'center',
               }}>
               {item.description}
             </Text>

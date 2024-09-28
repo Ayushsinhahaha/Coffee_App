@@ -214,13 +214,24 @@ const Cart = ({navigation}) => {
                               onPress: () => {
                                 dispatch(deleteCartItem(item.id));
                                 dispatch(removeQuantity(item.id));
-                                setTimeout(() => {
-                                  Toast.show({
-                                    type: 'success',
-                                    text1: 'Item Deleted',
-                                    text2: 'You deleted one item',
-                                  });
-                                }, 5);
+                                {
+                                  itemNumber===0?(
+                                    setTimeout(() => {
+                                      Toast.show({
+                                        type: 'success',
+                                        text1: 'Item Deleted',
+                                        text2: 'You deleted one item',
+                                      });
+                                    }, 5)
+                                  ):(setTimeout(() => {
+                                    Toast.show({
+                                      type: 'success',
+                                      text1: 'Cart Empty',
+                                      text2: 'Items from Cart Deleted',
+                                    });
+                                  }, 5))
+                                }
+                                
                               },
                             },
                           ],
@@ -255,17 +266,46 @@ const Cart = ({navigation}) => {
                   backgroundColor: 'lightgrey',
                 }}>
                 {itemNumber > 2 ? (
+                  <View>
+                    <Text
+                      style={{
+                        color: 'grey',
+                        fontSize: 16,
+                        fontWeight: 700,
+                        top: 6,
+                      }}>
+                      No of Items: {itemNumber}
+                    </Text>
+                    <Text
+                      style={{
+                        color: 'grey',
+                        fontSize: 16,
+                        fontWeight: 700,
+                        top: 6,
+                      }}>
+                      You got Free Delivery !!!!
+                    </Text>
                   <Text
                     style={{
                       color: 'grey',
                       fontSize: 16,
                       fontWeight: 700,
-                      top: 15,
+                      top: 5,
                     }}>
                     Grand Total: ₹ {getTotal() + '.00 '}{' '}
                   </Text>
+                      </View>
                 ) : (
                   <View>
+                    <Text
+                      style={{
+                        color: 'grey',
+                        fontSize: 16,
+                        fontWeight: 700,
+                        top: 6,
+                      }}>
+                      No of Items: {itemNumber}
+                    </Text>
                     <Text
                       style={{
                         color: 'grey',

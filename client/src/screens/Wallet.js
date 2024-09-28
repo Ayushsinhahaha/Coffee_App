@@ -64,7 +64,8 @@ const Wallet = ({navigation}) => {
               alignItems: 'center',
             }}>
             <IonIcons name="wallet" size={30} color={'#00704A'} />
-            <Text style={{textAlign: 'center', fontWeight: 800,color:'grey'}}>Top Up</Text>
+            <Text style={{textAlign: 'center', fontWeight: 800,color:'grey'}}>Add </Text>
+            <Text style={{textAlign: 'center', fontWeight: 800,color:'grey'}}>Money</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={{

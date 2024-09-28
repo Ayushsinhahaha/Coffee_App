@@ -41,7 +41,7 @@ export default function Login({navigation}) {
       setState(resp.data);
       await AsyncStorage.setItem('auth-rn',JSON.stringify(resp.data));
             // Alert.alert('Logged In Successfully');
-            showToast();
+            showToast()
             navigation.navigate('TabNavigator');
 
     }

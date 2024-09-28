@@ -9,7 +9,7 @@ import {
   TextInput,
   FlatList,
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 import SearchField from '../components/SearchField';
 import Categories from '../components/Categories';
@@ -22,6 +22,7 @@ import {
   removeProductFromCart,
 } from '../reduxtoolkit/CartSlice';
 import {decreaseQuantity, increaseQuantity} from '../reduxtoolkit/ProductSlice';
+import { AuthContext } from '../context/auth';
 
 const {width} = Dimensions.get('window');
 
@@ -30,6 +31,8 @@ const Home = ({navigation}) => {
   const [searchText, setSearchText] = useState('');
   const [quantity, setQuantity] = useState(0);
   const [activeCategoryId, setActiveCategoryId] = useState(null);
+  const [state,setState]=useContext(AuthContext);
+  console.log('State:::',state)
 
   //redux toolkit
   const dispatch = useDispatch();
@@ -38,6 +41,7 @@ const Home = ({navigation}) => {
   console.log('Products in HomePage----', myProduct);
   console.log('Items in cart in Homepage----', cartProduct);
   console.log('No of Items in cart(HOMEPAGE)----', cartProduct.length);
+  
 
   const totalItems = () => {
     let itemsInCart = 0;
@@ -110,7 +114,7 @@ const Home = ({navigation}) => {
               fontSize: 26,
               fontWeight: 800,
               color: '#00704a',
-              bottom: 10,
+              bottom: 20,
             }}>
             {name}
           </Text>

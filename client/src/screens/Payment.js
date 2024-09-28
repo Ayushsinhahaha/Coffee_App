@@ -6,7 +6,6 @@ import PaymentScreen from './PaymentScreen';
 // require('dotenv').config()
 
 const Payment = () => {
-  console.log('payment key', process.env.SP_KEY);
   return (
     <StripeProvider
       publishableKey={SP_KEY}
