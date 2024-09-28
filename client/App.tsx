@@ -8,14 +8,11 @@ import Toast from 'react-native-toast-message';
 import {StripeProvider} from '@stripe/stripe-react-native';
 
 const App = () => {
-  console.log('object',process.env.SP_KEY)
+  
   return (
     <Provider store={MyStore}>
-      
       <AppNavigator />
-
       <Toast />
-      
     </Provider>
   );
 };

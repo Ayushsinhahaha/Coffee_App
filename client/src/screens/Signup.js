@@ -34,17 +34,6 @@ export default function Signup({navigation}) {
       Alert.alert('Registered Successfully');
       navigation.navigate('Login');
     }
-    // await axios
-    //   .post('http://10.0.2.2:5000/signup', userData)
-    //   .then(res => {
-    //     console.log(res.data);
-    //     if (res.data.status == 'ok') {
-    //       setState(Response.data)
-    //     } else {
-    //       Alert.alert(JSON.stringify(res.data));
-    //     }
-    //   })
-    //   .catch(err => console.log(err));
   };
 
   return (

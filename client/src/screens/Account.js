@@ -1,10 +1,21 @@
 import {StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
-import React from 'react';
+import React, {useContext} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 import Header from '../components/Header';
+import {AuthContext} from '../context/auth';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Account = ({navigation}) => {
+  const [state, setState] = useContext(AuthContext);
+
+  const signOut = async () => {
+    setState({token: '', user: null});
+    await AsyncStorage.removeItem('auth-rn');
+    console.log('Signout Pressed');
+    console.log('state',state)
+    // navigation.navigate('')
+  };
   return (
     <SafeAreaView style={{flex: 1, justifyContent: 'center'}}>
       {/* Header */}
@@ -129,6 +140,7 @@ const Account = ({navigation}) => {
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
+          onPress={signOut}
           style={{
             borderWidth: 3,
             borderColor: '#00704a',

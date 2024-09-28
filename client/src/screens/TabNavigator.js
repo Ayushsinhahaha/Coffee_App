@@ -13,7 +13,7 @@ import SearchField from '../components/SearchField';
 
 const Tab = createBottomTabNavigator();
 
-const Welcome = ({navigation}) => {
+const TabNavigator = ({navigation}) => {
   const handleBackPress = () => {
     Alert.alert('Exit App', 'Are You sure you want to exit?', [
       {
@@ -38,11 +38,6 @@ const Welcome = ({navigation}) => {
       };
     }),
   );
-
-  // useEffect(() => {
-  //   getData();
-
-  // }, []);
 
   return (
     <Tab.Navigator
@@ -108,6 +103,6 @@ const Welcome = ({navigation}) => {
   );
 };
 
-export default Welcome;
+export default TabNavigator;
 
 const styles = StyleSheet.create({});

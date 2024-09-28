@@ -4,8 +4,8 @@ import React, { useEffect } from 'react'
 const Splash = ({navigation}) => {
     useEffect(()=>{
         setTimeout(() => {
-            navigation.navigate('Homepage')
-        }, 2000);
+            navigation.navigate('HomePage')
+        }, 3000);
     },[])
   return (
     <View style={{flex:1,justifyContent:'center',alignItems:'center',backgroundColor:'#00704A'}}>

@@ -40,23 +40,11 @@ export default function Login({navigation}) {
     }else{
       setState(resp.data);
       await AsyncStorage.setItem('auth-rn',JSON.stringify(resp.data));
-            Alert.alert('Logged In Successfully');
-            navigation.navigate('Welcome');
+            // Alert.alert('Logged In Successfully');
+            showToast();
+            navigation.navigate('TabNavigator');
 
     }
-
-    // axios
-    //   .post('http://10.0.2.2:5000/login', userData)
-    //   .then(res => {
-    //     console.log(res.data);
-    //     if (res.data.status == 'ok') {
-    //       // showToast();
-    //       // console.log('res.data.data;;;;;;;;;;', res.data.data);
-    //       // getting tokens
-    //       AsyncStorage.setItem('token', res.data.data);
-    //     }
-    //   })
-    //   .catch(err => console.log(err));
   }
 
   return (
