@@ -4,7 +4,8 @@ import React from 'react'
 const PaymentScreen = () => {
   return (
     <View>
-      <Text>PaymentScreen</Text>
+     <View>
+	 </View>
     </View>
   )
 }
