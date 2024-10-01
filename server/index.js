@@ -5,9 +5,14 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 require("./models/UserDetails");
+const stripe = require("stripe")(process.env.STRIPE_KEY);
+const cors = require("cors");
+
+//middlewares
+app.use(cors());
+app.use(express.json());
 
 const User = mongoose.model("User");
-
 //connect to db
 mongoose
   .connect(process.env.DATABASE)
@@ -20,7 +25,6 @@ const JWT_TOKEN = process.env.JWT_SECRET;
 app.get("/", (req, res) => {
   res.send({ status: "Started" });
 });
-app.use(express.json());
 
 // signup api
 app.post("/signup", async (req, res) => {
@@ -80,7 +84,29 @@ app.post("/userdata", async (req, res) => {
   }
 });
 
+//stripe
+app.post("/pay", async (req, res) => {
+  try {
+    const { name, email, password } = req.body;
+    if (!name) return res.status(400).json({ message: "Please enter a name" });
+
+    //payment intents
+    const paymentIntent = await stripe.paymentIntent.create;
+    ({
+      amount: Math.round(25 * 100),
+      currency: "INR",
+      payment_method_types: ["card"],
+      metadata: { name, email },
+    });
+    //important for the client to proceed for any of the payment
+    const clientSecret = paymentIntent.client_secret;
+    res.json({ message: "Payment Initiated", clientSecret });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
 app.listen(process.env.PORT, () => {
   console.log(`Server running on port 5000`);
 });
-

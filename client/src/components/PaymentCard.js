@@ -1,13 +1,12 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const PaymentScreen = () => {
+const PaymentCard = () => {
   return (
     <View>
-      <View style={{height:200,width:200}}></View>
-
+      <Text>PaymentCard</Text>
     </View>
   )
 }
 
-export default PaymentScreen
+export default PaymentCard

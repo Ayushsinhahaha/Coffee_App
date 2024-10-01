@@ -12,11 +12,9 @@ import Cart from './Cart';
 import Account from './Account';
 import Notification from './Notification';
 import EditProfile from './EditProfile';
-import PaymentCards from './PaymentCards';
 import Orders from './Orders';
 import CoffeeDetailScreen from './CoffeeDetailScreen';
 import Payment from './Payment';
-import PaymentScreen from './PaymentScreen';
 import {AuthContext} from '../context/auth';
 import HeaderTabs from '../components/HeaderTabs';
 import TabNavigator from './TabNavigator';
@@ -66,11 +64,7 @@ const NavigationScreen = ({navigation}) => {
            component={EditProfile}
            options={{headerShown: false}}
          />
-         <Stack.Screen
-           name="PaymentCards"
-           component={PaymentCards}
-           options={{headerShown: false}}
-         />
+        
          <Stack.Screen
            name="Orders"
            component={Orders}
@@ -86,11 +80,11 @@ const NavigationScreen = ({navigation}) => {
            component={Payment}
            options={{headerShown: false}}
          />
-         <Stack.Screen
+         {/* <Stack.Screen
            name="PaymentScreen"
            component={PaymentScreen}
            options={{headerShown: false}}
-         />
+         /> */}
        </>
       ) : (
         <>
