@@ -7,10 +7,12 @@ require("dotenv").config();
 require("./models/UserDetails");
 const stripe = require("stripe")(process.env.STRIPE_KEY);
 const cors = require("cors");
+const bodyParser = require("body-parser");
 
 //middlewares
 app.use(cors());
 app.use(express.json());
+app.use(bodyParser.json());
 
 const User = mongoose.model("User");
 //connect to db
@@ -85,28 +87,32 @@ app.post("/userdata", async (req, res) => {
 });
 
 //stripe
-app.post("/pay", async (req, res) => {
-  try {
-    const { name, email, password } = req.body;
-    if (!name) return res.status(400).json({ message: "Please enter a name" });
+app.post("/payment-sheet", async (req, res) => {
+  // Use an existing Customer ID if this is a returning customer.
+  const amount = req.body.amount;
+  const customer = await stripe.customers.create();
+  const ephemeralKey = await stripe.ephemeralKeys.create(
+    { customer: customer.id },
+    { apiVersion: "2024-06-20" }
+  );
+  const paymentIntent = await stripe.paymentIntents.create({
+    amount: amount,
+    currency: "gbp",
+    customer: customer.id,
+    // In the latest version of the API, specifying the `automatic_payment_methods` parameter
+    // is optional because Stripe enables its functionality by default.
+    automatic_payment_methods: {
+      enabled: true,
+    },
+  });
 
-    //payment intents
-    const paymentIntent = await stripe.paymentIntent.create;
-    ({
-      amount: Math.round(25 * 100),
-      currency: "INR",
-      payment_method_types: ["card"],
-      metadata: { name, email },
-    });
-    //important for the client to proceed for any of the payment
-    const clientSecret = paymentIntent.client_secret;
-    res.json({ message: "Payment Initiated", clientSecret });
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ message: "Internal Server Error" });
-  }
+  res.json({
+    paymentIntent: paymentIntent.client_secret,
+    ephemeralKey: ephemeralKey.secret,
+    customer: customer.id,
+    publishableKey: process.env.PUBLISHABLE_KEY,
+  });
 });
-
 app.listen(process.env.PORT, () => {
   console.log(`Server running on port 5000`);
 });
