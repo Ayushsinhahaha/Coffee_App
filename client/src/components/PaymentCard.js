@@ -1,13 +1,32 @@
-import {View, Text, TextInput, Button, Alert, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  Button,
+  Alert,
+  TouchableOpacity,
+  Image,
+  ImageBackground,
+} from 'react-native';
 import React, {useState} from 'react';
 import {PaymentSheet, useStripe} from '@stripe/stripe-react-native';
 import axios from 'axios';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import Header from './Header';
 
-const PaymentCard = () => {
+const PaymentCard = ({}) => {
+  const navigation=useNavigation()
+  const route=useRoute();
+  const orderTotal = route.params.data;
+  const noOfItems=route.params.itemNumber;
   const stripe = useStripe();
-  const [amount, setAmount] = useState(60000);
+  const [amount, setAmount] = useState(Math.floor(orderTotal*100));
   const {initPaymentSheet, presentPaymentSheet} = useStripe();
   const [loading, setLoading] = useState(false);
+
+  console.log('Total Amount',amount);
+  console.log('Total Item',noOfItems);
+
 
   const API_URL = 'http://10.0.2.2:5000';
 
@@ -17,9 +36,9 @@ const PaymentCard = () => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body:JSON.stringify({
-        amount:amount
-      })
+      body: JSON.stringify({
+        amount: amount,
+      }),
     });
     const {paymentIntent, ephemeralKey, customer} = await response.json();
 
@@ -28,6 +47,9 @@ const PaymentCard = () => {
       ephemeralKey,
       customer,
     };
+
+    console.log('payment intent',response)
+
   };
 
   const initializePaymentSheet = async () => {
@@ -51,45 +73,48 @@ const PaymentCard = () => {
     }
   };
 
-  const openPaymentSheet = async () => {
-    const { error } = await presentPaymentSheet();
+  const openPaymentSheet = async (req,res) => {
+    const {error,response} = await presentPaymentSheet();
 
     if (error) {
       Alert.alert(`Error code: ${error.code}`, error.message);
     } else {
       Alert.alert('Success', 'Your order is confirmed!');
+      // console.log('responsesss',response)
+      // navigation.navigate('Home');
     }
   };
 
-  const subscribe = async () => {
-    try {
-      console.log('object');
-    } catch (error) {
-      console.log(error);
-      Alert.alert('Something went wrong!!!');
-    }
-  };
+  
 
   return (
-    <View style={{justifyContent: 'center', alignItems: 'center', flex: 1}}>
-      <TextInput
-        value={amount}
-        onChangeText={txt => setAmount(txt)}
-        placeholder="Amount"
-        style={{width: 300, fontSize: 20, padding: 10, borderWidth: 1}}
+    <View style={{flex:1 }}>
+      <Header
+        title={'Check Out'}
+        cartIcon={'home'}
+        backIcon={'arrow-back'}
+        onPressLeft={() => navigation.goBack()}
+        onPressRight={() => navigation.navigate('Home')}
       />
-      {/* <Button title="Pay Now" onPress={async ()=>{
-        await initializePaymentSheet().then(async ()=>{
-          await openPaymentSheet()
-        })
-      }} /> */}
-      <TouchableOpacity onPress={async ()=>{
-        await initializePaymentSheet().then(async ()=>{
-          await openPaymentSheet()
-        })
-      }}>
-        <Text style={{fontSize: 20,}}>Pay</Text>
-      </TouchableOpacity>
+      <View style={{ justifyContent:'center',alignItems:'center',flex:1}}>
+      
+          <Text style={{fontSize:25,fontWeight:800,bottom:20}}>Please Pay ₹{amount/100}.00</Text>
+
+      
+        <TouchableOpacity  onPress={async () => {
+          await initializePaymentSheet().then(async () => {
+            await openPaymentSheet();
+          });
+        }} style={{height:500,width:310,backgroundColor:'#00704a',borderRadius:20,alignItems:'center',justifyContent:'center',borderWidth:2}}>
+        <ImageBackground source={require('../assets/images/pay-per-click.png')} style={{height:290,width:290,borderRadius:20,top:30}}>
+        <View style={{bottom:105,flex:1}}>
+          <Text style={{color:'#fff',textAlign:'center',fontSize:40,fontWeight:900}}>Tap Here To Pay</Text>
+        </View>
+        </ImageBackground>
+        </TouchableOpacity>
+
+
+          </View>
     </View>
   );
 };

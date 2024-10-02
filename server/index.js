@@ -13,6 +13,7 @@ const bodyParser = require("body-parser");
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
+app.use('/stripe',express.raw({type:"*/*"}))
 
 const User = mongoose.model("User");
 //connect to db
@@ -97,7 +98,7 @@ app.post("/payment-sheet", async (req, res) => {
   );
   const paymentIntent = await stripe.paymentIntents.create({
     amount: amount,
-    currency: "gbp",
+    currency: "inr",
     customer: customer.id,
     // In the latest version of the API, specifying the `automatic_payment_methods` parameter
     // is optional because Stripe enables its functionality by default.
@@ -113,6 +114,55 @@ app.post("/payment-sheet", async (req, res) => {
     publishableKey: process.env.PUBLISHABLE_KEY,
   });
 });
+
+// app.post("/stripe", async (req, res) => {
+//   const sig = req.headers["stripe-signature"];
+//   let event;
+//   try {
+//     event = await stripe.webooks.constructiveEvent(
+//       req.body,
+//       sig,
+//       process.env.STRIPE_WEBHOOK_SECRET
+//     );
+//   } catch (error) {
+//     console.log(error);
+//     res.status(400).json({ message: error.message });
+//   }
+
+//   //Event when a payment is initiated
+//   if (event.type === "payment_intent.created") {
+//     console.log(`${event.data.object.metadata.name} initiated Payment `);
+//   }
+//   if (event.type === "payment_intent.succeeded") {
+//     console.log(`${event.data.object.metadata.name} succeeded Payment `);
+//   }
+//   res.json({ ok: true });
+// });
+
+app.post('/webhook', express.json({type: 'application/json'}), (request, response) => {
+  const event = request.body;
+
+  // Handle the event
+  switch (event.type) {
+    case 'payment_intent.succeeded':
+      const paymentIntent = event.data.object;
+      // Then define and call a method to handle the successful payment intent.
+      // handlePaymentIntentSucceeded(paymentIntent);
+      break;
+    case 'payment_method.attached':
+      const paymentMethod = event.data.object;
+      // Then define and call a method to handle the successful attachment of a PaymentMethod.
+      // handlePaymentMethodAttached(paymentMethod);
+      break;
+    // ... handle other event types
+    default:
+      console.log(`Unhandled event type ${event.type}`);
+  }
+
+  // Return a response to acknowledge receipt of the event
+  response.json({received: true});
+});
+
 app.listen(process.env.PORT, () => {
   console.log(`Server running on port 5000`);
 });

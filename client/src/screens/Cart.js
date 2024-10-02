@@ -25,6 +25,10 @@ import {
 } from '../reduxtoolkit/ProductSlice';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 import Toast from 'react-native-toast-message';
+import { StripeProvider } from '@stripe/stripe-react-native';
+import {PUBLISHABLE_KEY} from '@env';
+import PaymentCard from '../components/PaymentCard';
+import { useRoute } from '@react-navigation/native';
 
 const Cart = ({navigation}) => {
   const cartItems = useSelector(state => state.cart);
@@ -41,9 +45,8 @@ const Cart = ({navigation}) => {
     return total;
   };
 
-  var payNow = getTotal();
-  console.log('pay', payNow);
-
+  
+  
   const noOfItems = () => {
     let total = 0;
     {
@@ -53,6 +56,15 @@ const Cart = ({navigation}) => {
     }
     return total;
   };
+  const itemNumber = noOfItems();
+
+  
+  if(itemNumber<=2){
+   var payNow=getTotal() + itemNumber * 15;
+  }else{
+    var payNow=getTotal();
+  }
+  console.log('pay', payNow);
 
   const showToast = () => {
     Toast.show({
@@ -62,10 +74,16 @@ const Cart = ({navigation}) => {
     });
   };
 
+  const orderDetails=()=>{
+    itemNumber,payNow
+  }
+
   console.log('Total Number of Items:', noOfItems());
-  const itemNumber = noOfItems();
   return (
     <SafeAreaView style={{flex: 1}}>
+       <StripeProvider 
+    publishableKey={PUBLISHABLE_KEY} 
+   >
       <Header
         title={'Cart'}
         cartIcon={'home'}
@@ -322,7 +340,7 @@ const Cart = ({navigation}) => {
                         fontWeight: 700,
                         marginTop: 8,
                       }}>
-                      Grand Total: ₹ {getTotal() + itemNumber * 15 + '.00 '}{' '}
+                      Grand Total: ₹ {payNow+ '.00 '}{' '}
                     </Text>
                   </View>
                 )}
@@ -335,7 +353,7 @@ const Cart = ({navigation}) => {
                     bottom: 20,
                   }}>
                   <TouchableOpacity
-                    onPress={() => navigation.navigate('Payment')}
+                    onPress={() => navigation.navigate('Payment',{data:payNow,itemNumber:itemNumber})}
                     style={{
                       backgroundColor: '#00704a',
                       borderRadius: 10,
@@ -344,11 +362,11 @@ const Cart = ({navigation}) => {
                       justifyContent: 'center',
                     }}>
                     {itemNumber > 2 ? (
-                      <Text style={{fontSize: 26, textAlign: 'center'}}>
+                      <Text style={{fontSize: 26, textAlign: 'center',color:'#fff',fontWeight:700}}>
                         PAY NOW ₹ {payNow}
                       </Text>
                     ) : (
-                      <Text style={{fontSize: 26, textAlign: 'center'}}>
+                      <Text style={{fontSize: 26, textAlign: 'center',color:'#fff',fontWeight:700}}>
                         PAY NOW ₹ {getTotal() + itemNumber * 15 + '.00 '}
                       </Text>
                     )}
@@ -359,6 +377,7 @@ const Cart = ({navigation}) => {
           </View>
         </View>
       )}
+       </StripeProvider>
     </SafeAreaView>
   );
 };

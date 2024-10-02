@@ -18,6 +18,7 @@ import Payment from './Payment';
 import {AuthContext} from '../context/auth';
 import HeaderTabs from '../components/HeaderTabs';
 import TabNavigator from './TabNavigator';
+import PaymentCard from '../components/PaymentCard';
 
 const Stack = createNativeStackNavigator();
 
@@ -82,7 +83,7 @@ const NavigationScreen = ({navigation}) => {
          />
          {/* <Stack.Screen
            name="PaymentScreen"
-           component={PaymentScreen}
+           component={PaymentCard}
            options={{headerShown: false}}
          /> */}
        </>
