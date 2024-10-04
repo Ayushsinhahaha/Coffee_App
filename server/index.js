@@ -13,9 +13,10 @@ const bodyParser = require("body-parser");
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
-app.use('/stripe',express.raw({type:"*/*"}))
+app.use('/stripe',express.raw({type: "*/*" }))
 
 const User = mongoose.model("User");
+
 //connect to db
 mongoose
   .connect(process.env.DATABASE)
@@ -105,52 +106,56 @@ app.post("/payment-sheet", async (req, res) => {
     automatic_payment_methods: {
       enabled: true,
     },
+    metadata:{name:'Ayush'}
   });
+
+  const clientSecret=paymentIntent.client_secret
+  // console.log('object',transactionId)
 
   res.json({
     paymentIntent: paymentIntent.client_secret,
     ephemeralKey: ephemeralKey.secret,
     customer: customer.id,
     publishableKey: process.env.PUBLISHABLE_KEY,
+    clientSecret: clientSecret
   });
+
+  // console.log('paymentIntent',paymentIntent)
 });
 
-// app.post("/stripe", async (req, res) => {
-//   const sig = req.headers["stripe-signature"];
-//   let event;
-//   try {
-//     event = await stripe.webooks.constructiveEvent(
-//       req.body,
-//       sig,
-//       process.env.STRIPE_WEBHOOK_SECRET
-//     );
-//   } catch (error) {
-//     console.log(error);
-//     res.status(400).json({ message: error.message });
-//   }
+app.post("/stripe", async (req, res) => {
+  const sig = req.headers["stripe-signature"];
+  let event;
+  try {
+    event = await stripe.webhooks.constructEvent(
+      req.body,
+      sig,
+      process.env.STRIPE_WEBHOOK_SECRET
+    );
+    
 
-//   //Event when a payment is initiated
-//   if (event.type === "payment_intent.created") {
-//     console.log(`${event.data.object.metadata.name} initiated Payment `);
-//   }
-//   if (event.type === "payment_intent.succeeded") {
-//     console.log(`${event.data.object.metadata.name} succeeded Payment `);
-//   }
-//   res.json({ ok: true });
-// });
+  } catch (error) {
+    console.log(error);
+    res.status(400).send(`Webhook Error:${error.message}`);
+  }
 
-app.post('/webhook', express.json({type: 'application/json'}), (request, response) => {
-  const event = request.body;
-
-  // Handle the event
+  //Event when a payment is initiated
+  // if (event.type === "payment_intent.created") {
+  //   console.log(`${event.data.object.metadata.name} initiated Payment `);
+  // }
+  // if (event.type === "payment_intent.succeeded") {
+  //   console.log(`${event.data.object.metadata.name} succeeded Payment `);
+  // }
   switch (event.type) {
     case 'payment_intent.succeeded':
       const paymentIntent = event.data.object;
+      console.log('Payment initiated')
       // Then define and call a method to handle the successful payment intent.
       // handlePaymentIntentSucceeded(paymentIntent);
       break;
     case 'payment_method.attached':
       const paymentMethod = event.data.object;
+      console.log('Payment Successful')
       // Then define and call a method to handle the successful attachment of a PaymentMethod.
       // handlePaymentMethodAttached(paymentMethod);
       break;
@@ -158,10 +163,66 @@ app.post('/webhook', express.json({type: 'application/json'}), (request, respons
     default:
       console.log(`Unhandled event type ${event.type}`);
   }
-
-  // Return a response to acknowledge receipt of the event
-  response.json({received: true});
+  // res.json({ ok: true });
+  res.json({ received: true });
 });
+
+// app.post('/webhook', express.json({type: 'application/json'}), (request, response) => {
+//   const event = request.body;
+
+//   // Handle the event
+  // switch (event.type) {
+  //   case 'payment_intent.succeeded':
+  //     const paymentIntent = event.data.object;
+  //     console.log('Payment initiated')
+  //     // Then define and call a method to handle the successful payment intent.
+  //     // handlePaymentIntentSucceeded(paymentIntent);
+  //     break;
+  //   case 'payment_method.attached':
+  //     const paymentMethod = event.data.object;
+  //     console.log('Payment Successful')
+  //     // Then define and call a method to handle the successful attachment of a PaymentMethod.
+  //     // handlePaymentMethodAttached(paymentMethod);
+  //     break;
+  //   // ... handle other event types
+  //   default:
+  //     console.log(`Unhandled event type ${event.type}`);
+  // }
+
+//   // Return a response to acknowledge receipt of the event
+//   response.json({received: true});
+//   if(response)
+//   {
+//     console.log('response from webhook',response)
+//   }
+// });
+
+
+//chatgpt code
+// app.post('/stripe', express.raw({ type: 'application/json' }), (req, res) => {
+//   const sig = req.headers['stripe-signature'];
+//   let event;
+
+//   try {
+//       event = stripe.webhooks.constructEvent(req.body, sig, process.env.STRIPE_WEBHOOK_SECRET);
+//   } catch (err) {
+//       return res.status(400).send(`Webhook Error: ${err.message}`);
+//   }
+
+//   // Handle the event
+//   switch (event.type) {
+//       case 'payment_intent.succeeded':
+//           const paymentIntent = event.data.object;
+//           console.log(`PaymentIntent for ${paymentIntent.amount} was successful!`);
+//           break;
+//       // Add more event types here based on your needs
+//       default:
+//           console.log(`Unhandled event type ${event.type}`);
+//   }
+
+//   // Return a response to acknowledge receipt of the event
+//   res.json({ received: true });
+// });
 
 app.listen(process.env.PORT, () => {
   console.log(`Server running on port 5000`);

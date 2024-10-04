@@ -19,6 +19,8 @@ import {AuthContext} from '../context/auth';
 import HeaderTabs from '../components/HeaderTabs';
 import TabNavigator from './TabNavigator';
 import PaymentCard from '../components/PaymentCard';
+import ErrorPage from './ErrorPage';
+import SuccessPage from './SuccessPage';
 
 const Stack = createNativeStackNavigator();
 
@@ -79,6 +81,16 @@ const NavigationScreen = ({navigation}) => {
          <Stack.Screen
            name="Payment"
            component={Payment}
+           options={{headerShown: false}}
+         />
+         <Stack.Screen
+           name="ErrorScreen"
+           component={ErrorPage}
+           options={{headerShown: false}}
+         />
+         <Stack.Screen
+           name="SuccessPage"
+           component={SuccessPage}
            options={{headerShown: false}}
          />
          {/* <Stack.Screen
