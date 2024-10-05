@@ -23,9 +23,9 @@ const AppNavigator = ({navigation}) => {
 
   return (
     <NavigationContainer>
-      <AuthProvider>
+      {/* <AuthProvider> */}
         <NavigationScreen/>
-      </AuthProvider>
+      {/* </AuthProvider> */}
     </NavigationContainer>
   );
 };

@@ -12,7 +12,7 @@ import Cart from './Cart';
 import Account from './Account';
 import Notification from './Notification';
 import EditProfile from './EditProfile';
-import Orders from './Orders';
+import Orders from './ContactUs';
 import CoffeeDetailScreen from './CoffeeDetailScreen';
 import Payment from './Payment';
 import {AuthContext} from '../context/auth';
@@ -21,6 +21,7 @@ import TabNavigator from './TabNavigator';
 import PaymentCard from '../components/PaymentCard';
 import ErrorPage from './ErrorPage';
 import SuccessPage from './SuccessPage';
+import TermsOfServices from './TermsOfServices';
 
 const Stack = createNativeStackNavigator();
 
@@ -84,7 +85,7 @@ const NavigationScreen = ({navigation}) => {
            options={{headerShown: false}}
          />
          <Stack.Screen
-           name="ErrorScreen"
+           name="ErrorPage"
            component={ErrorPage}
            options={{headerShown: false}}
          />
@@ -93,11 +94,44 @@ const NavigationScreen = ({navigation}) => {
            component={SuccessPage}
            options={{headerShown: false}}
          />
+         <Stack.Screen
+           name="TermsOfServices"
+           component={TermsOfServices}
+           options={{headerShown: false}}
+         />
          {/* <Stack.Screen
            name="PaymentScreen"
            component={PaymentCard}
            options={{headerShown: false}}
          /> */}
+         {/* <Stack.Screen
+          name="Splash"
+          component={Splash}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="HomePage"
+          component={HomePage}
+          options={{headerShown: false}}
+        />
+
+        <Stack.Screen
+          name="Login"
+          component={Login}
+          options={{headerShown: false}}
+        />
+
+        <Stack.Screen
+          name="Signup"
+          component={Signup}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="GetStarted"
+          component={Getstarted}
+          options={{headerShown: false}}
+        /> */}
+        
        </>
       ) : (
         <>

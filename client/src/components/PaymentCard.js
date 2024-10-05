@@ -95,7 +95,7 @@ const PaymentCard = ({}) => {
       setTimeout(() => {
         navigation.navigate('SuccessPage')
 
-      }, 3000);
+      }, 1000);
       // console.log('payment Intent', paymentIntent);
       // console.log('responsesss',response)
       // navigation.navigate('Home');

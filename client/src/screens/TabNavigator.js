@@ -72,7 +72,7 @@ const TabNavigator = ({navigation}) => {
           },
         }}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Wallet"
         component={Wallet}
         options={{
@@ -80,7 +80,7 @@ const TabNavigator = ({navigation}) => {
             return <IonIcons name="wallet" size={28} color={'#fff'} />;
           },
         }}
-      />
+      /> */}
       <Tab.Screen
         name="Cart"
         component={Cart}

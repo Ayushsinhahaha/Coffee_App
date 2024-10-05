@@ -30,7 +30,7 @@ export default function Signup({navigation}) {
       Alert.alert(resp.data.error);
     } else {
       setState(resp.data);
-      await AsyncStorage.setItem('token', JSON.stringify(res.data));
+      await AsyncStorage.setItem('token', JSON.stringify(resp.data));
       Alert.alert('Registered Successfully');
       navigation.navigate('Login');
     }

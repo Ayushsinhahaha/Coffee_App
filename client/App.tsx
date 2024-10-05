@@ -6,12 +6,14 @@ import AppNavigator from './AppNavigator.js';
 import {MyStore} from './src/reduxtoolkit/MyStore.js';
 import Toast from 'react-native-toast-message';
 import {StripeProvider} from '@stripe/stripe-react-native';
+import {AuthProvider} from './src/context/auth.js';
 
 const App = () => {
-  
   return (
     <Provider store={MyStore}>
-      <AppNavigator />
+      <AuthProvider>
+        <AppNavigator />
+      </AuthProvider>
       <Toast />
     </Provider>
   );
