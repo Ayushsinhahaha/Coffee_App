@@ -20,7 +20,7 @@ const User = mongoose.model("User");
 //connect to db
 mongoose
   .connect(process.env.DATABASE)
-  .then(() => console.log("Database Connected"))
+  .then(() => console.log("Database Connected Successfully"))
   .catch((err) => console.log(err));
 
 //for jwtauthentication

@@ -26,11 +26,9 @@ import TermsOfServices from './TermsOfServices';
 const Stack = createNativeStackNavigator();
 
 const NavigationScreen = ({navigation}) => {
-  const [state, setState] = useContext(AuthContext);
-  const authenticated = state && state.user !== null && state.token !== '';
+ 
   return (
     <Stack.Navigator initialRouteName="Splash">
-      {authenticated ? (
          <>
          <Stack.Screen
            name="TabNavigator"
@@ -93,78 +91,14 @@ const NavigationScreen = ({navigation}) => {
            name="SuccessPage"
            component={SuccessPage}
            options={{headerShown: false}}
-         />
+           />
          <Stack.Screen
            name="TermsOfServices"
            component={TermsOfServices}
            options={{headerShown: false}}
-         />
-         {/* <Stack.Screen
-           name="PaymentScreen"
-           component={PaymentCard}
-           options={{headerShown: false}}
-         /> */}
-         {/* <Stack.Screen
-          name="Splash"
-          component={Splash}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="HomePage"
-          component={HomePage}
-          options={{headerShown: false}}
-        />
-
-        <Stack.Screen
-          name="Login"
-          component={Login}
-          options={{headerShown: false}}
-        />
-
-        <Stack.Screen
-          name="Signup"
-          component={Signup}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="GetStarted"
-          component={Getstarted}
-          options={{headerShown: false}}
-        /> */}
-        
-       </>
-      ) : (
-        <>
-        <Stack.Screen
-          name="Splash"
-          component={Splash}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="HomePage"
-          component={HomePage}
-          options={{headerShown: false}}
-        />
-
-        <Stack.Screen
-          name="Login"
-          component={Login}
-          options={{headerShown: false}}
-        />
-
-        <Stack.Screen
-          name="Signup"
-          component={Signup}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="GetStarted"
-          component={Getstarted}
-          options={{headerShown: false}}
-        />
-      </>
-      )}
-    </Stack.Navigator>
+           />
+           </>
+           </Stack.Navigator>
   );
 };
 

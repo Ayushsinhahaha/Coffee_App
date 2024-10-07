@@ -1,9 +1,13 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet, Image } from 'react-native';
+import { useSelector } from 'react-redux';
 
 const SuccessPage = ({ navigation }) => {
+  const cartItems = useSelector(state => state.cart);
   return (
+   
     <View style={styles.container}>
+      
       <Image
         source={require('../assets/images/successful.png')} // You can replace this with a success icon or image
         style={styles.image}
@@ -13,7 +17,10 @@ const SuccessPage = ({ navigation }) => {
       
       <Button
         title="Back to Home"
-        onPress={() => navigation.navigate('Home')}  // Assuming you have a Home screen
+        onPress={() => {
+          navigation.navigate('Home')
+          
+        }}  // Assuming you have a Home screen
         color="#00704c"
       />
     </View>
