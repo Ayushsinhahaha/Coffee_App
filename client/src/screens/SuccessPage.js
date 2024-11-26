@@ -1,26 +1,27 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet, Image } from 'react-native';
-import { useSelector } from 'react-redux';
+import {View, Text, Button, StyleSheet, Image} from 'react-native';
+import {useSelector} from 'react-redux';
 
-const SuccessPage = ({ navigation }) => {
+const SuccessPage = ({navigation}) => {
   const cartItems = useSelector(state => state.cart);
   return (
-   
     <View style={styles.container}>
-      
       <Image
         source={require('../assets/images/successful.png')} // You can replace this with a success icon or image
         style={styles.image}
       />
       <Text style={styles.title}>Payment Successful!</Text>
-      <Text style={styles.message}>Thank you for your purchase. Your transaction was successful.</Text>
-      
+      <Text style={styles.message}>
+        Thank you for your purchase. Your transaction was successful.
+      </Text>
+
       <Button
         title="Back to Home"
         onPress={() => {
-          navigation.navigate('Home')
-          
-        }}  // Assuming you have a Home screen
+          navigation.navigate('Home');
+          // dispatch(deleteCartItem(item.id));
+          // dispatch(removeQuantity(item.id));
+        }} // Assuming you have a Home screen
         color="#00704c"
       />
     </View>

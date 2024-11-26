@@ -11,20 +11,20 @@ import {
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Toast from 'react-native-toast-message';
-import { AuthContext } from '../context/auth';
+import {AuthContext} from '../context/auth';
 
 export default function Login({navigation}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [state,setState]=useContext(AuthContext)
+  const [state, setState] = useContext(AuthContext);
 
   const showToast = () => {
     Toast.show({
       type: 'success',
       text1: 'Log In Successful',
       text2: "You're being redirected to Homepage ",
-      visibilityTime:2000
-    },);
+      visibilityTime: 2000,
+    });
   };
 
   const handleSubmit = async () => {
@@ -34,18 +34,17 @@ export default function Login({navigation}) {
       password,
     };
 
-    const resp=await axios.post('http://10.0.2.2:5000/login',userData)
-    if(resp.data.error){
-      Alert.alert('Error', resp.data.error)
-    }else{
+    const resp = await axios.post('http://10.0.2.2:5000/login', userData);
+    if (resp.data.error) {
+      Alert.alert('Error', resp.data.error);
+    } else {
       setState(resp.data);
-      await AsyncStorage.setItem('auth-rn',JSON.stringify(resp.data));
-            // Alert.alert('Logged In Successfully');
-            showToast()
-            navigation.navigate('TabNavigator');
-
+      await AsyncStorage.setItem('auth-rn', JSON.stringify(resp.data));
+      // Alert.alert('Logged In Successfully');
+      showToast();
+      navigation.navigate('TabNavigator');
     }
-  }
+  };
 
   return (
     <View style={styles.container}>

@@ -7,9 +7,9 @@ import {AuthContext} from '../context/auth';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Account = ({navigation}) => {
-  const [name,setName]=useState("")
+  const [name, setName] = useState('');
   const [state, setState] = useContext(AuthContext);
-  console.log('state:::',state)
+  console.log('state:::', state);
 
   // useEffect(()=>{
   //   if(state){
@@ -18,12 +18,11 @@ const Account = ({navigation}) => {
   //   }
   // },[])
 
-
   const signOut = async () => {
     setState({token: '', user: null});
     await AsyncStorage.removeItem('auth-rn');
     console.log('Signout Pressed');
-    console.log('state',state)
+    console.log('state', state);
     // navigation.navigate('')
   };
   return (
@@ -50,15 +49,21 @@ const Account = ({navigation}) => {
           style={{
             width: 200,
             height: 200,
-            // backgroundColor: '#00704A',
+            backgroundColor: '#00704a',
             borderRadius: 126,
+            borderWidth: 1,
+            alignItems: 'center',
           }}>
           {/* <View style={{width:180,height:180,backgroundColor:'lightgrey',borderRadius:110,margin:10,alignItems:'center',justifyContent:'center'}}> */}
-          <IonIcons
+          {/* <IonIcons
             name="person-circle"
             size={220}
             color="grey"
             style={{bottom: 25, right: 10}}
+          /> */}
+          <Image
+            source={require('../assets/logo/man.png')}
+            style={{height: 200, width: 200}}
           />
           {/* </View> */}
         </TouchableOpacity>
@@ -112,10 +117,11 @@ const Account = ({navigation}) => {
             bottom: 45,
           }}>
           <Text style={{fontSize: 20, fontWeight: 800, color: 'grey'}}>
-          Contact Us
+            Contact Us
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
+          onPress={() => navigation.navigate('MethodsPayment')}
           style={{
             borderWidth: 3,
             borderColor: '#00704a',
@@ -132,7 +138,8 @@ const Account = ({navigation}) => {
             Payment Methods
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={()=>navigation.navigate('TermsOfServices')}
+        <TouchableOpacity
+          onPress={() => navigation.navigate('TermsOfServices')}
           style={{
             borderWidth: 3,
             borderColor: '#00704a',

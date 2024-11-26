@@ -87,14 +87,13 @@ const PaymentCard = ({}) => {
     if (error) {
       Alert.alert(`Error code: ${error.code}`, error.message);
       setTimeout(() => {
-        navigation.navigate('ErrorPage')
+        navigation.navigate('ErrorPage');
       }, 1000);
     } else {
       Alert.alert('Success', 'Your order is confirmed!');
 
       setTimeout(() => {
-        navigation.navigate('SuccessPage')
-
+        navigation.navigate('SuccessPage');
       }, 1000);
       // console.log('payment Intent', paymentIntent);
       // console.log('responsesss',response)
