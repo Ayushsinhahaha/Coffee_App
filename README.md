@@ -31,19 +31,19 @@ Caffeination is a mobile application built with React Native to simplify the pro
 
 
 ### Signup Page
-![Signup Page](assets/screenshots/Signup.png)
+![Signup Page](client/src/assets/screenshots/Signup.png)
 
 ### Homepage
-![Homepage](assets/screenshots/Homepage.png)
+![Homepage](client/src/assets/screenshots/Homepage.png)
 
 ### Search Page
-![Search Page](assets/screenshots/SearchBar.png)
+![Search Page](client/src/assets/screenshots/SearchBar.png)
 
 ### Cart Page
-![Cart Page](assets/screenshots/Cart.png)
+![Cart Page](client/src/assets/screenshots/Cart.png)
 
 ### Account Page
-![Account Page](assets/screenshots/AccountPage.png)
+![Account Page](client/src/assets/screenshots/AccountPage.png)
 
 ---
 
