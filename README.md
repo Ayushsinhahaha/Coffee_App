@@ -51,7 +51,7 @@ Caffeination is a mobile application built with React Native to simplify the pro
 
 - 1.Clone the repository: 
    git clone https://github.com/username/caffeination.git
-   - cd caffeination
+-  cd caffeination
 - 2.Install Dependencies:
   npm install
 - 3.Start the application:
